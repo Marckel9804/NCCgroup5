@@ -3,8 +3,10 @@
 ![Mysql](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
-# NCCgroup5
+# 
 #1 스터디그룹 5조
+주제 : 
+
 |      | 이름 | git nickname |
 |------|------|-------------|
 | 조장 | 서창호 | Marckel9804 |
