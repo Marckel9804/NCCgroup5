@@ -5,3 +5,11 @@
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 # NCCgroup5
 #1 스터디그룹 5조
+
+조장 : 서창호 | Marckel9804 |
+조원 : 전유탁 |
+       홍화연 |
+       유가영 |
+       최재원 |
+       안성민 |
+       
