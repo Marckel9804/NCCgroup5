@@ -7,7 +7,7 @@
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
  
 #1 스터디그룹 5조
-주제 : 영화 아키네이터
+#주제 : 영화 아키네이터
 
 |      | 이름 | git nickname | 역할 |
 |------|------|-------------|------|
