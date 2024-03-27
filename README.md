@@ -16,12 +16,12 @@
 
 ---
 
-|      | 이름 | git nickname | 역할 |
-|------|------|-------------|------|
-| 조장 | 서창호 | Marckel9804 |   UI     |
-| 조원 | 전유탁 |             |   UI     |
-|      | 홍화연 |             |   UI     |
-|      | 유가영 |             |   DB      |
-|      | 최재원 |             |   DB      |
-|      | 안성민 |             |   UI      |
+|        | 이름 | git nickname | 역할 |
+|--------|------|-------------|------|
+| 조장   | 서창호 | Marckel9804 |  UI  |
+| 부조장 | 전유탁 | dbxkr       |  UI  |
+| 조워   | 홍화연 | ghkdusghd   |  DB/UI  |
+|        | 유가영 | ggggaaaayyyyoooouuunnnggg  |  DB  |
+|        | 최재원 | chjw9806    |  DB  |
+|        | 안성민 | Anseongmin5739 |  DB/UI  |
        
