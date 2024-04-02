@@ -7,18 +7,25 @@
   <component name="GradleMigrationSettings" migrationVersion="1" />
 =======
 <<<<<<< HEAD
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+=======
+<<<<<<< HEAD
 =======
   <component name="GradleMigrationSettings" migrationVersion="1" />
 >>>>>>> DB
 >>>>>>> 7ace6d91d1390d063092ea06406dbff3a51f9b5b
+>>>>>>> 5ebd11132b8ba0fd05742a24c3b81872142d3223
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         <option name="gradleJvm" value="17" />
 =======
 >>>>>>> DB
+>>>>>>> 5ebd11132b8ba0fd05742a24c3b81872142d3223
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -27,5 +34,8 @@
       </GradleProjectSettings>
     </option>
   </component>
+<<<<<<< HEAD
+=======
 >>>>>>> DB
+>>>>>>> 5ebd11132b8ba0fd05742a24c3b81872142d3223
 </project>
