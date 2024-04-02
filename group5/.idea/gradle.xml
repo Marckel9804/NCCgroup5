@@ -4,6 +4,9 @@
   <component name="GradleMigrationSettings" migrationVersion="1" />
 =======
 <<<<<<< HEAD
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+=======
+<<<<<<< HEAD
 =======
   <component name="GradleMigrationSettings" migrationVersion="1" />
 >>>>>>> DB
@@ -24,4 +27,5 @@
       </GradleProjectSettings>
     </option>
   </component>
+>>>>>>> DB
 </project>
