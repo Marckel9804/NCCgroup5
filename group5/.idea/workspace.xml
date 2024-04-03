@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="1fba97c9-f0eb-47e8-8726-c87fb92dfbe0" name="Changes" comment="" />
-=======
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
->>>>>>> Frame
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,17 +31,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-<<<<<<< HEAD
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
-  <component name="ProjectId" id="2eXOiIUqpJThHDFqwhgGiV0MMro" />
-=======
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2eXPi9ND9vuzWKlRoMUkYxKKru6" />
->>>>>>> Frame
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -53,15 +42,6 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-<<<<<<< HEAD
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ch",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-=======
     "Gradle.group5 [:hhy.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -71,37 +51,24 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
->>>>>>> Frame
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-<<<<<<< HEAD
-        <option value="jdk-17.0.9-corretto-17.0.9-4caba194b151-107bc6b7" />
-=======
         <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-2f79fb23" />
->>>>>>> Frame
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="1fba97c9-f0eb-47e8-8726-c87fb92dfbe0" name="Changes" comment="" />
-      <created>1712047582165</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1712047582165</updated>
-=======
       <changelist id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="" />
       <created>1712048073856</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712048073856</updated>
->>>>>>> Frame
     </task>
     <servers />
   </component>
