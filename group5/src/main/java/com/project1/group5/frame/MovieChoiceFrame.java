@@ -6,7 +6,7 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
 
-public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListener, MouseMotionListener{
+public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListener, MouseMotionListener, Runnable{
 
     //graphics 라이브러리를 사용하기 위한 객체
 	Image buffImage; 
@@ -17,6 +17,7 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
     //창 크기
     int f_width;
     int f_height;
+    int menu;
     
     //캐릭터 이미지 경로
     String[] imageList = {"pondering_dorothy", "pondering_scarecrow","pondering_tin_man","pondering_cowardly_lion","good_witch_glinda","wicked_witch"};
@@ -34,6 +35,9 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
     JLabel jl_left;
     JLabel jl_right;
 
+    ToJbutton toMyPage;
+    ToJbutton toBoard;
+
     //임시로 선택지 클릭 영역 만들기 위한 도형 객체. 차후에 변수명 수정 예정
     Shape rc_s;
     Shape bc_s;
@@ -47,8 +51,9 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
     int mousey;
 
     public MovieChoiceFrame(){
+        menu = 50;
         f_width=1300;
-        f_height=750;
+        f_height=750+menu;
 
         setSize(f_width,f_height);
         setResizable(false);//창 크기 조절 불가능
@@ -57,6 +62,7 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
         
         //이미지 받아오기. 디렉토리는 프로젝트 폴더에 맞게 수정
         String imgDir = "group5/src/main/java/com/project1/group5/frame/images/";
+        
         characters = new Image[6];
         for(int i = 0;i<6;i++){
             characters[i] = new ImageIcon(imgDir+imageList[i]+".png").getImage();
@@ -71,9 +77,14 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
         jl_right = new JLabel(choices[nthChacracter*2+1]);
         jl_left.setBounds(f_width/2+200,f_height/2-75,200,30);
         jl_right.setBounds(f_width/2,f_height/2-75,200,30);
+        jl_right.setForeground(Color.red);
+        jl_left.setForeground(Color.blue);
         jl_left.setFont(new Font(null, Font.BOLD, 30));
         jl_right.setFont(new Font(null, Font.BOLD, 30));
 
+        toMyPage = new ToJbutton(f_width-300,10,"마이페이지");
+        toBoard = new ToJbutton(f_width-180,10,"게시판");
+        
         //그래픽을 먼저 로딩시키기 위해 사진들을 전부 Jpanel에 붙여서 프레임 위에 붙일것임
         panelForGraphics = new JPanel() {
             //이하 전부 그래픽 올리는 메소드들. repaint()를 통해 재호출이 가능함.
@@ -85,19 +96,21 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
                 update(g);
             }
 
-            public void drawCharacter(){//0,250 위치에 500x500 캐릭터 이미지를 그려줘라는 뜻
+            public void drawCharacter(){//캐릭터 이미지를 그려줘라는 뜻
+                int size = 500;
                 if (buffg != null) {
-                    buffg.drawImage(characters[nthChacracter], 0, 250,500,500, this); 
+                    buffg.drawImage(characters[nthChacracter], 0, f_height-size,size,size, this); 
                 }
             }
-            public void drawOzo(){//마우스 좌표 -50 위치에 주어진 크기의 오조 로고를 그려줘라는 뜻
+            public void drawOzo(){//마우스 좌표 -50 위치에 주어진 크기의 오조 로고를 그려줘라는 
+                int size = 170;
                 if (buffg != null) {
-                    buffg.drawImage(ozo, mousex-50, mousey-50,170,170, this); 
+                    buffg.drawImage(ozo, mousex-50, mousey-50,size,size, this); 
                 }
             }
-            public void drawOzland(){//0,0 위치에 창 크기만큼의 배경을 그려줘라는 뜻
+            public void drawOzland(){//배경을 그려줘라는 뜻
                 if (buffg != null) {
-                    buffg.drawImage(ozland, 0, 0,f_width,f_height, this); 
+                    buffg.drawImage(ozland, 0, menu,f_width,f_height-menu, this); 
                 }
             }
             public void drawCircle(){//뭐 임의로 선택지 이미지를 띄운다는 뜻. 차후 수정 혹은 제거 예정
@@ -123,13 +136,16 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
         panelForGraphics.setLayout(null);
         panelForGraphics.add(jl_left);
         panelForGraphics.add(jl_right);
+        panelForGraphics.add(toMyPage);
+        panelForGraphics.add(toBoard);
         add(panelForGraphics);
 
         addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
         // getContentPane().setBackground(new Color(62,197,211));
-        setBackground(new Color(62,197,241));//배경을 하늘색으로 지정...인데 덮어버려서 현재 시점에선 무쓸모
+        // setBackground(new Color(62,197,241));
+        setBackground(new Color(0,141,98));
 
         
         setVisible(true);
@@ -163,7 +179,6 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
                 repaint();
                 nthChacracter = (nthChacracter+5)%6;
                 isKeyPressed = true;
-
             }
         }
     }
@@ -215,4 +230,22 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
 
     @Override
     public void mouseDragged(MouseEvent e) {}
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'run'");
+    }
+}
+
+class ToJbutton extends JButton{
+    ToJbutton(int x, int y, String text){
+        setBorderPainted(false);
+        setContentAreaFilled(false);
+        setText("<html><u>"+text+"</u></html>");
+        setFont(new Font("Pretendard", Font.BOLD, 20));
+        setForeground(Color.YELLOW);
+        setBounds(x, y, 200, 30);
+    }
+    
 }
