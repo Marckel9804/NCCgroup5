@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-=======
   <component name="GradleMigrationSettings" migrationVersion="1" />
->>>>>>> Frame
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-<<<<<<< HEAD
-        <option name="gradleJvm" value="corretto-17" />
-=======
         <option name="gradleJvm" value="temurin-17" />
->>>>>>> Frame
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
