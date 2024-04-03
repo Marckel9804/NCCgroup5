@@ -11,5 +11,6 @@ public class hhy {
             System.out.print("*");
         }
         System.out.println();
+        System.out.println();
     }
 }
