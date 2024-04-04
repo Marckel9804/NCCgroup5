@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="GradleMigrationSettings" migrationVersion="1" />
+=======
+<<<<<<< HEAD
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+=======
+<<<<<<< HEAD
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+=======
+<<<<<<< HEAD
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+=======
+<<<<<<< HEAD
+=======
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+>>>>>>> DB
+>>>>>>> 7ace6d91d1390d063092ea06406dbff3a51f9b5b
+>>>>>>> 5ebd11132b8ba0fd05742a24c3b81872142d3223
+>>>>>>> f3b22bd14cc29b381c87f6c5ce2a81930586acf3
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
         <option name="gradleJvm" value="temurin-17" />
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <option name="gradleJvm" value="17" />
+=======
+>>>>>>> DB
+>>>>>>> 5ebd11132b8ba0fd05742a24c3b81872142d3223
+>>>>>>> f3b22bd14cc29b381c87f6c5ce2a81930586acf3
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -14,4 +42,11 @@
       </GradleProjectSettings>
     </option>
   </component>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> DB
+>>>>>>> 5ebd11132b8ba0fd05742a24c3b81872142d3223
+>>>>>>> f3b22bd14cc29b381c87f6c5ce2a81930586acf3
 </project>
