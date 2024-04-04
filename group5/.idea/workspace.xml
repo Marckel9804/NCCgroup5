@@ -11,6 +11,10 @@
       <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/DbTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/Jae.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/Test1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/gayoung.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/jjj.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardEdit$1.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardEdit.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardFrame$1.class" afterDir="false" />
@@ -27,12 +31,14 @@
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/ToJbutton$1.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/ToJbutton.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/hhy.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/test/com/project1/group5/Group5ApplicationTests.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MovieSelectFrame$1.class.uniqueId1" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MovieSelectFrame.class.uniqueId3" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ToJbutton$1.class.uniqueId0" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ToJbutton.class.uniqueId2" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/BoardEdit.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/BoardFrame.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/BoardView.java" afterDir="false" />
@@ -50,13 +56,11 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/pondering_tin_man.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/rc.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/wicked_witch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/Group5Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/Group5Application.class" afterDir="false" />
