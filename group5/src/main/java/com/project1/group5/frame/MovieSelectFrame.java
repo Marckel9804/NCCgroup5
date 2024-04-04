@@ -6,7 +6,7 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
 
-public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListener, MouseMotionListener, Runnable{
+public class MovieSelectFrame extends JFrame implements KeyListener, MouseListener, MouseMotionListener, Runnable{
 
     //graphics 라이브러리를 사용하기 위한 객체
 	Image buffImage; 
@@ -50,10 +50,10 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
     int mousex;
     int mousey;
 
-    public MovieChoiceFrame(){
+    public MovieSelectFrame(){
         menu = 50;
-        f_width=1300;
-        f_height=750+menu;
+        f_width=800;
+        f_height=550+menu;
 
         setSize(f_width,f_height);
         setResizable(false);//창 크기 조절 불가능
@@ -61,8 +61,7 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         //이미지 받아오기. 디렉토리는 프로젝트 폴더에 맞게 수정
-        String imgDir = "group5/src/main/java/com/project1/group5/frame/images/";
-        
+        String imgDir = "src/main/java/com/project1/group5/frame/images/";
         characters = new Image[6];
         for(int i = 0;i<6;i++){
             characters[i] = new ImageIcon(imgDir+imageList[i]+".png").getImage();
@@ -97,13 +96,13 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
             }
 
             public void drawCharacter(){//캐릭터 이미지를 그려줘라는 뜻
-                int size = 500;
+                int size = 300;
                 if (buffg != null) {
                     buffg.drawImage(characters[nthChacracter], 0, f_height-size,size,size, this); 
                 }
             }
             public void drawOzo(){//마우스 좌표 -50 위치에 주어진 크기의 오조 로고를 그려줘라는 
-                int size = 170;
+                int size = 110;
                 if (buffg != null) {
                     buffg.drawImage(ozo, mousex-50, mousey-50,size,size, this); 
                 }
@@ -145,7 +144,7 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
         addMouseMotionListener(this);
         // getContentPane().setBackground(new Color(62,197,211));
         // setBackground(new Color(62,197,241));
-        setBackground(new Color(0,141,98));
+        setBackground(new Color(32,141,198));
 
         
         setVisible(true);
@@ -160,7 +159,7 @@ public class MovieChoiceFrame extends JFrame implements KeyListener, MouseListen
     // }
 
     public static void main(String[] args) {
-        MovieChoiceFrame mc = new MovieChoiceFrame();
+        MovieSelectFrame mc = new MovieSelectFrame();
     }
 
     @Override
@@ -246,6 +245,12 @@ class ToJbutton extends JButton{
         setFont(new Font("Pretendard", Font.BOLD, 20));
         setForeground(Color.YELLOW);
         setBounds(x, y, 200, 30);
+
+        addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BoardFrame b = new BoardFrame();
+            }
+        });
     }
-    
 }
