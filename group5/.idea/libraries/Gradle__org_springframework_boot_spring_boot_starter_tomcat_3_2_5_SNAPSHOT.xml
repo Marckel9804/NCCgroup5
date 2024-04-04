@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:3.2.5-SNAPSHOT" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.springframework.boot" artifactId="spring-boot-starter-tomcat" version="3.2.5-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/3.2.5-SNAPSHOT/4d061f2d54f4f785df866943952c11ef450ed30f/spring-boot-starter-tomcat-3.2.5-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
