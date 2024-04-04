@@ -52,8 +52,8 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
 
     public MovieSelectFrame(){
         menu = 50;
-        f_width=1300;
-        f_height=750+menu;
+        f_width=800;
+        f_height=550+menu;
 
         setSize(f_width,f_height);
         setResizable(false);//창 크기 조절 불가능
@@ -96,13 +96,13 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
             }
 
             public void drawCharacter(){//캐릭터 이미지를 그려줘라는 뜻
-                int size = 500;
+                int size = 300;
                 if (buffg != null) {
                     buffg.drawImage(characters[nthChacracter], 0, f_height-size,size,size, this); 
                 }
             }
             public void drawOzo(){//마우스 좌표 -50 위치에 주어진 크기의 오조 로고를 그려줘라는 
-                int size = 170;
+                int size = 110;
                 if (buffg != null) {
                     buffg.drawImage(ozo, mousex-50, mousey-50,size,size, this); 
                 }
