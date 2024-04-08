@@ -17,6 +17,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/Login/LoginFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/LoginImages/Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/LoginImages/ozo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MainPage/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/hhy.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/hhy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MovieChoiceFrame$1.class.uniqueId2" beforeDir="false" />
@@ -60,6 +65,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="DB" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -83,16 +93,35 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "hhy",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/hwayeon/Documents/Projects/NCCgroup5/group5/build.gradle",
+    "last_opened_file_path": "C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/LoginImages",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.RegisterFrameTest">
-    <configuration name="MovieChoiceFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MovieChoiceFrame" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\LoginImages" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainPage">
+    <configuration name="MainPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MainPage.MainPage" />
+      <module name="group5.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project1.group5.frame.MainPage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieSelectFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MovieSelectFrame" />
+
       <module name="group5.main" />
       <extension name="coverage">
         <pattern>
@@ -121,6 +150,7 @@
       <list>
         <item itemvalue="Application.RegisterFrameTest" />
         <item itemvalue="Application.MovieChoiceFrame" />
+
       </list>
     </recent_temporary>
   </component>
