@@ -20,20 +20,23 @@ public class RegisterService {
             System.out.println("데이터베이스 연결 성공");
 
             //신규유저의 정보가 users 테이블에 있는지 체크한 후 중복 없으면 등록하는 프로시저 호출
-            String queryCheck= "{call registerUser(?, ?, ?, ?, ?, ?, ?, ?, curtime(), curtime())}";
+            String queryCheck= "{call registerUser(?, ?, ?, ?, ?, ?, ?, ?, ?, curtime(), curtime())}";
             cs = con.prepareCall(queryCheck);
             cs.registerOutParameter(1, Types.INTEGER);
-            cs.setInt(2, dto.getUser_id());
-            cs.setString(3, dto.getUsername());
-            cs.setString(4, dto.getEmail());
-            cs.setString(5, dto.getPhone_number());
-            cs.setString(6, dto.getBirth_date());
-            cs.setString(7, dto.getGender());
-            cs.setString(8, dto.getPassword());
+            cs.registerOutParameter(2, Types.VARCHAR);
+            cs.setString(3, dto.getUser_id());
+            cs.setString(4, dto.getPassword());
+            cs.setString(5, dto.getEmail());
+            cs.setString(6, dto.getUsername());
+            cs.setString(7, dto.getPhone_number());
+            cs.setString(8, dto.getBirth_date());
+            cs.setString(9, dto.getGender());
             cs.execute();
 
             int result = cs.getInt(1);
+            String message = cs.getString(2);
             System.out.println("insert 실행 여부(1=true, 0=false) : " + result);
+            System.out.println(message);
 
             cs.close();
             con.close();
