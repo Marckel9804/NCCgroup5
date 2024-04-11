@@ -1,9 +1,10 @@
-package com.project1.group5.db;
+package com.project1.group5.db.register;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 public class RegisterDTO {
 
     private String user_id;
@@ -14,13 +15,18 @@ public class RegisterDTO {
     private String gender;
     private String password;
 
-    RegisterDTO(){}
+    RegisterDTO() {
+    }
 
     RegisterDTO(String user_id, String username, String email, String phone_number, String birth_date,
-                String gender, String password){
-        this.user_id=user_id; this.username=username; this.email=email;
-        this.phone_number=phone_number; this.birth_date=birth_date; this.gender=gender;
-        this.password=password;
+                String gender, String password) {
+        this.user_id = user_id;
+        this.username = username;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.birth_date = birth_date;
+        this.gender = gender;
+        this.password = password;
     }
 
 }

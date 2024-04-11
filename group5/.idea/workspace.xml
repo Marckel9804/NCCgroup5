@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="" />
+    <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterFrameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterFrameTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +77,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Frame",
+    "git-widget-placeholder": "DB",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/register",
     "project.structure.last.edited": "Modules",
@@ -141,11 +146,11 @@
       </method>
     </configuration>
     <configuration name="RegisterFrameTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.project1.group5.db.RegisterFrameTest" />
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.db.register.RegisterFrameTest" />
       <module name="group5.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.project1.group5.db.*" />
+          <option name="PATTERN" value="com.project1.group5.db.register.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -197,7 +202,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java</url>
-          <line>12</line>
+          <line>16</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
