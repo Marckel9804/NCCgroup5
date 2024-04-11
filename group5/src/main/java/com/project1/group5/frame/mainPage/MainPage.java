@@ -1,6 +1,6 @@
-package com.project1.group5.frame.MainPage;
+package com.project1.group5.frame.mainPage;
 
-import com.project1.group5.frame.Login.LoginFrame;
+import com.project1.group5.frame.login.LoginFrame;
 
 import javax.swing.*;
 import java.awt.*;
