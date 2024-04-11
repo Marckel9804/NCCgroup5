@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterFrameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterFrameTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterService.java" afterDir="false" />
