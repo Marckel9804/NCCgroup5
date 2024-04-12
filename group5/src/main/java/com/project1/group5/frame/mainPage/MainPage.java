@@ -1,4 +1,4 @@
-package com.project1.group5.frame.mainPage;
+package com.project1.group5.frame.mainpage;
 
 import com.project1.group5.frame.login.LoginFrame;
 
@@ -15,8 +15,8 @@ public class MainPage {
         // 메인 프레임 생성
         int f_width;
         int f_height;
-        f_width=800;
-        f_height=600;
+        f_width = 800;
+        f_height = 600;
         JFrame frame = new JFrame("메인 페이지");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 닫기 설정
         frame.setSize(f_width, f_height); // 프레임 크기 설정
@@ -27,7 +27,7 @@ public class MainPage {
 
         // 이미지 로드
         String imgDir = "src/main/java/com/project1/group5/frame/LoginImages/";
-        ImageIcon icon = new ImageIcon(imgDir+"ozo.png");
+        ImageIcon icon = new ImageIcon(imgDir + "ozo.png");
 
         JLabel imageLabel = new JLabel(icon);
         imageLabel.setBounds(0, 0, f_width, f_height); // 이미지 사이즈와 위치 설정
@@ -37,25 +37,25 @@ public class MainPage {
 
         // 로그인 버튼 생성
         LoginPageButton loginButton = new LoginPageButton("로그인");
-        loginButton.setBounds(f_width/2-120-10, f_height-f_height/4, 120, 40); // 좌표와 크기 설정
+        loginButton.setBounds(f_width / 2 - 120 - 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //로그인 페이지로 이동하는 코드를 추가하세요.
-                //Login 클래스의 인스턴스 생성
+                // 로그인 페이지로 이동하는 코드를 추가하세요.
+                // Login 클래스의 인스턴스 생성
                 LoginFrame loginPage = new LoginFrame();
-                //보이기 메소드 호출
+                // 보이기 메소드 호출
                 loginPage.setVisible(true);
             }
         });
 
         // 회원가입 버튼 생성
         LoginPageButton registerButton = new LoginPageButton("회원가입");
-        registerButton.setBounds(f_width/2+10, f_height-f_height/4, 120, 40); // 좌표와 크기 설정
+        registerButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //임의로 만들어 놓은 거_회원가입 클래스 새로 만들거임
+                // 임의로 만들어 놓은 거_회원가입 클래스 새로 만들거임
                 JFrame registerFrame = new JFrame("회원가입 페이지");
                 registerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 회원가입 프레임만 닫기
                 registerFrame.setSize(400, 200); // 회원가입 프레임 크기 설정
@@ -77,13 +77,11 @@ public class MainPage {
     }
 }
 
-
-//버튼 디자인
-
+// 버튼 디자인
 
 class LoginPageButton extends JButton {
     LoginPageButton(String text) {
-        int[] rgb = {208,154,255};
+        int[] rgb = { 208, 154, 255 };
         setOpaque(false);
         setContentAreaFilled(false);// 배경 투명화
         setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // 안쪽 여백
