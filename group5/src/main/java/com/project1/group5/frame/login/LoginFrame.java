@@ -23,7 +23,7 @@ public class LoginFrame extends JFrame {
     // 로그인 프레임 생성자
     public LoginFrame() {
         setTitle("Login"); // 프레임 타이틀 설정
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 동작 설정
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE); // 종료 동작 설정
         setSize(800, 600); // 프레임 크기 설정
         setLocationRelativeTo(null); // 프레임을 화면 중앙에 배치
 
@@ -38,10 +38,7 @@ public class LoginFrame extends JFrame {
         imagePanel.setBackground(Color.WHITE);
         ImageIcon icon = new ImageIcon("C:\\Users\\lg\\Desktop\\login1.png"); // 이미지 아이콘 경로
         JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBounds(400 - icon.getIconWidth() / 2 - 10, 30, icon.getIconWidth(), icon.getIconHeight()); // 이미지
-                                                                                                                 // 아이콘
-                                                                                                                 // 위치
-                                                                                                                 // 설정
+        imageLabel.setBounds(400 - icon.getIconWidth() / 2 - 10, 30, icon.getIconWidth(), icon.getIconHeight());
         imagePanel.add(imageLabel);
 
         // 텍스트 레이블 추가

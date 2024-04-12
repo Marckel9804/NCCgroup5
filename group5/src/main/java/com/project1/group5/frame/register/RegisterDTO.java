@@ -1,6 +1,7 @@
 package com.project1.group5.frame.register;
 
 public class RegisterDTO {
+
     public void setUser_id(String text) {
     }
 
