@@ -9,5 +9,4 @@ public class Group5Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Group5Application.class, args);
 	}
-
 }
