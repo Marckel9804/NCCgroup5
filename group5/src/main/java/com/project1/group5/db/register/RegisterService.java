@@ -1,4 +1,4 @@
-package com.project1.group5.db;
+package com.project1.group5.db.register;
 
 import java.sql.*;
 
@@ -8,10 +8,10 @@ public class RegisterService {
     CallableStatement cs = null;
 
     //유저가 회원가입 기능으로 입력한 값의 중복 여부를 확인해서 insert하는 메서드
-    public void registerUser(RegisterDTO dto){
+    public void registerUser(RegisterDTO dto) {
 
         //JDBC 연결...
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/OzO", //우리 DB이름 뭐임..?
@@ -20,7 +20,7 @@ public class RegisterService {
             System.out.println("데이터베이스 연결 성공");
 
             //신규유저의 정보가 users 테이블에 있는지 체크한 후 중복 없으면 등록하는 프로시저 호출
-            String queryCheck= "{call registerUser(?, ?, ?, ?, ?, ?, ?, ?, ?, curtime(), curtime())}";
+            String queryCheck = "{call registerUser(?, ?, ?, ?, ?, ?, ?, ?, ?, curtime(), curtime())}";
             cs = con.prepareCall(queryCheck);
             cs.registerOutParameter(1, Types.INTEGER);
             cs.registerOutParameter(2, Types.VARCHAR);
@@ -41,7 +41,7 @@ public class RegisterService {
             cs.close();
             con.close();
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("이미 존재하는 유저입니다.");
         }
     }
