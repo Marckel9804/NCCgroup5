@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
+      <!-- <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/Login/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/LoginImages/Login.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/loginImages/Login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/LoginImages/ozo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/loginImages/ozo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MainPage/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" afterDir="false" /> -->
+    </list>
+=======
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="" />
+>>>>>>> Frame
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
