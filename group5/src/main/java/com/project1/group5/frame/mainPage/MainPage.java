@@ -24,6 +24,7 @@ public class MainPage extends JFrame {
 
     MainPage() {
         // 메인 프레임 생성
+
         loginCheck = false;
         otherFrame = false;
         f_width = 800;
@@ -69,7 +70,7 @@ public class MainPage extends JFrame {
             }
         });
 
-        LoginPageButton runButton = new LoginPageButton("비회원로그인");
+        LoginPageButton runButton = new LoginPageButton("비회원실행");
         runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
         runButton.addActionListener(new ActionListener() {
             @Override

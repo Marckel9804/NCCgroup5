@@ -1,6 +1,10 @@
 package com.project1.group5.frame.register;
 
 import javax.swing.*;
+
+import com.project1.group5.db.RegisterDTO;
+import com.project1.group5.db.RegisterService;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,17 +111,6 @@ public class RegisterFrame extends JFrame {
         birthDateField.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(birthDateField, gbc);
 
-        // 나이 레이블 및 필드 추가
-        gbc.gridy++;
-        gbc.gridx = 0; // 다음 요소를 다음 행의 첫 열에 배치하기 위해 열 인덱스를 0으로 설정
-        JLabel ageLabel = new JLabel("Age");
-        centerPanel.add(ageLabel, gbc);
-
-        gbc.gridx++;
-        ageField = new JTextField(15);
-        ageField.setPreferredSize(new Dimension(160, 25));
-        centerPanel.add(ageField, gbc);
-
         // 성별 레이블 및 콤보 박스 추가
         gbc.gridy++;
         gbc.gridx = 0; // 다음 요소를 다음 행의 첫 열에 배치하기 위해 열 인덱스를 0으로 설정
@@ -162,41 +155,33 @@ public class RegisterFrame extends JFrame {
 
     // 회원가입 버튼 리스너 클래스
     private class RegisterButtonListener implements ActionListener {
-        @SuppressWarnings("deprecation")
         @Override
         public void actionPerformed(ActionEvent e) {
             // RegisterDTO 객체 생성
-            // RegisterDTO dto = new RegisterDTO();
-            // dto.setUser_id(idField.getText());
-            // dto.setUsername(usernameField.getText());
-            // dto.setEmail(emailField.getText());
-            // dto.setPassword(new String(passwordField.getPassword()));
-            // dto.setPhone_number(phoneNumberField.getText());
-            // dto.setBirth_date(birthDateField.getText());
-            // dto.setGender((String) genderComboBox.getSelectedItem());
-
+            RegisterDTO dto = new RegisterDTO(idField.getText(), usernameField.getText(), emailField.getText(),
+                    new String(passwordField.getPassword()), phoneNumberField.getText(), birthDateField.getText(),
+                    (String) genderComboBox.getSelectedItem());
             try {
-                System.out.println("try문 입장!!");
-                Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); // 데이터베이스 연결
-                CallableStatement stmt = conn.prepareCall("{CALL RegisterUser(?,?,?,?,?,?,?,?,?)}"); // 저장 프로시저 호출
-                System.out.println("일단 DB연결까진 성공함");
-                stmt.registerOutParameter(1, Types.INTEGER); // 결과 코드 파라미터 등록
-                stmt.registerOutParameter(2, Types.VARCHAR); // 결과 메세지 파라미터 등록
-                stmt.setString(3, idField.getText()); // 아이디 설정
-                stmt.setString(4, usernameField.getText()); // 닉네임 설정
-                stmt.setString(5, emailField.getText()); // 이메일 설정
-                stmt.setString(6, passwordField.getText()); // 비밀번호 설정
-                stmt.setString(7, phoneNumberField.getText()); // 폰번호 설정
-                stmt.setString(8, birthDateField.getText()); // 생일 설정
-                stmt.setString(9, (String) genderComboBox.getSelectedItem()); // 성별 설정
-                System.out.println("일단 프로시저 세팅까찐 성공함");
-                stmt.execute(); // 저장 프로시저 실행
-                System.out.println("일단 프로시저 실행까진 성공함");
-
-                int resCOde = stmt.getInt(1);
-                String resMessage = stmt.getString(2);
-                // 회원가입 성공 메시지 출력
-                JOptionPane.showMessageDialog(RegisterFrame.this, resMessage);
+                RegisterService rs = new RegisterService();
+                int res = rs.registerUser(dto);
+                // 회원가입 반환 메시지 출력
+                switch (res) {
+                    case 0:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "이미 가입된 아이디거나 이메일, 혹은 전화번호입니다.");
+                        break;
+                    case 1:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "가입에 성공했습니다.");
+                        SwingUtilities.invokeLater(() -> {
+                            RegisterFrame.this.dispose();
+                        });
+                        break;
+                    case 3:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "ID는 6자 이상으로 만들어주세요");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "뭔가가 잘못됨");
+                        break;
+                }
             } catch (Exception err) {
                 // TODO: handle exception
                 JOptionPane.showMessageDialog(RegisterFrame.this, "몬가... 몬가 잘못됨... 뭘까 그게...");

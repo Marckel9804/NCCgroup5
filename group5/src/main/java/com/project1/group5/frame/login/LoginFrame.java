@@ -16,7 +16,7 @@ public class LoginFrame extends JFrame {
     private JButton loginButton; // 로그인 버튼
 
     // 데이터베이스 가져오기
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/ozo";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "1234";
 
@@ -155,6 +155,7 @@ public class LoginFrame extends JFrame {
                 stmt.setString(1, id); // 아이디 설정
                 stmt.setString(2, password); // 비밀번호 설정
                 stmt.registerOutParameter(3, Types.INTEGER); // 결과 코드 파라미터 등록
+                System.out.println(stmt.toString());
                 stmt.execute(); // 저장 프로시저 실행
 
                 int resultCode = stmt.getInt(3); // 결과 코드 가져오기
@@ -163,6 +164,10 @@ public class LoginFrame extends JFrame {
                 switch (resultCode) {
                     case 0:
                         JOptionPane.showMessageDialog(LoginFrame.this, "로그인 성공");
+                        SwingUtilities.invokeLater(() -> {
+                            LoginFrame.this.dispose();
+                        });
+
                         break;
                     case 1:
                         JOptionPane.showMessageDialog(LoginFrame.this, "사용자가 존재하지 않습니다");
