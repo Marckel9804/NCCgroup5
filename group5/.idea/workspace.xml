@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../ProTest/ProTest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/question/InMovieDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/question/InsertMovie.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/question/MovieDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/question/QuestionDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/question/QuestionFrameTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/question/QuestionService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/InsertMovie.class.uniqueId0" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/InMovieDTO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/InsertMovie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/MovieDTO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/QuestionDTO.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/QuestionFrameTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/QuestionService.java" afterDir="false" />
