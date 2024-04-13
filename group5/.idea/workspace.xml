@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/Group5Application.class" beforeDir="false" />
@@ -44,6 +45,9 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/hhy.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/Group5Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/Group5Application.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="" />
+>>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,20 +82,29 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="DB" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
+    &quot;associatedIndex&quot;: 6
+    }</component>
   <component name="ProjectId" id="2eXPi9ND9vuzWKlRoMUkYxKKru6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.MovieSelectFrame.executor&quot;: &quot;Run&quot;,
@@ -108,6 +121,74 @@
   }
 }</component>
   <component name="RunManager">
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainPage.executor": "Run",
+    "Application.MovieSelectFrame.executor": "Run",
+    "Gradle.group5 [:BoardFrame.main()].executor": "Run",
+    "Gradle.group5 [:LoginFrame.main()].executor": "Run",
+    "Gradle.group5 [:MainPage.main()].executor": "Run",
+    "Gradle.group5 [:hhy.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Frame",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/register",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\register" />
+      <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\LoginImages" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.BoardFrame">
+    <configuration name="BoardFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.board.BoardFrame" />
+      <module name="group5.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project1.group5.frame.board.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.login.LoginFrame" />
+      <module name="group5.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project1.group5.frame.login.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.mainPage.MainPage" />
+      <module name="group5.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project1.group5.frame.mainPage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
     <configuration name="MovieSelectFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MovieSelectFrame" />
       <module name="group5.main" />
@@ -121,8 +202,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <recent_temporary>
       <list>
+=======
+    <configuration name="RegisterFrameTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.db.RegisterFrameTest" />
+      <module name="group5.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project1.group5.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BoardFrame" />
+        <item itemvalue="Application.LoginFrame" />
+        <item itemvalue="Application.MovieSelectFrame" />
+        <item itemvalue="Application.MainPage" />
+>>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
         <item itemvalue="Application.MovieSelectFrame" />
       </list>
     </recent_temporary>
@@ -130,7 +233,11 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+<<<<<<< HEAD
         <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+=======
+        <option value="jdk-17.0.10-corretto-17.0.10-3183f394aec4-96c0d24d" />
+>>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
       </set>
     </attachedChunks>
   </component>
@@ -156,4 +263,18 @@
       </map>
     </option>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+>>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
 </project>
