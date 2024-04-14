@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MyPageFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,30 +65,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MainPage.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RegisterFrameTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.group5 [:MovieChoiceFrame.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.group5 [:RegisterFrameTest.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.group5 [:hhy.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging hhy&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/LoginImages&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.BoardFrame.executor": "Run",
+    "Application.LoginFrame.executor": "Run",
+    "Application.MainPage.executor": "Run",
+    "Application.MyPageFrame (1).executor": "Run",
+    "Application.MyPageFrame (2).executor": "Run",
+    "Application.MyPageFrame (3).executor": "Run",
+    "Application.MyPageFrame.executor": "Run",
+    "Application.RegisterFrameTest.executor": "Run",
+    "Gradle.group5 [:MovieChoiceFrame.main()].executor": "Run",
+    "Gradle.group5 [:RegisterFrameTest.main()].executor": "Run",
+    "Gradle.group5 [:hhy.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "hhy",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/LoginImages",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.sync"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\LoginImages" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainPage">
+  <component name="RunManager" selected="Application.MyPageFrame (3)">
     <configuration name="LoginFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.Login.LoginFrame" />
       <module name="group5.main" />
@@ -101,21 +108,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MainPage.MainPage" />
-      <module name="group5.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.project1.group5.frame.MainPage.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MovieSelectFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MovieSelectFrame" />
+    <configuration name="MyPageFrame (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MyPageFrame" />
       <module name="group5.main" />
       <extension name="coverage">
         <pattern>
@@ -127,12 +121,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegisterFrameTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.project1.group5.db.RegisterFrameTest" />
+    <configuration name="MyPageFrame (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MyPageFrame" />
       <module name="group5.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.project1.group5.db.*" />
+          <option name="PATTERN" value="com.project1.group5.frame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyPageFrame (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MyPageFrame" />
+      <module name="group5.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project1.group5.frame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyPageFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MyPageFrame" />
+      <module name="group5.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project1.group5.frame.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,9 +162,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainPage" />
+        <item itemvalue="Application.MyPageFrame (3)" />
         <item itemvalue="Application.LoginFrame" />
-        <item itemvalue="Application.RegisterFrameTest" />
+        <item itemvalue="Application.MyPageFrame" />
+        <item itemvalue="Application.MyPageFrame (2)" />
+        <item itemvalue="Application.MyPageFrame (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -177,5 +199,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLSyntaxErrorException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
