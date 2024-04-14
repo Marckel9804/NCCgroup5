@@ -73,13 +73,6 @@ public class BoardEdit extends JFrame {
         panel.add(lblUsername); // 작성자 정보 추가
         panel.add(tfUsername); // 작성자 정보 추가
 
-        // 각 라벨을 오른쪽에 정렬
-        for (Component component : panel.getComponents()) {
-            if (component instanceof JLabel) {
-                ((JLabel) component).setHorizontalAlignment(SwingConstants.RIGHT);
-            }
-        }
-
         // 버튼 패널에 저장 버튼과 취소 버튼 추가
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(btnSave);

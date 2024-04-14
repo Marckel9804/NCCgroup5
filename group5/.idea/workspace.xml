@@ -4,12 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage$2$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame$ToJbutton$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame$ToJbutton$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame$ToJbutton.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/BoardFrame.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/Group5Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/DbTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/Jae.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/RegisterDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/RegisterDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/RegisterFrameTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/RegisterFrameTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/RegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/RegisterService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/Test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/gayoung.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/jjj.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardEdit$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardEdit.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardFrame$1.class" beforeDir="false" />
@@ -22,32 +43,74 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardFrame$8.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardFrame.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/BoardView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/Login/LoginFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/Login/LoginFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/Login/LoginFrame$LoginButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/Login/LoginFrame$LoginButtonListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/Login/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/Login/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/LoginPageButton$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/LoginPageButton$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/LoginPageButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/LoginPageButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MainPage/MainPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/MovieSelectFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/ToJbutton$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/ToJbutton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardAdd$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardAdd$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardAdd$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardAdd$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardAdd.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardComment$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardComment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardAdd.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardAdd.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardEdit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/board/BoardFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/hhy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/Group5Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/Group5Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/register/RegisterDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/register/RegisterFrame$RegisterButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/register/RegisterFrame$RegisterButtonListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/register/RegisterFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/register/RegisterFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/register/RegisterService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginFrame$1.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginFrame$LoginButtonListener.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginFrame.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginPageButton$1.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LoginPageButton.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainPage$1.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainPage$2.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainPage.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MovieSelectFrame$1.class.uniqueId1" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MovieSelectFrame$1.class.uniqueId1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/Jae.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/Test1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/gayoung.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/jjj.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/ygy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/BoardEdit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/BoardFrame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/BoardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MovieSelectFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MovieSelectFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardAdd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/hhy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/bc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/bc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/good_witch_glinda.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/good_witch_glinda.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/ozland.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/ozland.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/ozo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/ozo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/ozo2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/ozo2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/ozo3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/ozo3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/pondering_cowardly_lion.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/pondering_cowardly_lion.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/pondering_dorothy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/pondering_dorothy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/pondering_scarecrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/pondering_scarecrow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/pondering_tin_man.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/pondering_tin_man.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/rc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/rc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/images/wicked_witch.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/reccommandImages/wicked_witch.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterService.java" beforeDir="false" />
     </list>
-=======
-    <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="" />
->>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,57 +160,29 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-    &quot;associatedIndex&quot;: 6
-    }</component>
+        &quot;associatedIndex&quot;: 6
+        }</component>
   <component name="ProjectId" id="2eXPi9ND9vuzWKlRoMUkYxKKru6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MovieSelectFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.group5 [:hhy.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;smf&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hwayeon/Documents/Projects/NCCgroup5/group5/build.gradle&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
-  }
-}</component>
-  <component name="RunManager">
-=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.MainPage.executor": "Run",
     "Application.MovieSelectFrame.executor": "Run",
     "Gradle.group5 [:BoardFrame.main()].executor": "Run",
-    "Gradle.group5 [:LoginFrame.main()].executor": "Run",
-    "Gradle.group5 [:MainPage.main()].executor": "Run",
     "Gradle.group5 [:hhy.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Frame",
+    "git-widget-placeholder": "Merging smf",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/register",
+    "last_opened_file_path": "/Users/hwayeon/Documents/Projects/NCCgroup5/group5/build.gradle",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\register" />
-      <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\LoginImages" />
-    </key>
-  </component>
   <component name="RunManager" selected="Application.BoardFrame">
     <configuration name="BoardFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.board.BoardFrame" />
@@ -188,7 +223,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
->>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
     <configuration name="MovieSelectFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MovieSelectFrame" />
       <module name="group5.main" />
@@ -202,10 +236,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-<<<<<<< HEAD
-    <recent_temporary>
-      <list>
-=======
     <configuration name="RegisterFrameTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project1.group5.db.RegisterFrameTest" />
       <module name="group5.main" />
@@ -225,7 +255,6 @@
         <item itemvalue="Application.LoginFrame" />
         <item itemvalue="Application.MovieSelectFrame" />
         <item itemvalue="Application.MainPage" />
->>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
         <item itemvalue="Application.MovieSelectFrame" />
       </list>
     </recent_temporary>
@@ -233,11 +262,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-<<<<<<< HEAD
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
-=======
         <option value="jdk-17.0.10-corretto-17.0.10-3183f394aec4-96c0d24d" />
->>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
       </set>
     </attachedChunks>
   </component>
@@ -263,8 +288,6 @@
       </map>
     </option>
   </component>
-<<<<<<< HEAD
-=======
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -276,5 +299,4 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
->>>>>>> fc842e778dc67a16908b15451aec140b82c41fcc
 </project>

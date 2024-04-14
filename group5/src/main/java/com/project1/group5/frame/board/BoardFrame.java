@@ -5,33 +5,38 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BoardFrame extends JFrame {
-    private JTable table;
-    private DefaultTableModel tableModel;
-    private JTextField searchField;
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
+    private JTable table; // Jtable로 테이블 표시
+    private DefaultTableModel tableModel; // 데이터 관리
+    private JTextField searchField; // 검색어 관리
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm"; //DB연동
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "1234";
 
     public BoardFrame() {
-        init();
-        setDisplay();
-        addComponents();
-        updateBoardTable();
+        init(); // GUI 초기화 메서드
+        setDisplay(); // GUI 설정 메서드
+        addComponents(); // GUI 추가 메서드
+        updateBoardTable(); // 테이블 업데이트 메서드
 
-        // 게시글 너비를  설정
-        table.getColumnModel().getColumn(0).setPreferredWidth(10); // 게시글 번호 열
-        table.getColumnModel().getColumn(1).setPreferredWidth(150); // 영화 제목 열
-        table.getColumnModel().getColumn(2).setPreferredWidth(10); // 평점 열
-        table.getColumnModel().getColumn(5).setPreferredWidth(10); //조회수 열
+        String imgDir = "src/main/java/com/project1/group5/frame/reccommandImages/";    // 이미지 경로 설정
 
+        table.getColumnModel().getColumn(0).setPreferredWidth(10);   // 게시글 너비 설정
+        table.getColumnModel().getColumn(1).setPreferredWidth(150);
+        table.getColumnModel().getColumn(2).setPreferredWidth(10);
+        table.getColumnModel().getColumn(5).setPreferredWidth(10);
+
+        // 이미지 표시
+        JPanel panelImage = new JPanel(new BorderLayout());
+        ImageIcon imageIcon = new ImageIcon(imgDir + "BoardFrame.png");
+        JLabel imageLabel = new JLabel(imageIcon);
+        panelImage.add(imageLabel, BorderLayout.CENTER);
+        add(panelImage, BorderLayout.WEST);
     }
 
-    private void init() {
-        tableModel = new DefaultTableModel() {
+    private void init() { //
+        tableModel = new DefaultTableModel() { // 테이블 모델 생성
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
@@ -58,18 +63,30 @@ public class BoardFrame extends JFrame {
         setTitle("영화 게시판");
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
-        setSize(800, 600);
+        setSize(1000, 700);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
     }
 
     private void addComponents() {
         JPanel panelButtons = new JPanel();
         JButton btnAdd = new JButton("게시글 추가");
+        // 버튼 색상 및 디자인
+        btnAdd.setBackground(Color.BLUE); //
+        btnAdd.setForeground(Color.WHITE);
+        // 버튼 모양 변경
+        btnAdd.setFocusPainted(false);
+        btnAdd.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기
         btnAdd.addActionListener(e -> new BoardAdd(BoardFrame.this).setVisible(true));
 
         JButton btnEdit = new JButton("게시글 수정");
+        // 버튼 색상 및 디자인
+        btnEdit.setBackground(Color.GREEN);
+        btnEdit.setForeground(Color.WHITE);
+        // 버튼 모양 변경
+        btnEdit.setFocusPainted(false);
+        btnEdit.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
         btnEdit.addActionListener(e -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow != -1) {
@@ -78,7 +95,8 @@ public class BoardFrame extends JFrame {
                 int rating = (int) tableModel.getValueAt(selectedRow, 2);
                 String username = (String) tableModel.getValueAt(selectedRow, 3);
                 String hashText = (String) tableModel.getValueAt(selectedRow, 4);
-                new BoardEdit(movieName, rating, username, hashText, username, BoardFrame.this, boardID).setVisible(true);
+                new BoardEdit(movieName, rating, username, hashText, username, BoardFrame.this, boardID)
+                        .setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(BoardFrame.this, "게시글을 선택해주세요.");
@@ -86,6 +104,12 @@ public class BoardFrame extends JFrame {
         });
 
         JButton btnDelete = new JButton("게시글 삭제");
+        // 버튼 색상 및 디자인
+        btnDelete.setBackground(Color.RED);
+        btnDelete.setForeground(Color.WHITE);
+        // 버튼 모양 변경
+        btnDelete.setFocusPainted(false);
+        btnDelete.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
         btnDelete.addActionListener(e -> {
             int selectedRow = table.getSelectedRow();
             if (selectedRow != -1) {
@@ -98,6 +122,12 @@ public class BoardFrame extends JFrame {
         });
 
         JButton btnView = new JButton("게시글 보기");
+        // 버튼 색상 및 디자인
+        btnView.setBackground(Color.ORANGE);
+        btnView.setForeground(Color.WHITE);
+        // 버튼 모양 변경
+        btnView.setFocusPainted(false);
+        btnView.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
         btnView.addActionListener(e -> openView());
 
         panelButtons.add(btnAdd);
@@ -108,7 +138,10 @@ public class BoardFrame extends JFrame {
         JPanel panelSearch = new JPanel();
         JLabel lblSearch = new JLabel("검색어:");
         searchField = new JTextField(20);
+
         JButton btnSearch = new JButton("검색");
+        btnSearch.setBackground(Color.BLACK);
+        btnSearch.setForeground(Color.WHITE);
         searchField.addActionListener(e -> searchBoard(searchField.getText()));
         btnSearch.addActionListener(e -> searchBoard(searchField.getText()));
 
@@ -210,11 +243,12 @@ public class BoardFrame extends JFrame {
         }
     }
 
-    //메인 메서드
+    // 메인 메서드
     public static void main(String[] args) {
         SwingUtilities.invokeLater(BoardFrame::new);
     }
-    //상세보기 메서드
+
+    // 상세보기 메서드
     private void openView() {
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {
