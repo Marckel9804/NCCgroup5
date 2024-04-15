@@ -1,4 +1,4 @@
-package com.project1.group5.db;
+package com.project1.group5.db.register;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,8 +23,8 @@ public class RegisterDTO {
     }
 
     public RegisterDTO(String user_id, String username, String email, String password, String phone_number,
-            String birth_date,
-            String gender) {
+                       String birth_date,
+                       String gender) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
