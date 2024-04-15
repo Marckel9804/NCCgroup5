@@ -1,5 +1,7 @@
 package com.project1.group5.frame.board;
 
+import com.project1.group5.frame.mainPage.MainPage;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -13,6 +15,13 @@ public class BoardFrame extends JFrame {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/sm"; //DB연동
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "1234";
+    private Timer imageTimer;
+    private JLabel[] imageLabels;
+    private int currentImageIndex = 0;
+    private String[] imagePaths = {"aa.png", "j.png", "g.png", "b.png", "c.png", "q.png", "d.png", "e.png", "f.png"
+            , "a.png", "h.png", "r.png", "i.png", "m.png", "k.png", "l.png", "bb.png", "n.png",
+            "o.png", "p.png"};
+    String imgDir = "src/main/java/com/project1/group5/frame/boardImages/"; // 이미지 경로 설정
 
     public BoardFrame() {
         init(); // GUI 초기화 메서드
@@ -20,19 +29,47 @@ public class BoardFrame extends JFrame {
         addComponents(); // GUI 추가 메서드
         updateBoardTable(); // 테이블 업데이트 메서드
 
-        String imgDir = "src/main/java/com/project1/group5/frame/reccommandImages/";    // 이미지 경로 설정
 
         table.getColumnModel().getColumn(0).setPreferredWidth(10);   // 게시글 너비 설정
         table.getColumnModel().getColumn(1).setPreferredWidth(150);
         table.getColumnModel().getColumn(2).setPreferredWidth(10);
         table.getColumnModel().getColumn(5).setPreferredWidth(10);
 
-        // 이미지 표시
-        JPanel panelImage = new JPanel(new BorderLayout());
-        ImageIcon imageIcon = new ImageIcon(imgDir + "BoardFrame.png");
-        JLabel imageLabel = new JLabel(imageIcon);
-        panelImage.add(imageLabel, BorderLayout.CENTER);
-        add(panelImage, BorderLayout.WEST);
+        JPanel panelImageLeft = new JPanel(new BorderLayout());   // 이미지 표시
+        JPanel panelImageRight = new JPanel(new BorderLayout());
+
+        imageLabels = new JLabel[imagePaths.length];// 이미지 배열 생성
+        for (int i = 0; i < imagePaths.length; i++) { // JLabel -> imageLabel로 저장
+            ImageIcon imageIcon = new ImageIcon(imgDir + imagePaths[i]);
+            Image img = imageIcon.getImage();
+            Image newImg = img.getScaledInstance(250, 400, Image.SCALE_SMOOTH);
+            ImageIcon resizedImageIcon = new ImageIcon(newImg);
+            imageLabels[i] = new JLabel(resizedImageIcon);
+        }
+
+        // 이미지 추가
+        panelImageLeft.add(imageLabels[0], BorderLayout.CENTER);
+        panelImageRight.add(imageLabels[1], BorderLayout.CENTER);
+        add(panelImageLeft, BorderLayout.WEST);
+        add(panelImageRight, BorderLayout.EAST);
+
+
+        // 이미지 변경 타이머 설정
+        imageTimer = new Timer(4000, new ActionListener() { //5초마다 변경
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentImageIndex = (currentImageIndex + 2) % imagePaths.length;
+                updateImages();
+            }
+        });
+        imageTimer.start();
+    }
+
+    private void updateImages() {
+        imageLabels[currentImageIndex % 2].setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[currentImageIndex])
+                .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
+        imageLabels[(currentImageIndex + 1) % 2].setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[(currentImageIndex + 1) % imagePaths.length])
+                .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
     }
 
     private void init() { //
@@ -63,17 +100,20 @@ public class BoardFrame extends JFrame {
         setTitle("영화 게시판");
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
-        setSize(1000, 700);
+        setSize(1200, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
+
+        Font font = new Font("Hancom Gothic Batang", Font.BOLD, 16);
+        table.setFont(font);
     }
 
     private void addComponents() {
         JPanel panelButtons = new JPanel();
         JButton btnAdd = new JButton("게시글 추가");
         // 버튼 색상 및 디자인
-        btnAdd.setBackground(Color.BLUE); //
+        btnAdd.setBackground(Color.CYAN);
         btnAdd.setForeground(Color.WHITE);
         // 버튼 모양 변경
         btnAdd.setFocusPainted(false);
@@ -82,7 +122,7 @@ public class BoardFrame extends JFrame {
 
         JButton btnEdit = new JButton("게시글 수정");
         // 버튼 색상 및 디자인
-        btnEdit.setBackground(Color.GREEN);
+        btnEdit.setBackground(Color.ORANGE);
         btnEdit.setForeground(Color.WHITE);
         // 버튼 모양 변경
         btnEdit.setFocusPainted(false);
@@ -108,6 +148,7 @@ public class BoardFrame extends JFrame {
         btnDelete.setBackground(Color.RED);
         btnDelete.setForeground(Color.WHITE);
         // 버튼 모양 변경
+
         btnDelete.setFocusPainted(false);
         btnDelete.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
         btnDelete.addActionListener(e -> {
@@ -123,24 +164,37 @@ public class BoardFrame extends JFrame {
 
         JButton btnView = new JButton("게시글 보기");
         // 버튼 색상 및 디자인
-        btnView.setBackground(Color.ORANGE);
+        btnView.setBackground(Color.BLACK);
         btnView.setForeground(Color.WHITE);
         // 버튼 모양 변경
         btnView.setFocusPainted(false);
         btnView.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
         btnView.addActionListener(e -> openView());
 
+        JButton btnBackToMain = new JButton("메인 페이지");
+        btnBackToMain.setBackground(Color.WHITE);
+        btnBackToMain.setForeground(Color.BLACK);
+        btnView.setFocusPainted(false);
+        btnView.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
+        btnView.addActionListener(e -> openView());
+        btnBackToMain.addActionListener(e -> new MainPage());
+        btnBackToMain.addActionListener(e -> {
+            dispose(); //닫기
+        });
+
+
         panelButtons.add(btnAdd);
         panelButtons.add(btnEdit);
         panelButtons.add(btnDelete);
         panelButtons.add(btnView);
+        panelButtons.add(btnBackToMain);
 
         JPanel panelSearch = new JPanel();
         JLabel lblSearch = new JLabel("검색어:");
         searchField = new JTextField(20);
 
         JButton btnSearch = new JButton("검색");
-        btnSearch.setBackground(Color.BLACK);
+        btnSearch.setBackground(Color.DARK_GRAY);
         btnSearch.setForeground(Color.WHITE);
         searchField.addActionListener(e -> searchBoard(searchField.getText()));
         btnSearch.addActionListener(e -> searchBoard(searchField.getText()));

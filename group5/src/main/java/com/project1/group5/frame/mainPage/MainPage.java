@@ -1,4 +1,4 @@
-package com.project1.group5.frame.mainpage;
+package com.project1.group5.frame.mainPage;
 
 import javax.swing.*;
 
@@ -22,7 +22,7 @@ public class MainPage extends JFrame {
     boolean otherFrame;
     private boolean loginCheck;
 
-    MainPage() {
+    public MainPage() {
         // 메인 프레임 생성
 
         loginCheck = false;
@@ -113,7 +113,7 @@ public class MainPage extends JFrame {
 
 class LoginPageButton extends JButton {
     LoginPageButton(String text) {
-        int[] rgb = { 208, 154, 255 };
+        int[] rgb = {208, 154, 255};
         setOpaque(false);
         setContentAreaFilled(false);// 배경 투명화
         setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // 안쪽 여백
