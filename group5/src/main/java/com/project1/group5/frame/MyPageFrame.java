@@ -26,10 +26,10 @@ public class MyPageFrame extends JFrame {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "0000";
 
-    public MyPageFrame() {
+    public MyPageFrame(String Id) {
         //아이디를 넘겨주면 그 아이디에 해당하는 유저 정보를 가져오는 메소드 호출
         //근데 로그인창에서 넣은 아이디를 어케 가져와야할지 몰라서 일단 임의 아이디를 넣었음 ㅠ..
-        getUserInfo("999999");
+        getUserInfo(Id);
 
         //디스플레이 설정
         setTitle("마이페이지");
@@ -212,6 +212,6 @@ public class MyPageFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new MyPageFrame();
+        new MyPageFrame("999999");
     }
 }

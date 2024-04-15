@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MyPageFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MyPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MyPageFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,30 +64,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BoardFrame.executor": "Run",
-    "Application.LoginFrame.executor": "Run",
-    "Application.MainPage.executor": "Run",
-    "Application.MyPageFrame (1).executor": "Run",
-    "Application.MyPageFrame (2).executor": "Run",
-    "Application.MyPageFrame (3).executor": "Run",
-    "Application.MyPageFrame.executor": "Run",
-    "Application.RegisterFrameTest.executor": "Run",
-    "Gradle.group5 [:MovieChoiceFrame.main()].executor": "Run",
-    "Gradle.group5 [:RegisterFrameTest.main()].executor": "Run",
-    "Gradle.group5 [:hhy.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "hhy",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/LoginImages",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.sync"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BoardFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoginFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainPage.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyPageFrame (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyPageFrame (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyPageFrame (3).executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyPageFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RegisterFrameTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.group5 [:MovieChoiceFrame.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.group5 [:RegisterFrameTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.group5 [:hhy.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hhy&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/LoginImages&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\LoginImages" />
