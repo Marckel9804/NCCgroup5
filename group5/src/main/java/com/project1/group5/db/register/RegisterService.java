@@ -1,4 +1,4 @@
-package com.project1.group5.db;
+package com.project1.group5.db.register;
 
 import java.sql.*;
 
