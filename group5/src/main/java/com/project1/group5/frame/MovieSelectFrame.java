@@ -1,6 +1,8 @@
 package com.project1.group5.frame;
 
 import com.project1.group5.frame.board.BoardFrame;
+import com.project1.group5.frame.login.LoginFrame;
+import com.project1.group5.frame.mainpage.MainPage;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -53,9 +55,84 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
     int mousex;
     int mousey;
 
+    MainPage mp;
     boolean otherFrame;
 
     public MovieSelectFrame() {
+        init();
+        panelForGraphics.setLayout(null);
+        panelForGraphics.add(jl_left);
+        panelForGraphics.add(jl_right);
+        add(panelForGraphics);
+    }
+
+    public MovieSelectFrame(MainPage mp) {
+        this.mp = mp;
+        init();
+        if (mp.getLoginCheck()) {
+            ActionListener mypage = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (!otherFrame) {
+                        BoardFrame b = new BoardFrame();
+                        b.setVisible(true);
+                        otherFrame = true;
+                        b.addWindowListener((WindowListener) new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                otherFrame = false;
+                            }
+                        });
+                    }
+                }
+            };
+            toMyPage = new ToJbutton(f_width - 300, 10, "마이페이지", mypage);
+        } else {
+            ActionListener login = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (!otherFrame) {
+                        LoginFrame loginPage = new LoginFrame(mp);
+                        loginPage.setVisible(true);
+                        otherFrame = true;
+                        loginPage.addWindowListener((WindowListener) new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                otherFrame = false;
+
+                            }
+                        });
+                    }
+                }
+            };
+            toMyPage = new ToJbutton(f_width - 300, 10, "로그인하기", login);
+        }
+        ActionListener board = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!otherFrame) {
+                    BoardFrame b = new BoardFrame(mp);
+                    b.setVisible(true);
+                    otherFrame = true;
+                    b.addWindowListener((WindowListener) new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            otherFrame = false;
+                        }
+                    });
+                }
+            }
+        };
+        toBoard = new ToJbutton(f_width - 180, 10, "게시판", board);
+        panelForGraphics.setLayout(null);
+        panelForGraphics.add(jl_left);
+        panelForGraphics.add(jl_right);
+        panelForGraphics.add(toMyPage);
+        panelForGraphics.add(toBoard);
+        add(panelForGraphics);
+    }
+
+    private void init() {
         menu = 50;
         f_width = 800;
         f_height = 550 + menu;
@@ -86,9 +163,6 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
         jl_left.setForeground(Color.blue);
         jl_left.setFont(new Font(null, Font.BOLD, 30));
         jl_right.setFont(new Font(null, Font.BOLD, 30));
-
-        toMyPage = new ToJbutton(f_width - 300, 10, "마이페이지");
-        toBoard = new ToJbutton(f_width - 180, 10, "게시판");
 
         // 그래픽을 먼저 로딩시키기 위해 사진들을 전부 Jpanel에 붙여서 프레임 위에 붙일것임
         panelForGraphics = new JPanel() {
@@ -141,18 +215,16 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
             }
         };
 
-        panelForGraphics.setLayout(null);
-        panelForGraphics.add(jl_left);
-        panelForGraphics.add(jl_right);
-        panelForGraphics.add(toMyPage);
-        panelForGraphics.add(toBoard);
-        add(panelForGraphics);
+        // panelForGraphics.setLayout(null);
+        // panelForGraphics.add(jl_left);
+        // panelForGraphics.add(jl_right);
+        // panelForGraphics.add(toMyPage);
+        // panelForGraphics.add(toBoard);
+        // add(panelForGraphics);
 
         addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
-        // getContentPane().setBackground(new Color(62,197,211));
-        // setBackground(new Color(62,197,241));
         setBackground(new Color(32, 141, 198));
 
         setVisible(true);
@@ -167,7 +239,7 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
     // }
 
     public static void main(String[] args) {
-        MovieSelectFrame mc = new MovieSelectFrame();
+        MovieSelectFrame ms = new MovieSelectFrame();
     }
 
     @Override
@@ -252,7 +324,8 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
     }
 
     class ToJbutton extends JButton {
-        ToJbutton(int x, int y, String text) {
+
+        ToJbutton(int x, int y, String text, ActionListener al) {
             setBorderPainted(false);
             setContentAreaFilled(false);
             setText("<html><u>" + text + "</u></html>");
@@ -260,22 +333,7 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
             setForeground(Color.YELLOW);
             setBounds(x, y, 200, 30);
 
-            addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (!otherFrame) {
-                        BoardFrame b = new BoardFrame();
-                        b.setVisible(true);
-                        otherFrame = true;
-                        b.addWindowListener((WindowListener) new WindowAdapter() {
-                            @Override
-                            public void windowClosed(WindowEvent e) {
-                                otherFrame = false;
-                            }
-                        });
-                    }
-                }
-            });
+            addActionListener(al);
         }
     }
 }

@@ -15,12 +15,12 @@ public class BoardEdit extends JFrame {
     private JLabel lblRating;
     private JLabel lblReview;
     private JLabel lblHashText;
-    private JLabel lblUsername; // 작성자 라벨 추가
+    // private JLabel lblUsername; // 작성자 라벨 추가
     private JTextField tfMovieName;
     private JComboBox<Integer> cmbRating;
     private JTextArea taReview;
     private JTextField tfHashText;
-    private JTextField tfUsername; // 작성자 텍스트 필드 추가
+    // private JTextField tfUsername; // 작성자 텍스트 필드 추가
     private JButton btnSave;
     private JButton btnCancel; // 추가된 취소 버튼
 
@@ -32,10 +32,11 @@ public class BoardEdit extends JFrame {
 
     BoardFrame board;
 
-    public BoardEdit(String movieName, int rating, String review, String hashText, String username, JFrame parentFrame, int boardID) {
+    public BoardEdit(String movieName, int rating, String review, String hashText, JFrame parentFrame,
+            int boardID) {
         init();
         setDisplay();
-        setData(movieName, rating, review, hashText, username);
+        setData(movieName, rating, review, hashText);
         this.board_id = boardID; // boardID를 저장
         addListeners();
         board = (BoardFrame) parentFrame;
@@ -46,13 +47,13 @@ public class BoardEdit extends JFrame {
         lblRating = new JLabel("평점");
         lblReview = new JLabel("리뷰");
         lblHashText = new JLabel("해시태그");
-        lblUsername = new JLabel("작성자"); // 작성자 라벨 초기화
+        // lblUsername = new JLabel("작성자"); // 작성자 라벨 초기화
 
         tfMovieName = new JTextField(20);
-        cmbRating = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        cmbRating = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         taReview = new JTextArea(10, 20);
         tfHashText = new JTextField(20);
-        tfUsername = new JTextField(20); // 작성자 텍스트 필드 초기화
+        // tfUsername = new JTextField(20); // 작성자 텍스트 필드 초기화
 
         btnSave = new JButton("수정");
         btnCancel = new JButton("취소");
@@ -70,8 +71,8 @@ public class BoardEdit extends JFrame {
         panel.add(new JScrollPane(taReview));
         panel.add(lblHashText);
         panel.add(tfHashText);
-        panel.add(lblUsername); // 작성자 정보 추가
-        panel.add(tfUsername); // 작성자 정보 추가
+        // panel.add(lblUsername); // 작성자 정보 추가
+        // panel.add(tfUsername); // 작성자 정보 추가
 
         // 각 라벨을 오른쪽에 정렬
         for (Component component : panel.getComponents()) {
@@ -96,12 +97,12 @@ public class BoardEdit extends JFrame {
         setResizable(false);
     }
 
-    public void setData(String movieName, int rating, String review, String hashText, String username) {
+    public void setData(String movieName, int rating, String review, String hashText) {
         tfMovieName.setText(movieName);
         cmbRating.setSelectedItem(rating);
         taReview.setText(review);
         tfHashText.setText(hashText);
-        tfUsername.setText(username); // 작성자 정보 설정
+        // tfUsername.setText(username); // 작성자 정보 설정
     }
 
     public void addListeners() {
@@ -112,10 +113,10 @@ public class BoardEdit extends JFrame {
                 int rating = (int) cmbRating.getSelectedItem();
                 String review = taReview.getText();
                 String hashText = tfHashText.getText();
-                String username = tfUsername.getText(); // 작성자 정보 가져오기
+                // String username = tfUsername.getText(); // 작성자 정보 가져오기
 
                 // DB에 수정된 데이터 업데이트
-                updateMovieBoardData(movieName, review, hashText, username, board_id, rating);
+                updateMovieBoardData(movieName, review, hashText, board.mp.getName(), board_id, rating);
 
                 // 수정 페이지 닫기
                 dispose();
@@ -135,14 +136,15 @@ public class BoardEdit extends JFrame {
         });
     }
 
-    public void updateMovieBoardData(String movieName, String review, String hashText, String username, int board_id, int rating) {
+    public void updateMovieBoardData(String movieName, String review, String hashText, String username, int board_id,
+            int rating) {
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             conn.setAutoCommit(false); // 자동 커밋 비활성화
 
             String deleteCommentsSQL = "DELETE FROM B_Comment WHERE board_id = ?";
             String updateBoardSQL = "UPDATE Board SET b_title = ?, b_review = ?, hash_text = ?, b_count = 0, rating = ?, username = ? WHERE board_id = ?";
             try (PreparedStatement deleteCommentsStmt = conn.prepareStatement(deleteCommentsSQL);
-                 PreparedStatement updateBoardStmt = conn.prepareStatement(updateBoardSQL)) {
+                    PreparedStatement updateBoardStmt = conn.prepareStatement(updateBoardSQL)) {
                 deleteCommentsStmt.setInt(1, board_id);
                 deleteCommentsStmt.executeUpdate(); // 해당 게시글의 댓글 삭제
 
@@ -171,7 +173,7 @@ public class BoardEdit extends JFrame {
         // 예시 실행 코드
         SwingUtilities.invokeLater(() -> {
             JFrame parentFrame = new JFrame();
-            new BoardEdit("Movie", 8, "Great movie", "#action #thriller", "user123", parentFrame, 1).setVisible(true);
+            new BoardEdit("Movie", 8, "Great movie", "#action #thriller", parentFrame, 1).setVisible(true);
         });
     }
 }
