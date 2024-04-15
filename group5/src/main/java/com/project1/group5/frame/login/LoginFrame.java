@@ -156,18 +156,20 @@ public class LoginFrame extends JFrame {
 
             try {
                 Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); // 데이터베이스 연결
-                CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?, ?, ?,?,?)}"); // 저장 프로시저 호출
+                CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?, ?, ?,?,?,?)}"); // 저장 프로시저 호출
                 stmt.setString(1, id); // 아이디 설정
                 stmt.setString(2, password); // 비밀번호 설정
                 stmt.registerOutParameter(3, Types.INTEGER); // 결과 코드 파라미터 등록
-                stmt.registerOutParameter(4, Types.INTEGER); // 나이 받아오기
-                stmt.registerOutParameter(5, Types.VARCHAR); // 유저이름 받아오기
+                stmt.registerOutParameter(4, Types.VARCHAR); // 유저 이름 반환
+                stmt.registerOutParameter(5, Types.INTEGER); // 나이 반환
+                stmt.registerOutParameter(6, Types.VARCHAR); // 아이디 반환
                 System.out.println(stmt.toString());
                 stmt.execute(); // 저장 프로시저 실행
 
                 int resultCode = stmt.getInt(3); // 결과 코드 가져오기
-                int age = stmt.getInt(4);
-                String name = stmt.getString(5);
+                String userName = stmt.getString(4);
+                int userAge = stmt.getInt(5);
+                String userId = stmt.getString(6);
 
                 // 결과 코드에 따라 메시지 출력
                 switch (resultCode) {
@@ -175,8 +177,10 @@ public class LoginFrame extends JFrame {
                         JOptionPane.showMessageDialog(LoginFrame.this, "로그인 성공");
                         SwingUtilities.invokeLater(() -> {
                             mp.setLoginCheck(true);
-                            mp.setAge(age);
-                            mp.setName(name);
+                            mp.setID(userId);
+                            System.out.println("유저 아이디 받아왔니...?" + userId);
+                            mp.setName(userName);
+                            mp.setAge(userAge);
                             mp.loggedInPage();
                             LoginFrame.this.dispose();
                         });

@@ -21,6 +21,7 @@ public class MainPage extends JFrame {
 
     boolean otherFrame;
 
+    private String user_id;
     private String user_name;
     private int user_age;
     private boolean loginCheck;
@@ -116,6 +117,14 @@ public class MainPage extends JFrame {
 
     public void setLoginCheck(boolean b) {
         loginCheck = b;
+    }
+
+    public String getId() {
+        return user_id;
+    }
+
+    public void setID(String id) {
+        user_id = id;
     }
 
     public void setAge(int age) {

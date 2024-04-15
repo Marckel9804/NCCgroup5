@@ -74,10 +74,10 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (!otherFrame) {
-                        BoardFrame b = new BoardFrame();
-                        b.setVisible(true);
+                        MyPageFrame myPage = new MyPageFrame(mp);
+                        myPage.setVisible(true);
                         otherFrame = true;
-                        b.addWindowListener((WindowListener) new WindowAdapter() {
+                        myPage.addWindowListener((WindowListener) new WindowAdapter() {
                             @Override
                             public void windowClosed(WindowEvent e) {
                                 otherFrame = false;
