@@ -22,11 +22,11 @@ public class BoardFrame extends JFrame {
         addComponents();
         updateBoardTable();
 
-        // 게시글 너비를  설정
+        // 게시글 너비를 설정
         table.getColumnModel().getColumn(0).setPreferredWidth(10); // 게시글 번호 열
         table.getColumnModel().getColumn(1).setPreferredWidth(150); // 영화 제목 열
         table.getColumnModel().getColumn(2).setPreferredWidth(10); // 평점 열
-        table.getColumnModel().getColumn(5).setPreferredWidth(10); //조회수 열
+        table.getColumnModel().getColumn(5).setPreferredWidth(10); // 조회수 열
 
     }
 
@@ -60,7 +60,7 @@ public class BoardFrame extends JFrame {
         add(scrollPane);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
     }
 
@@ -78,7 +78,8 @@ public class BoardFrame extends JFrame {
                 int rating = (int) tableModel.getValueAt(selectedRow, 2);
                 String username = (String) tableModel.getValueAt(selectedRow, 3);
                 String hashText = (String) tableModel.getValueAt(selectedRow, 4);
-                new BoardEdit(movieName, rating, username, hashText, username, BoardFrame.this, boardID).setVisible(true);
+                new BoardEdit(movieName, rating, username, hashText, username, BoardFrame.this, boardID)
+                        .setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(BoardFrame.this, "게시글을 선택해주세요.");
@@ -133,7 +134,7 @@ public class BoardFrame extends JFrame {
                 String username = rs.getString("username");
                 String hashText = rs.getString("hash_text");
                 int viewCount = rs.getInt("b_count");
-                Object[] row = {boardID, movieName, rating, username, hashText, viewCount};
+                Object[] row = { boardID, movieName, rating, username, hashText, viewCount };
                 tableModel.addRow(row);
             }
         } catch (SQLException ex) {
@@ -202,7 +203,7 @@ public class BoardFrame extends JFrame {
                 }
                 String hashText = rs.getString("hash_text");
                 int viewCount = rs.getInt("b_count");
-                Object[] row = {boardID, movieName, rating, username, hashText, viewCount};
+                Object[] row = { boardID, movieName, rating, username, hashText, viewCount };
                 tableModel.addRow(row);
             }
         } catch (SQLException ex) {
@@ -210,11 +211,12 @@ public class BoardFrame extends JFrame {
         }
     }
 
-    //메인 메서드
+    // 메인 메서드
     public static void main(String[] args) {
         SwingUtilities.invokeLater(BoardFrame::new);
     }
-    //상세보기 메서드
+
+    // 상세보기 메서드
     private void openView() {
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {

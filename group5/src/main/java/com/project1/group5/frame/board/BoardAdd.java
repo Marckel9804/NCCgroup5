@@ -52,7 +52,7 @@ public class BoardAdd extends JFrame {
         lblUsername = new JLabel("작성자"); // 새로운 라벨 초기화
 
         tfMovieName = new JTextField(10);
-        cmbRating = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        cmbRating = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         taReview = new JTextArea(10, 10);
         tfHashText = new JTextField(10);
         tfUsername = new JTextField(10); // 새로운 텍스트 필드 초기화
@@ -171,7 +171,6 @@ public class BoardAdd extends JFrame {
             JOptionPane.showMessageDialog(BoardAdd.this, "게시글 추가에 실패했습니다.");
         }
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(BoardAdd::new);
