@@ -2,6 +2,10 @@ package com.project1.group5.frame.board;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import com.project1.group5.db.OzoDB;
+import com.project1.group5.frame.mainpage.MainPage;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -12,22 +16,26 @@ public class BoardFrame extends JFrame {
     private JTable table;
     private DefaultTableModel tableModel;
     private JTextField searchField;
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
+    MainPage mp;
 
     public BoardFrame() {
+        mp = null;
         init();
         setDisplay();
         addComponents();
         updateBoardTable();
 
-        // 게시글 너비를  설정
-        table.getColumnModel().getColumn(0).setPreferredWidth(10); // 게시글 번호 열
-        table.getColumnModel().getColumn(1).setPreferredWidth(150); // 영화 제목 열
-        table.getColumnModel().getColumn(2).setPreferredWidth(10); // 평점 열
-        table.getColumnModel().getColumn(5).setPreferredWidth(10); //조회수 열
+    }
 
+    public BoardFrame(MainPage mp) {
+        this.mp = mp;
+        init();
+        setDisplay();
+        addComponents();
+        updateBoardTable();
     }
 
     private void init() {
@@ -52,6 +60,11 @@ public class BoardFrame extends JFrame {
                 }
             }
         });
+        // 게시글 너비를 설정
+        table.getColumnModel().getColumn(0).setPreferredWidth(10); // 게시글 번호 열
+        table.getColumnModel().getColumn(1).setPreferredWidth(150); // 영화 제목 열
+        table.getColumnModel().getColumn(2).setPreferredWidth(10); // 평점 열
+        table.getColumnModel().getColumn(5).setPreferredWidth(10); // 조회수 열
     }
 
     private void setDisplay() {
@@ -60,7 +73,7 @@ public class BoardFrame extends JFrame {
         add(scrollPane);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
     }
 
@@ -78,8 +91,12 @@ public class BoardFrame extends JFrame {
                 int rating = (int) tableModel.getValueAt(selectedRow, 2);
                 String username = (String) tableModel.getValueAt(selectedRow, 3);
                 String hashText = (String) tableModel.getValueAt(selectedRow, 4);
-                new BoardEdit(movieName, rating, username, hashText, username, BoardFrame.this, boardID).setVisible(true);
-
+                if (mp != null && mp.getName().equals(username)) {
+                    new BoardEdit(movieName, rating, "수정할 내용 작성", hashText, BoardFrame.this, boardID)
+                            .setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(BoardFrame.this, "타인의 게시글을 수정할 수 없습니다.");
+                }
             } else {
                 JOptionPane.showMessageDialog(BoardFrame.this, "게시글을 선택해주세요.");
             }
@@ -90,7 +107,12 @@ public class BoardFrame extends JFrame {
             int selectedRow = table.getSelectedRow();
             if (selectedRow != -1) {
                 int boardID = (int) tableModel.getValueAt(selectedRow, 0);
-                deleteMovieBoardData(boardID);
+                String username = (String) tableModel.getValueAt(selectedRow, 3);
+                if (mp != null && mp.getName().equals(username)) {
+                    deleteMovieBoardData(boardID);
+                } else {
+                    JOptionPane.showMessageDialog(BoardFrame.this, "타인의 게시글을 삭제할 수 없습니다.");
+                }
                 updateBoardTable();
             } else {
                 JOptionPane.showMessageDialog(BoardFrame.this, "게시글을 선택해주세요.");
@@ -100,9 +122,11 @@ public class BoardFrame extends JFrame {
         JButton btnView = new JButton("게시글 보기");
         btnView.addActionListener(e -> openView());
 
-        panelButtons.add(btnAdd);
-        panelButtons.add(btnEdit);
-        panelButtons.add(btnDelete);
+        if (mp != null && mp.getLoginCheck()) {
+            panelButtons.add(btnAdd);
+            panelButtons.add(btnEdit);
+            panelButtons.add(btnDelete);
+        }
         panelButtons.add(btnView);
 
         JPanel panelSearch = new JPanel();
@@ -133,7 +157,7 @@ public class BoardFrame extends JFrame {
                 String username = rs.getString("username");
                 String hashText = rs.getString("hash_text");
                 int viewCount = rs.getInt("b_count");
-                Object[] row = {boardID, movieName, rating, username, hashText, viewCount};
+                Object[] row = { boardID, movieName, rating, username, hashText, viewCount };
                 tableModel.addRow(row);
             }
         } catch (SQLException ex) {
@@ -202,7 +226,7 @@ public class BoardFrame extends JFrame {
                 }
                 String hashText = rs.getString("hash_text");
                 int viewCount = rs.getInt("b_count");
-                Object[] row = {boardID, movieName, rating, username, hashText, viewCount};
+                Object[] row = { boardID, movieName, rating, username, hashText, viewCount };
                 tableModel.addRow(row);
             }
         } catch (SQLException ex) {
@@ -210,11 +234,12 @@ public class BoardFrame extends JFrame {
         }
     }
 
-    //메인 메서드
+    // 메인 메서드
     public static void main(String[] args) {
         SwingUtilities.invokeLater(BoardFrame::new);
     }
-    //상세보기 메서드
+
+    // 상세보기 메서드
     private void openView() {
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {

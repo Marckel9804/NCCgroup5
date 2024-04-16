@@ -1,5 +1,6 @@
 package com.project1.group5.db.question;
 //
+
 //import java.sql.*;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -85,7 +86,11 @@ package com.project1.group5.db.question;
 //
 
 // 한개 view
+
 import java.util.*;
+
+import com.project1.group5.db.OzoDB;
+
 import java.sql.*;
 //
 //import java.util.*;
@@ -254,13 +259,12 @@ import java.sql.*;
 //    }
 //}
 
-
 public class InsertMovie {
     public static void main(String[] args) {
         System.out.println("");
-        String url = "jdbc:mysql://localhost:3306/movie";
-        String username = "root";
-        String password = "9806";
+        String url = OzoDB.DB_URL;
+        String username = OzoDB.DB_USER;
+        String password = OzoDB.DB_PASSWORD;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -285,7 +289,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList, running_time, rating);
+                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                            running_time, rating);
 
                     movies.add(movie);
                 }
@@ -298,11 +303,11 @@ public class InsertMovie {
                 String selectedRunningTime = selectOption("러닝타임", movies);
 
                 // 선택된 속성을 기반으로 데이터 필터링하여 view 생성
-                createFilteredView(selectedGenre);
-                createFilteredView(selectedRating);
-                createFilteredView(selectedKeyword);
-                createFilteredView(selectedCountry);
-                createFilteredView(selectedRunningTime);
+                // createFilteredView(selectedGenre);
+                // createFilteredView(selectedRating);
+                // createFilteredView(selectedKeyword);
+                // createFilteredView(selectedCountry);
+                // createFilteredView(selectedRunningTime);
 
             }
         } catch (SQLException e) {
@@ -387,30 +392,35 @@ public class InsertMovie {
         return options.get(selectedIndex - 1);
     }
 
-//    // 선택된 속성을 기반으로 데이터 필터링하여 view 생성
-//    private static void createFilteredView(String selectedGenre, String selectedRating, String selectedKeyword, String selectedCountry, String selectedRunningTime) {
-//        String viewName = "filtered_view";
-//        String createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE ";
-//
-//        // 필터링 조건 설정
-//        createViewSQL += "genre LIKE '%" + selectedGenre + "%' AND ";
-//        createViewSQL += "rating = '" + selectedRating + "' AND ";
-//        createViewSQL += "keyword LIKE '%" + selectedKeyword + "%' AND ";
-//        createViewSQL += "country = '" + selectedCountry + "' AND ";
-//        createViewSQL += "running_time = '" + selectedRunningTime + "';";
-//
-//        System.out.println("뷰 생성 쿼리: " + createViewSQL);
-//        // 여기서 데이터베이스에 createViewSQL을 실행하여 view 생성
-//    }
+    // // 선택된 속성을 기반으로 데이터 필터링하여 view 생성
+    // private static void createFilteredView(String selectedGenre, String
+    // selectedRating, String selectedKeyword, String selectedCountry, String
+    // selectedRunningTime) {
+    // String viewName = "filtered_view";
+    // String createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM
+    // moviejson WHERE ";
+    //
+    // // 필터링 조건 설정
+    // createViewSQL += "genre LIKE '%" + selectedGenre + "%' AND ";
+    // createViewSQL += "rating = '" + selectedRating + "' AND ";
+    // createViewSQL += "keyword LIKE '%" + selectedKeyword + "%' AND ";
+    // createViewSQL += "country = '" + selectedCountry + "' AND ";
+    // createViewSQL += "running_time = '" + selectedRunningTime + "';";
+    //
+    // System.out.println("뷰 생성 쿼리: " + createViewSQL);
+    // // 여기서 데이터베이스에 createViewSQL을 실행하여 view 생성
+    // }
 
-    private static void createFilteredView(String selectedGenre, String selectedRating, String selectedKeyword, String selectedCountry, String selectedRunningTime) {
+    private static void createFilteredView(String selectedGenre, String selectedRating, String selectedKeyword,
+            String selectedCountry, String selectedRunningTime) {
         String viewName;
         String createViewSQL;
 
         // 장르에 대한 뷰 생성
         if (!selectedGenre.isEmpty()) {
             viewName = "filtered_view_genre_" + selectedGenre;
-            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE genre LIKE '%" + selectedGenre + "%';";
+            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE genre LIKE '%"
+                    + selectedGenre + "%';";
             System.out.println("장르 뷰 생성 쿼리: " + createViewSQL);
             // 여기서 데이터베이스에 createViewSQL을 실행하여 view 생성
         }
@@ -418,7 +428,8 @@ public class InsertMovie {
         // 등급에 대한 뷰 생성
         if (!selectedRating.isEmpty()) {
             viewName = "filtered_view_rating_" + selectedRating;
-            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE rating = '" + selectedRating + "';";
+            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE rating = '" + selectedRating
+                    + "';";
             System.out.println("등급 뷰 생성 쿼리: " + createViewSQL);
             // 여기서 데이터베이스에 createViewSQL을 실행하여 view 생성
         }
@@ -426,7 +437,8 @@ public class InsertMovie {
         // 키워드에 대한 뷰 생성
         if (!selectedKeyword.isEmpty()) {
             viewName = "filtered_view_keyword_" + selectedKeyword;
-            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE keyword LIKE '%" + selectedKeyword + "%';";
+            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE keyword LIKE '%"
+                    + selectedKeyword + "%';";
             System.out.println("키워드 뷰 생성 쿼리: " + createViewSQL);
             // 여기서 데이터베이스에 createViewSQL을 실행하여 view 생성
         }
@@ -434,7 +446,8 @@ public class InsertMovie {
         // 국가에 대한 뷰 생성
         if (!selectedCountry.isEmpty()) {
             viewName = "filtered_view_country_" + selectedCountry;
-            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE country = '" + selectedCountry + "';";
+            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE country = '"
+                    + selectedCountry + "';";
             System.out.println("국가 뷰 생성 쿼리: " + createViewSQL);
             // 여기서 데이터베이스에 createViewSQL을 실행하여 view 생성
         }
@@ -442,7 +455,8 @@ public class InsertMovie {
         // 러닝타임에 대한 뷰 생성
         if (!selectedRunningTime.isEmpty()) {
             viewName = "filtered_view_running_time_" + selectedRunningTime;
-            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE running_time = '" + selectedRunningTime + "';";
+            createViewSQL = "CREATE VIEW " + viewName + " AS SELECT * FROM moviejson WHERE running_time = '"
+                    + selectedRunningTime + "';";
             System.out.println("러닝타임 뷰 생성 쿼리: " + createViewSQL);
             // 여기서 데이터베이스에 createViewSQL을 실행하여 view 생성
         }
