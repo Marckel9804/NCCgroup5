@@ -4,21 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <list default="true" id="82860a82-9bfa-45e2-8487-e07f219d0752" name="Changes" comment="">
-<<<<<<< HEAD
-=======
-      <!-- <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterService.java" afterDir="false" />
->>>>>>> 4d49f28eedd5cadfa71db170f2b5b5d67f2f06f5
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/Login/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/LoginImages/Login.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/loginImages/Login.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/LoginImages/ozo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/loginImages/ozo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MainPage/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" afterDir="false" /> -->
-=======
     <list default="true" id="f3f79a49-ae48-4589-8be6-fd29ed4e9ce1" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/db/OzoDB.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/project1/group5/frame/movierecommand/MovieRecommendFrame$1$1.class" afterDir="false" />
@@ -167,27 +152,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.group5 [:hhy.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Frame&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hwayeon/Documents/Projects/NCCgroup5/group5/build.gradle&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
-  }
-}</component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
-=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.MainPage.executor": "Run",
@@ -208,14 +172,12 @@
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
-=======
   <component name="PropertiesComponent">{
     &quot;keyToString&quot;: {
     &quot;Gradle.group5 [:MovieResultFrame.main()].executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Merging ch&quot;
     }
     }</component>
->>>>>>> 359a398b7bcde8ecc1615b30dde22e826e94ea7b
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\register" />
@@ -340,17 +302,13 @@
       </list>
     </recent_temporary>
   </component>
-<<<<<<< HEAD
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="jdk-17.0.10-corretto-17.0.10-3183f394aec4-96c0d24d" />
->>>>>>> 4d49f28eedd5cadfa71db170f2b5b5d67f2f06f5
       </set>
     </attachedChunks>
   </component>
-=======
->>>>>>> 359a398b7bcde8ecc1615b30dde22e826e94ea7b
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
