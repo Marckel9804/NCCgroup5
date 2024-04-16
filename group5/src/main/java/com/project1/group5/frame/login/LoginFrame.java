@@ -1,5 +1,6 @@
 package com.project1.group5.frame.login;
 
+import com.project1.group5.db.OzoDB;
 import com.project1.group5.frame.mainpage.MainPage;
 import com.project1.group5.frame.register.RegisterFrame; // RegisterFrame 클래스를 임포트
 
@@ -17,9 +18,9 @@ public class LoginFrame extends JFrame {
     private JButton loginButton; // 로그인 버튼
 
     // 데이터베이스 가져오기
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/ozo";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
 
     MainPage mp;
 

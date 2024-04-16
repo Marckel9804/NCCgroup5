@@ -2,9 +2,9 @@ package com.project1.group5.frame.mainpage;
 
 import javax.swing.*;
 
-import com.project1.group5.frame.MovieSelectFrame;
 import com.project1.group5.frame.board.BoardFrame;
 import com.project1.group5.frame.login.LoginFrame;
+import com.project1.group5.frame.movierecommand.MovieRecommendFrame;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -61,7 +61,7 @@ public class MainPage extends JFrame {
 
         // 로그인 버튼 생성
         loginButton = new LoginPageButton("로그인");
-        loginButton.setBounds(f_width / 2 - 120 - 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
+        loginButton.setBounds(f_width / 2 - 130 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
         lButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,12 +85,12 @@ public class MainPage extends JFrame {
         loginButton.addActionListener(lButton);
 
         runButton = new LoginPageButton("비회원실행");
-        runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
+        runButton.setBounds(f_width / 2 + 20, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
         rButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!otherFrame) {
-                    MovieSelectFrame mf = new MovieSelectFrame(MainPage.this);
+                    MovieRecommendFrame mf = new MovieRecommendFrame(MainPage.this);
                     otherFrame = true;
                     mf.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
@@ -163,9 +163,9 @@ public class MainPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!otherFrame) {
-                    MovieSelectFrame mf = new MovieSelectFrame(MainPage.this);
+                    MovieRecommendFrame mr = new MovieRecommendFrame(MainPage.this);
                     otherFrame = true;
-                    mf.addWindowListener((WindowListener) new WindowAdapter() {
+                    mr.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;

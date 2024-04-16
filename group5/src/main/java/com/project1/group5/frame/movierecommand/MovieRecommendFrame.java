@@ -1,5 +1,6 @@
-package com.project1.group5.frame;
+package com.project1.group5.frame.movierecommand;
 
+import com.project1.group5.frame.mypage.MyPageFrame;
 import com.project1.group5.frame.board.BoardFrame;
 import com.project1.group5.frame.login.LoginFrame;
 import com.project1.group5.frame.mainpage.MainPage;
@@ -10,7 +11,7 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.*;
 
-public class MovieSelectFrame extends JFrame implements KeyListener, MouseListener, MouseMotionListener, Runnable {
+public class MovieRecommendFrame extends JFrame implements KeyListener, MouseListener, MouseMotionListener, Runnable {
 
     // graphics 라이브러리를 사용하기 위한 객체
     Image buffImage;
@@ -58,7 +59,7 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
     MainPage mp;
     boolean otherFrame;
 
-    public MovieSelectFrame() {
+    public MovieRecommendFrame() {
         init();
         panelForGraphics.setLayout(null);
         panelForGraphics.add(jl_left);
@@ -66,7 +67,7 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
         add(panelForGraphics);
     }
 
-    public MovieSelectFrame(MainPage mp) {
+    public MovieRecommendFrame(MainPage mp) {
         this.mp = mp;
         init();
         if (mp.getLoginCheck()) {
@@ -94,14 +95,15 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
                     if (!otherFrame) {
                         LoginFrame loginPage = new LoginFrame(mp);
                         loginPage.setVisible(true);
-                        otherFrame = true;
-                        loginPage.addWindowListener((WindowListener) new WindowAdapter() {
-                            @Override
-                            public void windowClosed(WindowEvent e) {
-                                otherFrame = false;
+                        MovieRecommendFrame.this.dispose();
+                        // otherFrame = true;
+                        // loginPage.addWindowListener((WindowListener) new WindowAdapter() {
+                        // @Override
+                        // public void windowClosed(WindowEvent e) {
+                        // otherFrame = false;
 
-                            }
-                        });
+                        // }
+                        // });
                     }
                 }
             };
@@ -134,7 +136,7 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
 
     private void init() {
         menu = 50;
-        f_width = 800;
+        f_width = 1200;
         f_height = 550 + menu;
         otherFrame = false;
 
@@ -239,7 +241,7 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
     // }
 
     public static void main(String[] args) {
-        MovieSelectFrame ms = new MovieSelectFrame();
+        MovieRecommendFrame ms = new MovieRecommendFrame();
     }
 
     @Override
@@ -250,24 +252,24 @@ public class MovieSelectFrame extends JFrame implements KeyListener, MouseListen
     public void keyPressed(KeyEvent e) {
         // 왼쪽 오른쪽 키를 누르면 캐릭터 이미지가 넘어가도록 설계한건데 차후 키보드를 통해 왼쪽 오른쪽 선택지를 고르게 할까말까... 암튼 나중엔
         // 쓸모없음
-        if (!isKeyPressed) {
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                repaint();
-                nthChacracter = (nthChacracter + 1) % 6;
-                isKeyPressed = true;
-            } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                repaint();
-                nthChacracter = (nthChacracter + 5) % 6;
-                isKeyPressed = true;
-            }
-        }
+        // if (!isKeyPressed) {
+        // if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        // repaint();
+        // nthChacracter = (nthChacracter + 1) % 6;
+        // isKeyPressed = true;
+        // } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        // repaint();
+        // nthChacracter = (nthChacracter + 5) % 6;
+        // isKeyPressed = true;
+        // }
+        // }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() > 0) {// 키보드 누를때 꾹 눌리면서 눌리고 있는동안 반복해서 실행되는 현상을 방지
-            isKeyPressed = false;
-        }
+        // if (e.getKeyCode() > 0) {// 키보드 누를때 꾹 눌리면서 눌리고 있는동안 반복해서 실행되는 현상을 방지
+        // isKeyPressed = false;
+        // }
     }
 
     @Override
