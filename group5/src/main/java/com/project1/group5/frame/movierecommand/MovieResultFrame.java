@@ -1,4 +1,4 @@
-package com.project1.group5.frame;
+package com.project1.group5.frame.movierecommand;
 
 import com.project1.group5.frame.board.BoardFrame;
 
@@ -13,7 +13,7 @@ public class MovieResultFrame extends JFrame {
     Image background = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/res2.png").getImage();//배경이미지
     Image poster = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/poster.png").getImage();//포스터 샘플
     Image conver = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/recover.png").getImage();
-    Image oz = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/oz.png").getImage();
+    Image oz = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/oz1.png").getImage();
     JPanel panelForGraphics;
     Graphics buffg;
     Image buffImage;
@@ -66,7 +66,7 @@ public class MovieResultFrame extends JFrame {
         regame.addActionListener(new ActionListener() {    //게임 다시하기
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MovieSelectFrame();
+                new MovieRecommendFrame();
                 dispose();
             }
         });
@@ -100,7 +100,7 @@ public class MovieResultFrame extends JFrame {
 
             public void drawOz() {   //오즈 그리기
                 if (buffg != null) {
-                    buffg.drawImage(oz, 650, 150, 350, 350, this);
+                    buffg.drawImage(oz, 650, 150, 450, 500, this);
                 }
             }
 

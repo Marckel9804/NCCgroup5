@@ -1,6 +1,9 @@
 package com.project1.group5.frame.board;
 
 import javax.swing.*;
+
+import com.project1.group5.db.OzoDB;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,9 +28,9 @@ public class BoardAdd extends JFrame {
     private JButton btnCancel; // 추가된 취소 버튼
 
     // 데이터베이스 연결
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
 
     BoardFrame board;
 

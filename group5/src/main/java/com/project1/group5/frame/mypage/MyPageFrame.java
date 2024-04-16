@@ -1,8 +1,9 @@
-package com.project1.group5.frame;
+package com.project1.group5.frame.mypage;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import com.project1.group5.db.OzoDB;
 import com.project1.group5.frame.mainpage.MainPage;
 
 import java.awt.*;
@@ -25,9 +26,9 @@ public class MyPageFrame extends JFrame {
     private PreparedStatement pstm;
     private ResultSet rs;
     private CallableStatement cs;
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/ozo";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
 
     MainPage mp;
 
@@ -167,7 +168,7 @@ public class MyPageFrame extends JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            System.out.println("데이터베이스 연결 성공");
+            // System.out.println("데이터베이스 연결 성공");
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
@@ -177,7 +178,6 @@ public class MyPageFrame extends JFrame {
     public void getUserInfo(String user_id) {
         try {
             connectDB();
-            System.out.println("쿼리문에 들어가는거 이거 맞냐" + user_id);
             String query = "select * from users where id = ?";
             pstm = con.prepareStatement(query);
             pstm.setString(1, user_id);

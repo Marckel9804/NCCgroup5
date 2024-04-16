@@ -2,6 +2,8 @@ package com.project1.group5.db.question;
 
 import java.sql.*;
 
+import com.project1.group5.db.OzoDB;
+
 public class QuestionService {
     Connection con = null;
     CallableStatement cs = null;
@@ -13,10 +15,7 @@ public class QuestionService {
         // JDBC 연결...
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/ozo", // 우리 DB이름 뭐임..?
-                    "root",
-                    "1234"); // 비번도 우리 DB비번으로 바꾸자..
+            con = DriverManager.getConnection(OzoDB.DB_URL, OzoDB.DB_USER, OzoDB.DB_PASSWORD);
             System.out.println("데이터베이스 연결 성공");
             // String sql = "select *from question where thema_name='" +keyword+"';";
             String sql = "select *from question where thema_name=?;";
