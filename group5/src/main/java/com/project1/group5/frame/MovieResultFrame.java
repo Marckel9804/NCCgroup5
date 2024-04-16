@@ -10,8 +10,10 @@ import java.awt.event.*;
 
 public class MovieResultFrame extends JFrame {
     /*여기있는 이미지를 프레임에 그려줄거임.*/
-    Image background = new ImageIcon("src/main/java/com/project1/group5/frame/images/ozland.png").getImage();//배경이미지
-    Image poster = new ImageIcon("src/main/java/com/project1/group5/frame/images/poster.png").getImage();//포스터 샘플
+    Image background = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/res2.png").getImage();//배경이미지
+    Image poster = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/poster.png").getImage();//포스터 샘플
+    Image conver = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/recover.png").getImage();
+    Image oz = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/oz.png").getImage();
     JPanel panelForGraphics;
     Graphics buffg;
     Image buffImage;
@@ -24,6 +26,19 @@ public class MovieResultFrame extends JFrame {
     Buttons toBoard;
     Buttons regame;
 
+    //라벨들 객체
+    JLabel title;
+    JLabel year;
+
+    JLabel genre;
+
+    JLabel keyword;
+    JLabel country;
+
+    JLabel director;
+
+    JLabel runningTime;
+
     /*생성자*/
     MovieResultFrame() {
         //homeframe();
@@ -32,6 +47,9 @@ public class MovieResultFrame extends JFrame {
         setTitle("result");
         setSize(1100, 600);//프레임의 크기
         setResizable(false);//창의 크기를 변경하지 못하게
+
+        //영화 정보 라벨 생성
+
 
         // 버튼 두개 생성
         toBoard = new Buttons(500, 500, "게시판으로");
@@ -45,13 +63,15 @@ public class MovieResultFrame extends JFrame {
                 dispose();
             }
         });
-        regame.addActionListener(new ActionListener() {    //마이페이지 키기
+        regame.addActionListener(new ActionListener() {    //게임 다시하기
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MovieSelectFrame();
                 dispose();
             }
         });
+
+        // 영화정보 내용 텍스트 라벨들
 
         setVisible(true);
 
@@ -67,9 +87,20 @@ public class MovieResultFrame extends JFrame {
             }
 
             public void drawPoster() {   //출력될 영화 포스터 그리기
-
                 if (buffg != null) {
-                    buffg.drawImage(poster, 100, 80, 200, 300, this);
+                    buffg.drawImage(poster, 120, 100, 200, 300, this);
+                }
+            }
+
+            public void drawConver() {   // 말풍선 그리기
+                if (buffg != null) {
+                    buffg.drawImage(conver, 30, -90, 700, 720, this);
+                }
+            }
+
+            public void drawOz() {   //오즈 그리기
+                if (buffg != null) {
+                    buffg.drawImage(oz, 650, 150, 350, 350, this);
                 }
             }
 
@@ -81,14 +112,35 @@ public class MovieResultFrame extends JFrame {
 
             public void update(Graphics g) {
                 drawBackground();
+                drawConver();
                 drawPoster();
+                drawOz();
                 if (buffImage != null) {
                     g.drawImage(buffImage, 0, 0, this);
                 }
             }
         };
 
+
         panelForGraphics.setLayout(null);
+        //영화 정보들 선언
+        title = new Labels(350, 100, "영화제목", 200, 20);
+        year = new Labels(350, 120, "영화년도", 200, 20);
+        country = new Labels(350, 140, "제작국가", 200, 20);
+        director = new Labels(350, 160, "감독1, 감독2", 200, 20);
+        runningTime = new Labels(350, 180, "상영시간", 200, 20);
+        genre = new Labels(350, 200, "장르들ㅁㄴㅇㄹㄴㅁㄹㄴㅇㅁㄻㅇㄴㄹ", 200, 40);
+        keyword = new Labels(350, 240, "키워드들", 200, 20);
+
+
+        //패널에 모든 라벨, 버튼들 추가
+        panelForGraphics.add(title);
+        panelForGraphics.add(year);
+        panelForGraphics.add(country);
+        panelForGraphics.add(director);
+        panelForGraphics.add(runningTime);
+        panelForGraphics.add(genre);
+        panelForGraphics.add(keyword);
         panelForGraphics.add(toBoard);
         panelForGraphics.add(regame);
         add(panelForGraphics);
@@ -133,6 +185,12 @@ public class MovieResultFrame extends JFrame {
         }
     }
 
+    class Labels extends JLabel {    // 텍스트 라벨들 객체 (좌표, 들어갈 텍스트, 크기 높이)
+        Labels(int x, int y, String text, int width, int height) {
+            setBounds(x, y, width, height);
+            setText(text);
+        }
+    }
 
     public static void main(String[] args) {
         new MovieResultFrame();

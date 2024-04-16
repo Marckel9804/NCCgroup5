@@ -52,7 +52,7 @@ public class BoardAdd extends JFrame {
         lblUsername = new JLabel("작성자"); // 새로운 라벨 초기화
 
         tfMovieName = new JTextField(10);
-        cmbRating = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        cmbRating = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         taReview = new JTextArea(10, 10);
         tfHashText = new JTextField(10);
         tfUsername = new JTextField(10); // 새로운 텍스트 필드 초기화
@@ -79,8 +79,8 @@ public class BoardAdd extends JFrame {
         formPanel.add(new JScrollPane(taReview));
         formPanel.add(lblHashText);
         formPanel.add(tfHashText);
-        formPanel.add(lblUsername);
-        formPanel.add(tfUsername);
+        // formPanel.add(lblUsername);
+        // formPanel.add(tfUsername);
 
         buttonPanel.add(btnSave);
         buttonPanel.add(btnCancel); // 취소 버튼 추가
@@ -105,7 +105,7 @@ public class BoardAdd extends JFrame {
                 Integer rating = (Integer) cmbRating.getSelectedItem();
                 String review = taReview.getText();
                 String hashText = tfHashText.getText();
-                String username = tfUsername.getText(); // 새로운 사용자 이름 가져오기
+                String username = board.mp.getName(); // 새로운 사용자 이름 가져오기
 
                 // 새로운 게시글 추가
                 addNewBoard(movieName, rating, review, hashText, username);
@@ -171,7 +171,6 @@ public class BoardAdd extends JFrame {
             JOptionPane.showMessageDialog(BoardAdd.this, "게시글 추가에 실패했습니다.");
         }
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(BoardAdd::new);
