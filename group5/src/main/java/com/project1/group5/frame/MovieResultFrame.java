@@ -1,5 +1,7 @@
 package com.project1.group5.frame;
 
+import com.project1.group5.frame.board.BoardFrame;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -14,7 +16,6 @@ public class MovieResultFrame extends JFrame {
     Graphics buffg;
     Image buffImage;
 
-
     //프레임 크기
     int f_width = 1200;
     int f_height = 600;
@@ -23,10 +24,6 @@ public class MovieResultFrame extends JFrame {
     Buttons toBoard;
     Buttons regame;
 
-
-    //영화 포스터 그림
-    //String posterUrl="";
-    //Image poster = new ImageIcon();
     /*생성자*/
     MovieResultFrame() {
         //homeframe();
@@ -40,6 +37,21 @@ public class MovieResultFrame extends JFrame {
         toBoard = new Buttons(500, 500, "게시판으로");
         regame = new Buttons(605, 500, "다시하기");
 
+        // 버튼에 각각 이벤트 달아주기
+        toBoard.addActionListener(new ActionListener() {    //게시판 창 띄우고 result창 끄기
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new BoardFrame();
+                dispose();
+            }
+        });
+        regame.addActionListener(new ActionListener() {    //마이페이지 키기
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MovieSelectFrame();
+                dispose();
+            }
+        });
 
         setVisible(true);
 
@@ -57,7 +69,7 @@ public class MovieResultFrame extends JFrame {
             public void drawPoster() {   //출력될 영화 포스터 그리기
 
                 if (buffg != null) {
-                    buffg.drawImage(poster, 100, 50, 300, 400, this);
+                    buffg.drawImage(poster, 100, 80, 200, 300, this);
                 }
             }
 
@@ -86,7 +98,7 @@ public class MovieResultFrame extends JFrame {
         setVisible(true);
     }
 
-    class Buttons extends JButton {
+    class Buttons extends JButton { //버튼 객체
         Buttons(int x, int y, String text) {
             // 위치, 글 조정
             setBounds(x, y, 100, 30);
@@ -98,6 +110,7 @@ public class MovieResultFrame extends JFrame {
             addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+
                 }
             });
         }
@@ -118,7 +131,6 @@ public class MovieResultFrame extends JFrame {
             g.setColor(Color.white);
             g.drawRoundRect(0, 0, getWidth(), getHeight(), 20, 20); // 테두리를 둥글게 그리는 부분
         }
-
     }
 
 
@@ -126,4 +138,3 @@ public class MovieResultFrame extends JFrame {
         new MovieResultFrame();
     }
 }
-
