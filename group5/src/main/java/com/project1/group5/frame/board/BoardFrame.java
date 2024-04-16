@@ -3,7 +3,10 @@ package com.project1.group5.frame.board;
 import com.project1.group5.frame.mainPage.MainPage;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -15,15 +18,20 @@ public class BoardFrame extends JFrame {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/sm"; //DB연동
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "1234";
+
     private Timer imageTimer;
     private JLabel[] imageLabels;
     private int currentImageIndex = 0;
-    private String[] imagePaths = {"aa.png", "j.png", "g.png", "b.png", "c.png", "q.png", "d.png", "e.png", "f.png"
-            , "a.png", "h.png", "r.png", "i.png", "m.png", "k.png", "l.png", "bb.png", "n.png",
-            "o.png", "p.png"};
+    private String[] imagePaths = {"aa.png", "j.png", "g.png", "cc.png", "b.png",
+            "ee.png", "c.png", "dd.png", "q.png", "d.png", "e.png", "f.png"
+            , "a.png", "h.png", "r.png", "ff.png", "gg.png", "i.png", "m.png",
+            "k.png", "l.png", "bb.png", "n.png", "o.png", "p.png"};
     String imgDir = "src/main/java/com/project1/group5/frame/boardImages/"; // 이미지 경로 설정
 
-    public BoardFrame() {
+    MainPage mp;
+
+    public BoardFrame(MainPage mp) {
+        this.mp = mp;
         init(); // GUI 초기화 메서드
         setDisplay(); // GUI 설정 메서드
         addComponents(); // GUI 추가 메서드
@@ -55,7 +63,7 @@ public class BoardFrame extends JFrame {
 
 
         // 이미지 변경 타이머 설정
-        imageTimer = new Timer(4000, new ActionListener() { //5초마다 변경
+        imageTimer = new Timer(5000, new ActionListener() { //5초마다 변경
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndex = (currentImageIndex + 2) % imagePaths.length;
@@ -65,14 +73,24 @@ public class BoardFrame extends JFrame {
         imageTimer.start();
     }
 
-    private void updateImages() {
+
+    public BoardFrame() {
+        this.mp = mp;
+        init();
+        setDisplay();
+        addComponents();
+        updateBoardTable();
+
+    }
+
+    public void updateImages() {
         imageLabels[currentImageIndex % 2].setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[currentImageIndex])
                 .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
         imageLabels[(currentImageIndex + 1) % 2].setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[(currentImageIndex + 1) % imagePaths.length])
                 .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
     }
 
-    private void init() { //
+    public void init() { //
         tableModel = new DefaultTableModel() { // 테이블 모델 생성
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex) {
@@ -94,9 +112,14 @@ public class BoardFrame extends JFrame {
                 }
             }
         });
+        // 게시글 너비를 설정
+        table.getColumnModel().getColumn(0).setPreferredWidth(10); // 게시글 번호 열
+        table.getColumnModel().getColumn(1).setPreferredWidth(150); // 영화 제목 열
+        table.getColumnModel().getColumn(2).setPreferredWidth(10); // 평점 열
+        table.getColumnModel().getColumn(5).setPreferredWidth(10); // 조회수 열
     }
 
-    private void setDisplay() {
+    public void setDisplay() {
         setTitle("영화 게시판");
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
@@ -107,9 +130,19 @@ public class BoardFrame extends JFrame {
 
         Font font = new Font("Hancom Gothic Batang", Font.BOLD, 16);
         table.setFont(font);
+
+        // 제목열 스타일 설정
+        JTableHeader header = table.getTableHeader();
+        header.setFont(new Font("DIALOG", Font.BOLD, 16)); // 폰트 설정
+        header.setForeground(Color.BLACK); // 텍스트 색상 설정
+        header.setBackground(Color.green); // 배경색 설정
+
+        // 제목열 내의 텍스트를 중앙 정렬
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
-    private void addComponents() {
+    public void addComponents() {
         JPanel panelButtons = new JPanel();
         JButton btnAdd = new JButton("게시글 추가");
         // 버튼 색상 및 디자인
@@ -135,9 +168,12 @@ public class BoardFrame extends JFrame {
                 int rating = (int) tableModel.getValueAt(selectedRow, 2);
                 String username = (String) tableModel.getValueAt(selectedRow, 3);
                 String hashText = (String) tableModel.getValueAt(selectedRow, 4);
-                new BoardEdit(movieName, rating, username, hashText, username, BoardFrame.this, boardID)
-                        .setVisible(true);
-
+                if (mp != null && mp.getName().equals(username)) {
+                    new BoardEdit(movieName, rating, "수정할 내용 작성", hashText, BoardFrame.this, boardID)
+                            .setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(BoardFrame.this, "타인의 게시글을 수정할 수 없습니다.");
+                }
             } else {
                 JOptionPane.showMessageDialog(BoardFrame.this, "게시글을 선택해주세요.");
             }
@@ -155,7 +191,12 @@ public class BoardFrame extends JFrame {
             int selectedRow = table.getSelectedRow();
             if (selectedRow != -1) {
                 int boardID = (int) tableModel.getValueAt(selectedRow, 0);
-                deleteMovieBoardData(boardID);
+                String username = (String) tableModel.getValueAt(selectedRow, 3);
+                if (mp != null && mp.getName().equals(username)) {
+                    deleteMovieBoardData(boardID);
+                } else {
+                    JOptionPane.showMessageDialog(BoardFrame.this, "타인의 게시글을 삭제할 수 없습니다.");
+                }
                 updateBoardTable();
             } else {
                 JOptionPane.showMessageDialog(BoardFrame.this, "게시글을 선택해주세요.");
@@ -169,7 +210,8 @@ public class BoardFrame extends JFrame {
         // 버튼 모양 변경
         btnView.setFocusPainted(false);
         btnView.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
-        btnView.addActionListener(e -> openView());
+//        btnView.addActionListener(e -> openView());
+
 
         JButton btnBackToMain = new JButton("메인 페이지");
         btnBackToMain.setBackground(Color.WHITE);
@@ -177,15 +219,22 @@ public class BoardFrame extends JFrame {
         btnView.setFocusPainted(false);
         btnView.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
         btnView.addActionListener(e -> openView());
-        btnBackToMain.addActionListener(e -> new MainPage());
+//        btnBackToMain.addActionListener(e -> new MainPage());
         btnBackToMain.addActionListener(e -> {
             dispose(); //닫기
         });
 
 
-        panelButtons.add(btnAdd);
-        panelButtons.add(btnEdit);
-        panelButtons.add(btnDelete);
+//        panelButtons.add(btnAdd);
+//        panelButtons.add(btnEdit);
+//        panelButtons.add(btnDelete);
+
+        if (mp != null && mp.getLoginCheck()) {
+            panelButtons.add(btnAdd);
+            panelButtons.add(btnEdit);
+            panelButtons.add(btnDelete);
+        }
+
         panelButtons.add(btnView);
         panelButtons.add(btnBackToMain);
 
@@ -228,7 +277,7 @@ public class BoardFrame extends JFrame {
         }
     }
 
-    private void deleteMovieBoardData(int boardID) {
+    public void deleteMovieBoardData(int boardID) {
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String deleteCommentsSQL = "DELETE FROM B_Comment WHERE board_id = ?";
             PreparedStatement deleteCommentsStmt = conn.prepareStatement(deleteCommentsSQL);
@@ -248,7 +297,7 @@ public class BoardFrame extends JFrame {
         }
     }
 
-    private void increaseViewCount(int boardID) {
+    public void increaseViewCount(int boardID) {
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String sqlSelect = "SELECT b_count FROM Board WHERE board_id = ?";
             PreparedStatement pstmtSelect = conn.prepareStatement(sqlSelect);
@@ -270,7 +319,7 @@ public class BoardFrame extends JFrame {
         }
     }
 
-    private void searchBoard(String keyword) {
+    public void searchBoard(String keyword) {
         tableModel.setRowCount(0);
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String sql = "SELECT board_id, b_title, rating, username, hash_text, b_count FROM Board WHERE b_title LIKE ? OR hash_text LIKE ? OR b_review LIKE ?";
@@ -303,7 +352,7 @@ public class BoardFrame extends JFrame {
     }
 
     // 상세보기 메서드
-    private void openView() {
+    public void openView() {
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {
             int boardID = (int) tableModel.getValueAt(selectedRow, 0);

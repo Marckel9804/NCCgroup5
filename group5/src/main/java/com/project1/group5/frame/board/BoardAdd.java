@@ -79,8 +79,8 @@ public class BoardAdd extends JFrame {
         formPanel.add(new JScrollPane(taReview));
         formPanel.add(lblHashText);
         formPanel.add(tfHashText);
-        formPanel.add(lblUsername);
-        formPanel.add(tfUsername);
+        // formPanel.add(lblUsername);
+        // formPanel.add(tfUsername);
 
         buttonPanel.add(btnSave);
         buttonPanel.add(btnCancel); // 취소 버튼 추가
@@ -105,7 +105,7 @@ public class BoardAdd extends JFrame {
                 Integer rating = (Integer) cmbRating.getSelectedItem();
                 String review = taReview.getText();
                 String hashText = tfHashText.getText();
-                String username = tfUsername.getText(); // 새로운 사용자 이름 가져오기
+                String username = board.mp.getName(); // 새로운 사용자 이름 가져오기
 
                 // 새로운 게시글 추가
                 addNewBoard(movieName, rating, review, hashText, username);

@@ -2,8 +2,8 @@ package com.project1.group5.frame.register;
 
 import javax.swing.*;
 
-import com.project1.group5.db.RegisterDTO;
-import com.project1.group5.db.RegisterService;
+import com.project1.group5.db.register.RegisterDTO;
+import com.project1.group5.db.register.RegisterService;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -118,7 +118,7 @@ public class RegisterFrame extends JFrame {
         centerPanel.add(genderLabel, gbc);
 
         gbc.gridx++;
-        String[] genders = { "Male", "Female" };
+        String[] genders = {"Male", "Female"};
         genderComboBox = new JComboBox<>(genders);
         genderComboBox.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(genderComboBox, gbc);
