@@ -152,11 +152,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
+    &quot;keyToString&quot;: {
     &quot;Gradle.group5 [:MovieResultFrame.main()].executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Merging ch&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lg\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\register" />
@@ -167,7 +167,7 @@
       <recent name="C:\Users\Changho\Documents\Projects\NCCgroup5\group5\src\main\java\com\project1\group5\frame\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MovieResultFrame (4)">
+  <component name="RunManager" selected="Application.MovieResultFrame">
     <configuration name="MovieResultFrame (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project1.group5.frame.MovieResultFrame" />
       <module name="group5.main" />
@@ -274,7 +274,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MovieResultFrame (4)" />
         <item itemvalue="Application.MovieResultFrame (2)" />
         <item itemvalue="Application.MovieResultFrame (1)" />
         <item itemvalue="Application.MovieResultFrame" />
