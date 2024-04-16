@@ -1,4 +1,4 @@
-package com.project1.group5.frame.mainPage;
+package com.project1.group5.frame.mainpage;
 
 import javax.swing.*;
 
