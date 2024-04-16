@@ -1,11 +1,8 @@
 package com.project1.group5.frame.login;
 
-
-import com.project1.group5.frame.register.RegisterFrame;
 import com.project1.group5.db.OzoDB;
-import com.project1.group5.frame.mainPage.MainPage;
+import com.project1.group5.frame.mainpage.MainPage;
 import com.project1.group5.frame.register.RegisterFrame; // RegisterFrame 클래스를 임포트
-
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +27,7 @@ public class LoginFrame extends JFrame {
     // 로그인 프레임 생성자
     public LoginFrame(MainPage mp) {
         setTitle("Login"); // 프레임 타이틀 설정
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 동작 설정
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE); // 종료 동작 설정
         setSize(800, 600); // 프레임 크기 설정
         setLocationRelativeTo(null); // 프레임을 화면 중앙에 배치
 
@@ -40,22 +37,22 @@ public class LoginFrame extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.WHITE);
 
-// 이미지 패널 생성
+        // 이미지 패널 생성
         JPanel imagePanel = new JPanel(null); // 레이아웃 매니저를 null로 설정하여 직접 위치 지정
         imagePanel.setBackground(Color.WHITE);
-        ImageIcon icon = new ImageIcon("src/main/java/com/project1/group5/frame/loginimages/login1.png"); // 이미지 아이콘 경로
+        ImageIcon icon = new ImageIcon("C:\\Users\\lg\\Desktop\\login1.png"); // 이미지 아이콘 경로
         JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBounds(400 - icon.getIconWidth() / 2 - 10, 30, icon.getIconWidth(), icon.getIconHeight()); // 이미지 아이콘 위치 설정
+        imageLabel.setBounds(400 - icon.getIconWidth() / 2 - 10, 30, icon.getIconWidth(), icon.getIconHeight());
         imagePanel.add(imageLabel);
 
-// 텍스트 레이블 추가
+        // 텍스트 레이블 추가
         JLabel userLoginLabel = new JLabel("User Login");
         userLoginLabel.setFont(new Font("Arial", Font.BOLD, 20)); // 폰트 설정
-        userLoginLabel.setBounds(400 - icon.getIconWidth() / 2 - 45, 35 + icon.getIconHeight(), 150, 20); // 텍스트 레이블 위치 설정
+        userLoginLabel.setBounds(400 - icon.getIconWidth() / 2 - 45, 35 + icon.getIconHeight(), 150, 20); // 텍스트 레이블 위치
+                                                                                                          // 설정
         userLoginLabel.setHorizontalAlignment(SwingConstants.CENTER); // 가운데 정렬
         userLoginLabel.setPreferredSize(new Dimension(150, 20)); // 레이블의 크기 설정
         imagePanel.add(userLoginLabel);
-
 
         JLabel welcomeLabel = new JLabel("Welcome to the ozo");
         welcomeLabel.setFont(new Font("Arial", Font.PLAIN, 16)); // 폰트 설정
@@ -64,7 +61,6 @@ public class LoginFrame extends JFrame {
         imagePanel.add(welcomeLabel);
 
         add(imagePanel); // 이미지 패널을 프레임에 추가
-
 
         // 중앙 패널 생성
         JPanel centerPanel = new JPanel(new GridBagLayout());
@@ -104,13 +100,6 @@ public class LoginFrame extends JFrame {
         loginButton.setFont(loginButton.getFont().deriveFont(Font.BOLD)); // 폰트 굵게 설정
 
         centerPanel.add(loginButton, gbc);
-
-
-
-
-
-
-
 
         // 회원 가입 텍스트 추가
         gbc.gridy++;
@@ -196,6 +185,7 @@ public class LoginFrame extends JFrame {
                             mp.loggedInPage();
                             LoginFrame.this.dispose();
                         });
+
                         break;
                     case 1:
                         JOptionPane.showMessageDialog(LoginFrame.this, "사용자가 존재하지 않습니다");

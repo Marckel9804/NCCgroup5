@@ -3,7 +3,7 @@ package com.project1.group5.frame.movierecommand;
 import com.project1.group5.frame.mypage.MyPageFrame;
 import com.project1.group5.frame.board.BoardFrame;
 import com.project1.group5.frame.login.LoginFrame;
-import com.project1.group5.frame.mainPage.MainPage;
+import com.project1.group5.frame.mainpage.MainPage;
 
 import java.awt.*;
 import java.awt.event.*;

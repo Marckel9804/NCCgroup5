@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.project1.group5.db.OzoDB;
-import com.project1.group5.frame.mainPage.MainPage;
+import com.project1.group5.frame.mainpage.MainPage;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
