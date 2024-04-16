@@ -1,6 +1,14 @@
 package com.project1.group5.frame.register;
 
 import javax.swing.*;
+<<<<<<< HEAD
+=======
+
+import com.project1.group5.db.OzoDB;
+import com.project1.group5.db.register.RegisterDTO;
+import com.project1.group5.db.register.RegisterService;
+
+>>>>>>> 359a398b7bcde8ecc1615b30dde22e826e94ea7b
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -15,11 +23,14 @@ public class RegisterFrame extends JFrame {
     private JComboBox<String> genderComboBox; // 성별 선택 콤보 박스
     private JButton registerButton; // 회원가입 버튼
 
+<<<<<<< HEAD
     // 데이터베이스 가져오기
     private static final String DB_URL = "jdbc:mysql://localhost:3306/project";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "1234";
 
+=======
+>>>>>>> 359a398b7bcde8ecc1615b30dde22e826e94ea7b
     // 회원가입 프레임 생성자
     public RegisterFrame() {
         setTitle("Register"); // 프레임 타이틀 설정

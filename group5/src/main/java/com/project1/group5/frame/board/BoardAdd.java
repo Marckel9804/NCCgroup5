@@ -1,6 +1,9 @@
 package com.project1.group5.frame.board;
 
 import javax.swing.*;
+
+import com.project1.group5.db.OzoDB;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,9 +28,9 @@ public class BoardAdd extends JFrame {
     private JButton btnCancel; // 추가된 취소 버튼
 
     // 데이터베이스 연결
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
 
     BoardFrame board;
 
@@ -79,8 +82,8 @@ public class BoardAdd extends JFrame {
         formPanel.add(new JScrollPane(taReview));
         formPanel.add(lblHashText);
         formPanel.add(tfHashText);
-        formPanel.add(lblUsername);
-        formPanel.add(tfUsername);
+        // formPanel.add(lblUsername);
+        // formPanel.add(tfUsername);
 
         buttonPanel.add(btnSave);
         buttonPanel.add(btnCancel); // 취소 버튼 추가
@@ -105,7 +108,7 @@ public class BoardAdd extends JFrame {
                 Integer rating = (Integer) cmbRating.getSelectedItem();
                 String review = taReview.getText();
                 String hashText = tfHashText.getText();
-                String username = tfUsername.getText(); // 새로운 사용자 이름 가져오기
+                String username = board.mp.getName(); // 새로운 사용자 이름 가져오기
 
                 // 새로운 게시글 추가
                 addNewBoard(movieName, rating, review, hashText, username);
