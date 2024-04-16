@@ -1,9 +1,15 @@
 package com.project1.group5.frame.register;
 
 import javax.swing.*;
+
+import com.project1.group5.db.OzoDB;
+import com.project1.group5.db.register.RegisterDTO;
+import com.project1.group5.db.register.RegisterService;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class RegisterFrame extends JFrame {
     private JTextField idField; // 아이디 입력 필드
@@ -12,20 +18,15 @@ public class RegisterFrame extends JFrame {
     private JTextField emailField; // 이메일 입력 필드
     private JTextField phoneNumberField; // 전화번호 입력 필드
     private JTextField birthDateField; // 생년월일 입력 필드
-    private JTextField ageField; //   나이 입력 필드
+    private JTextField ageField; // 나이 입력 필드
 
     private JComboBox<String> genderComboBox; // 성별 선택 콤보 박스
     private JButton registerButton; // 회원가입 버튼
 
-    //데이터베이스 가져오기
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/project";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
-
     // 회원가입 프레임 생성자
     public RegisterFrame() {
         setTitle("Register"); // 프레임 타이틀 설정
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 동작 설정
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE); // 종료 동작 설정
         setSize(800, 600); // 프레임 크기 설정
         setLocationRelativeTo(null); // 프레임을 화면 중앙에 배치
 
@@ -48,7 +49,7 @@ public class RegisterFrame extends JFrame {
 
         gbc.gridx++;
         idField = new JTextField(15);
-        idField.setPreferredSize(new Dimension(200, 40));
+        idField.setPreferredSize(new Dimension(200, 25));
         centerPanel.add(idField, gbc);
 
         // 유저 이름 레이블 및 필드 추가
@@ -59,7 +60,7 @@ public class RegisterFrame extends JFrame {
 
         gbc.gridx++;
         usernameField = new JTextField(15);
-        usernameField.setPreferredSize(new Dimension(200, 40));
+        usernameField.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(usernameField, gbc);
 
         // 비밀번호 레이블 및 필드 추가
@@ -70,7 +71,7 @@ public class RegisterFrame extends JFrame {
 
         gbc.gridx++;
         passwordField = new JPasswordField(15);
-        passwordField.setPreferredSize(new Dimension(200, 40));
+        passwordField.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(passwordField, gbc);
 
         // 이메일 레이블 및 필드 추가
@@ -81,7 +82,7 @@ public class RegisterFrame extends JFrame {
 
         gbc.gridx++;
         emailField = new JTextField(15);
-        emailField.setPreferredSize(new Dimension(200, 40));
+        emailField.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(emailField, gbc);
 
         // 전화번호 레이블 및 필드 추가
@@ -92,7 +93,7 @@ public class RegisterFrame extends JFrame {
 
         gbc.gridx++;
         phoneNumberField = new JTextField(15);
-        phoneNumberField.setPreferredSize(new Dimension(200, 40));
+        phoneNumberField.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(phoneNumberField, gbc);
 
         // 생년월일 레이블 및 필드 추가
@@ -103,19 +104,9 @@ public class RegisterFrame extends JFrame {
 
         gbc.gridx++;
         birthDateField = new JTextField(15);
-        birthDateField.setPreferredSize(new Dimension(200, 40));
+        birthDateField.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(birthDateField, gbc);
 
-        // 나이  레이블 및 필드 추가
-        gbc.gridy++;
-        gbc.gridx = 0; // 다음 요소를 다음 행의 첫 열에 배치하기 위해 열 인덱스를 0으로 설정
-        JLabel ageLabel = new JLabel("Age");
-        centerPanel.add(birthDateLabel, gbc);
-
-        gbc.gridx++;
-        birthDateField = new JTextField(15);
-        birthDateField.setPreferredSize(new Dimension(200, 40));
-        centerPanel.add(birthDateField, gbc);
         // 성별 레이블 및 콤보 박스 추가
         gbc.gridy++;
         gbc.gridx = 0; // 다음 요소를 다음 행의 첫 열에 배치하기 위해 열 인덱스를 0으로 설정
@@ -123,9 +114,9 @@ public class RegisterFrame extends JFrame {
         centerPanel.add(genderLabel, gbc);
 
         gbc.gridx++;
-        String[] genders = {"Male", "Female"};
+        String[] genders = { "Male", "Female" };
         genderComboBox = new JComboBox<>(genders);
-        genderComboBox.setPreferredSize(new Dimension(200, 40));
+        genderComboBox.setPreferredSize(new Dimension(160, 25));
         centerPanel.add(genderComboBox, gbc);
 
         // 회원가입 버튼 추가
@@ -134,9 +125,11 @@ public class RegisterFrame extends JFrame {
         registerButton.addActionListener(new RegisterButtonListener());
         registerButton.setPreferredSize(new Dimension(200, 40));
         registerButton.setBackground(new Color(208, 154, 255)); // 배경색 설정
-        registerButton.setBorder(BorderFactory.createLineBorder(Color.WHITE)); // 테두리를 하얀색으로 설정
+        registerButton.setBorder(BorderFactory.createLineBorder(Color.WHITE)); //
+        // 테두리를 하얀색으로 설정
         registerButton.setFocusPainted(false); // 포커스 시 테두리 없애기
-        registerButton.setFont(registerButton.getFont().deriveFont(Font.BOLD)); // 폰트 굵게 설정
+        registerButton.setFont(registerButton.getFont().deriveFont(Font.BOLD)); // 폰트
+        // 굵게 설정
         centerPanel.add(registerButton, gbc);
 
         // 중앙 패널을 중앙 정렬로 배치하기 위해 빈 패널 추가
@@ -161,17 +154,35 @@ public class RegisterFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             // RegisterDTO 객체 생성
-            RegisterDTO dto = new RegisterDTO();
-            dto.setUser_id(idField.getText());
-            dto.setUsername(usernameField.getText());
-            dto.setEmail(emailField.getText());
-            dto.setPassword(new String(passwordField.getPassword()));
-            dto.setPhone_number(phoneNumberField.getText());
-            dto.setBirth_date(birthDateField.getText());
-            dto.setGender((String) genderComboBox.getSelectedItem());
+            RegisterDTO dto = new RegisterDTO(idField.getText(), usernameField.getText(), emailField.getText(),
+                    new String(passwordField.getPassword()), phoneNumberField.getText(), birthDateField.getText(),
+                    (String) genderComboBox.getSelectedItem());
+            try {
+                RegisterService rs = new RegisterService();
+                int res = rs.registerUser(dto);
+                // 회원가입 반환 메시지 출력
+                switch (res) {
+                    case 0:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "이미 가입된 아이디거나 이메일, 혹은 전화번호입니다.");
+                        break;
+                    case 1:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "가입에 성공했습니다.");
+                        SwingUtilities.invokeLater(() -> {
+                            RegisterFrame.this.dispose();
+                        });
+                        break;
+                    case 3:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "ID는 6자 이상으로 만들어주세요");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "뭔가가 잘못됨");
+                        break;
+                }
+            } catch (Exception err) {
+                // TODO: handle exception
+                JOptionPane.showMessageDialog(RegisterFrame.this, "몬가... 몬가 잘못됨... 뭘까 그게...");
+            }
 
-            // 회원가입 성공 메시지 출력
-            JOptionPane.showMessageDialog(RegisterFrame.this, "회원가입이 완료되었습니다.");
         }
     }
 
