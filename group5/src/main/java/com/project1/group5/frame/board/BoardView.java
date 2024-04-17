@@ -41,7 +41,7 @@ public class BoardView extends JFrame {
         lblRating = new JLabel("평점:");
         lblReview = new JLabel("리뷰:");
         lblHashText = new JLabel("해시태그:");
-        lblUsername = new JLabel(); // 작성자 정보 표시를 위한 라벨 초기화
+        lblUsername = new JLabel(); // 작성자 정보 표시
 
         tfMovieName = new JTextField(30);
         tfRating = new JTextField(30);

@@ -60,7 +60,9 @@ public class BoardFrame extends JFrame {
         panelImageRight.add(imageLabels[1], BorderLayout.CENTER);
         add(panelImageLeft, BorderLayout.WEST);
         add(panelImageRight, BorderLayout.EAST);
-
+        // 이미지 패널의 배경색 설정
+        panelImageLeft.setBackground(new Color(240, 255, 240));
+        panelImageRight.setBackground(new Color(240, 255, 240));
 
         // 이미지 변경 타이머 설정
         imageTimer = new Timer(5000, new ActionListener() { //5초마다 변경
@@ -73,14 +75,12 @@ public class BoardFrame extends JFrame {
         imageTimer.start();
     }
 
-
     public BoardFrame() {
         this.mp = mp;
         init();
         setDisplay();
         addComponents();
         updateBoardTable();
-
     }
 
     public void updateImages() {
@@ -127,26 +127,26 @@ public class BoardFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-
-        Font font = new Font("Hancom Gothic Batang", Font.BOLD, 16);
+        Font font = new Font("SansSerif", Font.BOLD, 15);
         table.setFont(font);
-
-        // 제목열 스타일 설정
+        // 제목열
         JTableHeader header = table.getTableHeader();
-        header.setFont(new Font("DIALOG", Font.BOLD, 16)); // 폰트 설정
-        header.setForeground(Color.BLACK); // 텍스트 색상 설정
-        header.setBackground(Color.green); // 배경색 설정
-
-        // 제목열 내의 텍스트를 중앙 정렬
+        header.setFont(new Font("SansSerif", Font.BOLD, 15));
+        header.setForeground(Color.WHITE);
+        header.setBackground(new Color(60, 179, 113));
+        //중앙 정렬
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer();
+        table.setBackground(new Color(245, 255, 250));
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        scrollPane.setBackground(new Color(240, 255, 240)); // 배경색
     }
+
 
     public void addComponents() {
         JPanel panelButtons = new JPanel();
         JButton btnAdd = new JButton("게시글 추가");
         // 버튼 색상 및 디자인
-        btnAdd.setBackground(Color.CYAN);
+        btnAdd.setBackground(new Color(30, 144, 255));
         btnAdd.setForeground(Color.WHITE);
         // 버튼 모양 변경
         btnAdd.setFocusPainted(false);
@@ -155,7 +155,7 @@ public class BoardFrame extends JFrame {
 
         JButton btnEdit = new JButton("게시글 수정");
         // 버튼 색상 및 디자인
-        btnEdit.setBackground(Color.ORANGE);
+        btnEdit.setBackground(new Color(0, 128, 0));
         btnEdit.setForeground(Color.WHITE);
         // 버튼 모양 변경
         btnEdit.setFocusPainted(false);
@@ -213,7 +213,7 @@ public class BoardFrame extends JFrame {
 //        btnView.addActionListener(e -> openView());
 
 
-        JButton btnBackToMain = new JButton("메인 페이지");
+        JButton btnBackToMain = new JButton("뒤로가기");
         btnBackToMain.setBackground(Color.WHITE);
         btnBackToMain.setForeground(Color.BLACK);
         btnView.setFocusPainted(false);
@@ -223,6 +223,7 @@ public class BoardFrame extends JFrame {
         btnBackToMain.addActionListener(e -> {
             dispose(); //닫기
         });
+        panelButtons.setBackground(new Color(240, 255, 240));
 
 
 //        panelButtons.add(btnAdd);
@@ -251,9 +252,10 @@ public class BoardFrame extends JFrame {
         panelSearch.add(lblSearch);
         panelSearch.add(searchField);
         panelSearch.add(btnSearch);
-
+        panelSearch.setBackground(new Color(240, 255, 240));
         add(panelButtons, BorderLayout.SOUTH);
         add(panelSearch, BorderLayout.NORTH);
+
     }
 
     public void updateBoardTable() {
