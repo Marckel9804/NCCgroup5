@@ -94,6 +94,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" afterDir="false" />
+>>>>>>> 359a398b7bcde8ecc1615b30dde22e826e94ea7b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +152,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainPage.executor": "Run",
+    "Application.MovieSelectFrame.executor": "Run",
+    "Gradle.group5 [:BoardFrame.main()].executor": "Run",
+    "Gradle.group5 [:LoginFrame.main()].executor": "Run",
+    "Gradle.group5 [:MainPage.main()].executor": "Run",
+    "Gradle.group5 [:hhy.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Frame",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lg/Documents/Projects/NCCgroup5/group5/src/main/java/com/project1/group5/frame/register",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  }
+}]]></component>
   <component name="PropertiesComponent">{
     &quot;keyToString&quot;: {
     &quot;Gradle.group5 [:MovieResultFrame.main()].executor&quot;: &quot;Run&quot;,
@@ -280,6 +301,13 @@
         <item itemvalue="Application.MovieResultFrame (3)" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-3183f394aec4-96c0d24d" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
