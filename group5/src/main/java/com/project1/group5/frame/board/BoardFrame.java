@@ -7,6 +7,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import com.project1.group5.db.OzoDB;
+import com.project1.group5.frame.mainPage.MainPage;
+
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;

@@ -46,4 +46,7 @@ public class RegisterDTO {
         age = period.getYears() + 1;
         // System.out.println(age);
     }
+
+    public RegisterDTO(String text, String text1, String text2, String s, String text3, String text4) {
+    }
 }
