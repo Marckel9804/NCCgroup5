@@ -19,7 +19,6 @@ public class InsertMovie {
             Connection connection = DriverManager.getConnection(url, username, password);
             String sql = "SELECT * FROM moviejson";
 
-
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
                 List<InMovieDTO> movies = new ArrayList<>();
@@ -38,7 +37,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList, running_time, rating);
+                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                            running_time, rating);
                     movies.add(movie);
                 }
 
@@ -52,12 +52,11 @@ public class InsertMovie {
             System.out.println("클래스 못 찾음");
         }
 
-//// 장르고르고 등급
+        //// 장르고르고 등급
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, username, password);
             String sql = "SELECT * FROM filtered_view_genre_";
-
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
@@ -77,7 +76,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList, running_time, rating);
+                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                            running_time, rating);
                     movies.add(movie);
                 }
 
@@ -97,7 +97,6 @@ public class InsertMovie {
             Connection connection = DriverManager.getConnection(url, username, password);
             String sql = "SELECT * FROM filtered_view_rating_";
 
-
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
                 List<InMovieDTO> movies = new ArrayList<>();
@@ -116,7 +115,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList, running_time, rating);
+                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                            running_time, rating);
                     movies.add(movie);
                 }
 
@@ -135,7 +135,6 @@ public class InsertMovie {
             Connection connection = DriverManager.getConnection(url, username, password);
             String sql = "SELECT * FROM filtered_view_keyword_";
 
-
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
                 List<InMovieDTO> movies = new ArrayList<>();
@@ -154,7 +153,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList, running_time, rating);
+                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                            running_time, rating);
                     movies.add(movie);
                 }
 
@@ -173,7 +173,6 @@ public class InsertMovie {
             Connection connection = DriverManager.getConnection(url, username, password);
             String sql = "SELECT * FROM filtered_view_country_";
 
-
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 ResultSet resultSet = statement.executeQuery();
                 List<InMovieDTO> movies = new ArrayList<>();
@@ -192,7 +191,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList, running_time, rating);
+                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                            running_time, rating);
                     movies.add(movie);
                 }
 
@@ -204,7 +204,6 @@ public class InsertMovie {
         } catch (ClassNotFoundException e) {
             System.out.println("클래스 못 찾음");
         }
-
 
     }
 
@@ -312,8 +311,8 @@ public class InsertMovie {
                 System.out.println("니 프로그램은 고장났어 병신아");
         }
 
-//        createFilteredGenreView(selectedOption); // 프로시저 호출
-//        showFilteredGenreView(selectedOption);
+        // createFilteredGenreView(selectedOption); // 프로시저 호출
+        // showFilteredGenreView(selectedOption);
         return selectedOption;
     }
 
@@ -488,7 +487,8 @@ public class InsertMovie {
                 String running_time = resultSet.getString("running_time");
                 String rating = resultSet.getString("rating");
 
-                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director + " " + running_time + " " + rating);
+                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director
+                        + " " + running_time + " " + rating);
             }
 
             // 자원 해제
@@ -531,7 +531,8 @@ public class InsertMovie {
                 String running_time = resultSet.getString("running_time");
                 String rating = resultSet.getString("rating");
 
-                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director + " " + running_time + " " + rating);
+                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director
+                        + " " + running_time + " " + rating);
             }
 
             // 자원 해제
@@ -574,7 +575,8 @@ public class InsertMovie {
                 String running_time = resultSet.getString("running_time");
                 String rating = resultSet.getString("rating");
 
-                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director + " " + running_time + " " + rating);
+                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director
+                        + " " + running_time + " " + rating);
             }
 
             // 자원 해제
@@ -617,7 +619,8 @@ public class InsertMovie {
                 String running_time = resultSet.getString("running_time");
                 String rating = resultSet.getString("rating");
 
-                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director + " " + running_time + " " + rating);
+                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director
+                        + " " + running_time + " " + rating);
             }
 
             // 자원 해제
@@ -660,7 +663,8 @@ public class InsertMovie {
                 String running_time = resultSet.getString("running_time");
                 String rating = resultSet.getString("rating");
 
-                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director + " " + running_time + " " + rating);
+                System.out.println(movieId + " " + title + " " + genre + " " + keyword + " " + country + " " + director
+                        + " " + running_time + " " + rating);
             }
 
             // 자원 해제
