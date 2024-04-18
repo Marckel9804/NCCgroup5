@@ -39,7 +39,7 @@ public class InMovieDTO {
 
     @Override
     public String toString() {
-        return movie_id + " " + title + " " + genre + " " + keyword + " " + country + " " + director + " " + running_time + " " + rating;
+        return movie_id + " " + title + " " + release_year + " " + genre + " " + keyword + " " + country + " " + director + " " + running_time + " " + rating;
     }
 }
 
