@@ -289,7 +289,7 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, 0, genreList, keywordList, country, directorList,
                             running_time, rating);
 
                     movies.add(movie);
@@ -412,7 +412,7 @@ public class InsertMovie {
     // }
 
     private static void createFilteredView(String selectedGenre, String selectedRating, String selectedKeyword,
-            String selectedCountry, String selectedRunningTime) {
+                                           String selectedCountry, String selectedRunningTime) {
         String viewName;
         String createViewSQL;
 
