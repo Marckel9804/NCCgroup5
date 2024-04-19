@@ -1,16 +1,12 @@
 package com.project1.group5.frame.board;
 
 import javax.swing.*;
-
-import com.project1.group5.db.OzoDB;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BoardEdit extends JFrame {
@@ -18,52 +14,53 @@ public class BoardEdit extends JFrame {
     private JLabel lblRating;
     private JLabel lblReview;
     private JLabel lblHashText;
-    // private JLabel lblUsername; // 작성자 라벨 추가
     private JTextField tfMovieName;
     private JComboBox<Integer> cmbRating;
     private JTextArea taReview;
     private JTextField tfHashText;
-    // private JTextField tfUsername; // 작성자 텍스트 필드 추가
     private JButton btnSave;
-    private JButton btnCancel; // 추가된 취소 버튼
 
     // 데이터베이스 연결
-    private static final String DB_URL = OzoDB.DB_URL;
-    private static final String DB_USER = OzoDB.DB_USER;
-    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "1234";
     private int board_id;
 
     BoardFrame board;
-
-    public BoardEdit(String movieName, int rating, String review, String hashText, JFrame parentFrame,
-            int boardID) {
+    public BoardEdit(String movieName, int rating, String review, String hashText, JFrame parentFrame) {
+        init();
+        setDisplay();
+        setData(movieName, rating, review, hashText);
+        addListeners(parentFrame);
+//        board = (Board) parentFrame;
+    }
+    public BoardEdit(String movieName, int rating, String review, String hashText, JFrame parentFrame, int boardID) {
         init();
         setDisplay();
         setData(movieName, rating, review, hashText);
         this.board_id = boardID; // boardID를 저장
-        addListeners();
+        addListeners(parentFrame);
         board = (BoardFrame) parentFrame;
     }
 
+    public BoardEdit(String movieName, int rating, String username, String hashText, String username1, BoardFrame boardFrame, int boardID) {
+    }
+
     public void init() {
-        lblMovieName = new JLabel("영화 제목");
-        lblRating = new JLabel("평점");
-        lblReview = new JLabel("리뷰");
-        lblHashText = new JLabel("해시태그");
-        // lblUsername = new JLabel("작성자"); // 작성자 라벨 초기화
+        lblMovieName = new JLabel("영화 제목:");
+        lblRating = new JLabel("평점:");
+        lblReview = new JLabel("리뷰:");
+        lblHashText = new JLabel("해시태그:");
 
         tfMovieName = new JTextField(20);
-        cmbRating = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+        cmbRating = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
         taReview = new JTextArea(10, 20);
         tfHashText = new JTextField(20);
-        // tfUsername = new JTextField(20); // 작성자 텍스트 필드 초기화
 
-        btnSave = new JButton("수정");
-        btnCancel = new JButton("취소");
+        btnSave = new JButton("저장");
     }
 
     public void setDisplay() {
-        setTitle("게시글 수정");
         JPanel panel = new JPanel(new GridLayout(0, 1));
 
         panel.add(lblMovieName);
@@ -74,26 +71,17 @@ public class BoardEdit extends JFrame {
         panel.add(new JScrollPane(taReview));
         panel.add(lblHashText);
         panel.add(tfHashText);
-        // panel.add(lblUsername); // 작성자 정보 추가
-        // panel.add(tfUsername); // 작성자 정보 추가
+        panel.add(btnSave);
 
-        // 각 라벨을 오른쪽에 정렬
         for (Component component : panel.getComponents()) {
             if (component instanceof JLabel) {
                 ((JLabel) component).setHorizontalAlignment(SwingConstants.RIGHT);
             }
         }
 
-        // 버튼 패널에 저장 버튼과 취소 버튼 추가
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(btnSave);
-        buttonPanel.add(btnCancel);
-
-        panel.add(buttonPanel);
-
         add(panel);
 
-        setSize(800, 600);
+        setSize(600, 600);
 
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -105,78 +93,45 @@ public class BoardEdit extends JFrame {
         cmbRating.setSelectedItem(rating);
         taReview.setText(review);
         tfHashText.setText(hashText);
-        // tfUsername.setText(username); // 작성자 정보 설정
     }
 
-    public void addListeners() {
+    public void addListeners(JFrame parentFrame) {
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String movieName = tfMovieName.getText();
-                int rating = (int) cmbRating.getSelectedItem();
+                Integer rating = (Integer) cmbRating.getSelectedItem(); // Integer로 변경
                 String review = taReview.getText();
                 String hashText = tfHashText.getText();
-                // String username = tfUsername.getText(); // 작성자 정보 가져오기
 
                 // DB에 수정된 데이터 업데이트
-                updateMovieBoardData(movieName, review, hashText, board.mp.getName(), board_id, rating);
+                updateMovieBoardData(movieName, review, hashText, board_id, rating); // rating을 Integer로 변경
 
                 // 수정 페이지 닫기
                 dispose();
 
                 // 부모 프레임 재표시
-                board.updateBoardTable();
-            }
-        });
-
-        // 취소 버튼 액션 리스너 추가
-        btnCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // 수정 페이지 닫기
-                dispose();
+                board.updateBoardTable(); //DB갖다와라
+                board.repaint();
+                // parentFrame.setVisible(true);
             }
         });
     }
 
-    public void updateMovieBoardData(String movieName, String review, String hashText, String username, int board_id,
-            int rating) {
+    public void updateMovieBoardData(String movieName, String review, String hashText, int board_id, Integer rating) {
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            conn.setAutoCommit(false); // 자동 커밋 비활성화
-
-            String deleteCommentsSQL = "DELETE FROM B_Comment WHERE board_id = ?";
-            String updateBoardSQL = "UPDATE Board SET b_title = ?, b_review = ?, hash_text = ?, b_count = 0, rating = ?, username = ? WHERE board_id = ?";
-            try (PreparedStatement deleteCommentsStmt = conn.prepareStatement(deleteCommentsSQL);
-                    PreparedStatement updateBoardStmt = conn.prepareStatement(updateBoardSQL)) {
-                deleteCommentsStmt.setInt(1, board_id);
-                deleteCommentsStmt.executeUpdate(); // 해당 게시글의 댓글 삭제
-
-                updateBoardStmt.setString(1, movieName);
-                updateBoardStmt.setString(2, review);
-                updateBoardStmt.setString(3, hashText);
-                updateBoardStmt.setInt(4, rating);
-                updateBoardStmt.setString(5, username);
-                updateBoardStmt.setInt(6, board_id);
-
-                updateBoardStmt.executeUpdate(); // 수정된 데이터 업데이트
-
-                conn.commit();
-                JOptionPane.showMessageDialog(BoardEdit.this, "게시글이 수정되었습니다.");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(BoardEdit.this, "게시글 수정에 실패했습니다.");
-            }
+            String sql = "UPDATE Board SET b_title = ?, b_review = ?, hash_text = ?,b_count=0, rating = ? WHERE board_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, movieName);
+            pstmt.setString(2, review);
+            pstmt.setString(3, hashText);
+            pstmt.setInt(4, rating); // 업데이트할 rating 값 설정
+            pstmt.setInt(5, board_id); // 이 부분에서 board_id를 사용하도록 변경
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(BoardEdit.this, "게시글이 수정되었습니다.");
         } catch (SQLException ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(BoardEdit.this, "데이터베이스 연결에 실패했습니다.");
+            JOptionPane.showMessageDialog(BoardEdit.this, "게시글 수정에 실패했습니다.");
         }
-    }
-
-    public static void main(String[] args) {
-        // 예시 실행 코드
-        SwingUtilities.invokeLater(() -> {
-            JFrame parentFrame = new JFrame();
-            new BoardEdit("Movie", 8, "Great movie", "#action #thriller", parentFrame, 1).setVisible(true);
-        });
     }
 }
