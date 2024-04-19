@@ -1,6 +1,7 @@
 package com.project1.group5.frame.register;
 
 import javax.swing.*;
+
 import com.project1.group5.db.OzoDB;
 import com.project1.group5.db.register.RegisterDTO;
 import com.project1.group5.db.register.RegisterService;
@@ -25,9 +26,11 @@ public class RegisterFrame extends JFrame {
     private JButton registerButton; // 회원가입 버튼
 
     // 데이터베이스 가져오기
+
     private static final String DB_URL = OzoDB.DB_URL;
     private static final String DB_USER = OzoDB.DB_USER;
     private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
+
 
     // 회원가입 프레임 생성자
     public RegisterFrame() {
@@ -67,6 +70,7 @@ public class RegisterFrame extends JFrame {
         idPanel.setBackground(Color.WHITE); // 패널의 배경색을 하얀색으로 설정
 
         // 아이디 입력 필드
+
         idField = new JTextField(15);
         idField.setPreferredSize(new Dimension(200, 35));
         idField.setForeground(Color.GRAY); // 회색으로 설정
@@ -92,10 +96,33 @@ public class RegisterFrame extends JFrame {
 
         // 아이디 중복확인 버튼 추가
         JButton checkDuplicateButton = new JButton("중복 확인");
-        checkDuplicateButton.setPreferredSize(new Dimension(80, 35));
+        checkDuplicateButton.setPreferredSize(new Dimension(100, 35));
+        checkDuplicateButton.setBackground(new Color(208, 154, 255));
         checkDuplicateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // 중복 확인 로직 추가
+                String id = idField.getText(); // 아이디 필드에서 입력된 값을 가져옴
+                if (id.isEmpty() || id.equals("아이디를 입력하세요")) {
+                    // 아이디가 입력되지 않은 경우 메시지 출력
+                    JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", "입력 필요", JOptionPane.WARNING_MESSAGE);
+                    return; // 함수 종료
+                }
+                // 데이터베이스에서 중복된 아이디 검색
+                try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+                    String query = "SELECT * FROM users WHERE id=?"; //찾기
+                    PreparedStatement pstmt = conn.prepareStatement(query);
+                    pstmt.setString(1, id);
+                    ResultSet rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        // 중복된 아이디 o
+                        JOptionPane.showMessageDialog(null, "이미 사용 중인 아이디입니다.", "중복 확인", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        // 중복된 아이디x
+                        JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.", "중복 확인", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "중복 확인 중 오류가 발생했습니다.", "오류", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         idPanel.add(checkDuplicateButton); // 버튼을 idPanel에 추가
@@ -105,7 +132,7 @@ public class RegisterFrame extends JFrame {
 
         // 비밀번호 입력 필드
         passwordField = new JPasswordField(15);
-        passwordField.setPreferredSize(new Dimension(200, 35));
+        passwordField.setPreferredSize(new Dimension(3000, 35));
         passwordField.setEchoChar((char) 0); // 입력 전에는 텍스트 보이도록 설정
         passwordField.setText("비밀번호를 입력하세요");
         passwordField.setForeground(Color.GRAY);
@@ -117,7 +144,6 @@ public class RegisterFrame extends JFrame {
                     passwordField.setEchoChar('*'); // 입력 시 '*' 문자 보이도록 설정
                 }
             }
-
             @Override
             public void focusLost(FocusEvent e) {
                 if (String.valueOf(passwordField.getPassword()).equals("")) {
@@ -274,6 +300,10 @@ public class RegisterFrame extends JFrame {
 
         genderGroup = new ButtonGroup();
 
+
+        centerPanel.add(genderPanel, gbc);
+        mainPanel.add(registerLabel, BorderLayout.NORTH); // 기존 코드, 텍스트 라벨을 상단에 추가
+
         genderGroup.add(male);
         genderPanel.add(male);
         genderGroup.add(female);
@@ -319,12 +349,12 @@ public class RegisterFrame extends JFrame {
             e.printStackTrace();
         }
     }
-
     // 회원가입 버튼 리스너 클래스
     private class RegisterButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             // RegisterDTO 객체 생성
+
             try {
                 String gender = "";
                 if (male.isSelected()) {
@@ -342,6 +372,7 @@ public class RegisterFrame extends JFrame {
                 System.out.println("DTO도 생성함");
                 RegisterService rs = new RegisterService();
                 int res = rs.registerUser(dto);
+                System.out.println("로그인 코드도 반환함");
                 // 회원가입 반환 메시지 출력
                 switch (res) {
                     case 0:
@@ -357,13 +388,14 @@ public class RegisterFrame extends JFrame {
                         JOptionPane.showMessageDialog(RegisterFrame.this, "ID는 6자 이상으로 만들어주세요");
                         break;
                     default:
-                        JOptionPane.showMessageDialog(RegisterFrame.this, "뭔가가 잘못됨");
+                        JOptionPane.showMessageDialog(RegisterFrame.this, "로그인 코드가 반환이 안되잖니. 프로시저를 확인해보렴");
                         break;
                 }
             } catch (Exception err) {
                 // TODO: handle exception
                 JOptionPane.showMessageDialog(RegisterFrame.this, "몬가... 몬가 잘못됨... 뭘까 그게...");
             }
+
 
         }
     }

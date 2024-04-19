@@ -53,8 +53,8 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
     JLabel jl_left;
     JLabel jl_right;
 
-    ToJbutton toMyPage;
-    ToJbutton toBoard;
+    ToJButton toMyPage;
+    ToJButton toBoard;
 
     // 임시로 선택지 클릭 영역 만들기 위한 도형 객체. 차후에 변수명 수정 예정
     Shape rc_s;
@@ -98,7 +98,7 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                     }
                 }
             };
-            toMyPage = new ToJbutton(f_width - 300, 10, "마이페이지", mypage);
+            toMyPage = new ToJButton(f_width - 300, 10, "마이페이지", mypage);
         } else {
             ActionListener login = new ActionListener() {
 
@@ -119,7 +119,7 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                     }
                 }
             };
-            toMyPage = new ToJbutton(f_width - 300, 10, "로그인하기", login);
+            toMyPage = new ToJButton(f_width - 300, 10, "로그인하기", login);
         }
 
         ActionListener board = new ActionListener() {
@@ -140,7 +140,7 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                 }
             }
         };
-        toBoard = new ToJbutton(f_width - 180, 10, "게시판", board);
+        toBoard = new ToJButton(f_width - 180, 10, "게시판", board);
         panelForGraphics.setLayout(null);
         panelForGraphics.add(jl_left);
         panelForGraphics.add(jl_right);
@@ -156,11 +156,12 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
         otherFrame = false;
 
         setSize(f_width, f_height);
-        setResizable(false);// 창 크기 조절 불가능
-        setLocationRelativeTo(null);// 위치 = 모니터 정중앙
+        setResizable(false);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         // 이미지 받아오기. 디렉토리는 프로젝트 폴더에 맞게 수정
+
         String imgDir = "src/main/java/com/project1/group5/frame/reccommandImages/";
         characters = new Image[charCount];
         choiceImgs = new Image[charCount * 2];
@@ -184,7 +185,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
         // 그래픽을 먼저 로딩시키기 위해 사진들을 전부 Jpanel에 붙여서 프레임 위에 붙일것임
         panelForGraphics = new JPanel() {
-            // 이하 전부 그래픽 올리는 메소드들. repaint()를 통해 재호출이 가능함.
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -193,21 +193,21 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                 update(g);
             }
 
-            public void drawCharacter() {// 캐릭터 이미지를 그려줘라는 뜻
+            public void drawCharacter() {
                 int size = 300;
                 if (buffg != null) {
                     buffg.drawImage(characters[nthChacracter], 0, f_height - size, size, size, this);
                 }
             }
 
-            public void drawOzo() {// 마우스 좌표 -50 위치에 주어진 크기의 오조 로고를 그려줘라는
+            public void drawOzo() {
                 int size = 110;
                 if (buffg != null) {
                     buffg.drawImage(ozo, mousex - 50, mousey - 50, size, size, this);
                 }
             }
 
-            public void drawOzland() {// 배경을 그려줘라는 뜻
+            public void drawOzland() {
                 if (buffg != null) {
                     buffg.drawImage(ozland, 0, menu, f_width, f_height - menu, this);
                 }
@@ -223,7 +223,7 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                 }
             }
 
-            public void update(Graphics g) {// repaint()혹은 최초 로딩시 해당 순서로 draw를 호출하고 업데이트함.
+            public void update(Graphics g) {
                 drawOzland();
                 drawCharacter();
                 drawChoices();
@@ -297,8 +297,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // System.out.println(mousex+" "+mousey);
-
     }
 
     @Override
@@ -307,8 +305,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        // System.out.println("Mouse moved at coordinates: " + e.getX() + ", " +
-        // e.getY());
         mousex = e.getX();
         mousey = e.getY();
         repaint();
@@ -320,16 +316,15 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
     @Override
     public void run() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'run'");
     }
 
-    class ToJbutton extends JButton {
+    class ToJButton extends JButton {
 
-        ToJbutton(int x, int y, String text, ActionListener al) {
+        ToJButton(int x, int y, String text, ActionListener al) {
             setBorderPainted(false);
             setContentAreaFilled(false);
-            setText("<html><u>" + text + "</u></html>");
+            setText(text);
             setFont(new Font("Pretendard", Font.BOLD, 20));
             setForeground(Color.YELLOW);
             setBounds(x, y, 200, 30);

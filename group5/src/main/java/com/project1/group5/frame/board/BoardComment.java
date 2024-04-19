@@ -1,9 +1,6 @@
 package com.project1.group5.frame.board;
 
 import javax.swing.*;
-
-import com.project1.group5.db.OzoDB;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,16 +12,14 @@ public class BoardComment extends JFrame {
     private int boardID;
 
     // 데이터베이스 연결 정보
-    private static final String DB_URL = OzoDB.DB_URL;
-    private static final String DB_USER = OzoDB.DB_USER;
-    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
-
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "1234";
     public BoardComment(int boardID) {
         this.boardID = boardID;
         initComponents();
         setDisplay();
     }
-
     private void initComponents() {
         commentTextArea = new JTextArea(5, 30);
         submitButton = new JButton("작성");
@@ -36,7 +31,6 @@ public class BoardComment extends JFrame {
             }
         });
     }
-
     private void setDisplay() {
         setTitle("댓글 작성");
 
@@ -56,7 +50,6 @@ public class BoardComment extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-
     private void submitComment() {
         String commentText = commentTextArea.getText().trim();
         if (commentText.isEmpty()) {
@@ -72,6 +65,7 @@ public class BoardComment extends JFrame {
 
             JOptionPane.showMessageDialog(this, "댓글이 등록되었습니다.");
             commentTextArea.setText(""); // 댓글 입력창 초기화
+
 
         } catch (SQLException ex) {
             ex.printStackTrace();
