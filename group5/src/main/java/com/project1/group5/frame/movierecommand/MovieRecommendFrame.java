@@ -28,22 +28,17 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
     // 캐릭터 이미지 경로
     String[] imageList = { "pondering_dorothy", "pondering_scarecrow", "pondering_tin_man", "pondering_cowardly_lion",
-<<<<<<< HEAD
             "toto" };
+
     int charCount = imageList.length;
-    String[] choiceImgList = { "shoe", "bag", "heart", "portion", "bone" };
-    String[] choices = { "장르1", "장르2", "연도1", "연도2", "심의1", "심의2", "국가1", "국가2", "러닝타임1", "러닝타임2" };
-=======
-            "good_witch_glinda", "wicked_witch" };
 
     // 선택지
     int years[] = { 1980, 1990, 2000, 2010, 2020 };
-    String countries[] = { "한국", "미국" };
     String ratings[] = { "전체", "12", "15", "청불" };
-    String updown[] = { "up", "down" };
 
-    String[] choices = { "장르1", "장르2", "연도1", "연도2", "심의1", "심의2", "국가1", "국가2", "러닝타임1", "러닝타임2", "감독1", "감독2" };
->>>>>>> Frame
+    String[] choiceImgList = { "shoe", "bag", "heart", "portion", "bone" };
+    String[] choices = { "장르1", "장르2", "연도1", "연도2", "심의1", "심의2", "국가1", "국가2", "러닝타임1", "러닝타임2" };
+
     // 캐릭터 이미지 받아올 이미지 배열
     Image[] characters;
     Image[] choiceImgs;
@@ -112,7 +107,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                     if (!otherFrame) {
                         LoginFrame loginPage = new LoginFrame(mp);
                         loginPage.setVisible(true);
-<<<<<<< HEAD
                         MovieRecommendFrame.this.setVisible(false);
                         // otherFrame = true;
                         loginPage.addWindowListener((WindowListener) new WindowAdapter() {
@@ -121,9 +115,7 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                                 MovieRecommendFrame.this.setVisible(true);
                             }
                         });
-=======
-                        MovieRecommendFrame.this.dispose();
->>>>>>> Frame
+
                     }
                 }
             };
@@ -178,33 +170,7 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
             choiceImgs[i * 2 + 1] = new ImageIcon(imgDir + choiceImgList[i] + 2 + ".png").getImage();
         }
         ozo = new ImageIcon(imgDir + "ozo.png").getImage();
-        // ozland = new ImageIcon(imgDir + "ozland.png").getImage();
-        try {
-            Connection conn = null;
-            ResultSet rs = null;
-            Statement stmt = null;
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(OzoDB.DB_URL, OzoDB.DB_USER,
-                    OzoDB.DB_PASSWORD);
-            System.out.println("데이터베이스 연결 성공");
-            stmt = conn.createStatement();
-            String getImg = "select image from img_test where img_name = 'ozland'";
-
-            rs = stmt.executeQuery(getImg);
-            System.out.println("rs에 뭔가 담김");
-            if (rs.next()) {
-                byte[] imgBytes = rs.getBytes("image");
-                ozland = new ImageIcon(imgBytes).getImage();
-                ImageIcon ic = new ImageIcon(ozland);
-                System.out.println(ic.getIconWidth());
-                // ozland = new ImageIcon(imgDir + "ozland.png").getImage();
-
-            }
-
-        } catch (Exception e) {
-            System.out.println("몬가 잘못됨");
-            e.printStackTrace(); // 예외의 상세 정보를 출력합니다.
-        }
+        ozland = new ImageIcon(imgDir + "ozland.png").getImage();
 
         // J라벨 임의로 위치 및 텍스트 조정
         jl_left = new JLabel(choices[nthChacracter * 2]);
@@ -267,10 +233,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                 }
             }
         };
-<<<<<<< HEAD
-
-=======
->>>>>>> Frame
         addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
