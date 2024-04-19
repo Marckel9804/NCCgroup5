@@ -1,5 +1,6 @@
 package com.project1.group5.frame.board;
 
+import com.project1.group5.db.OzoDB;
 import com.project1.group5.frame.mainPage.MainPage;
 
 import javax.swing.*;
@@ -15,17 +16,17 @@ public class BoardFrame extends JFrame {
     private JTable table; // Jtable로 테이블 표시
     private DefaultTableModel tableModel; // 데이터 관리
     private JTextField searchField; // 검색어 관리
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm"; //DB연동
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
 
     private Timer imageTimer;
     private JLabel[] imageLabels;
     private int currentImageIndex = 0;
-    private String[] imagePaths = {"aa.png", "j.png", "g.png", "cc.png", "b.png",
-            "ee.png", "c.png", "dd.png", "q.png", "d.png", "e.png", "f.png"
-            , "a.png", "h.png", "r.png", "ff.png", "gg.png", "i.png", "m.png",
-            "k.png", "l.png", "bb.png", "n.png", "o.png", "p.png"};
+    private String[] imagePaths = { "aa.png", "j.png", "g.png", "cc.png", "b.png",
+            "ee.png", "c.png", "dd.png", "q.png", "d.png", "e.png", "f.png", "a.png", "h.png", "r.png", "ff.png",
+            "gg.png", "i.png", "m.png",
+            "k.png", "l.png", "bb.png", "n.png", "o.png", "p.png" };
     String imgDir = "src/main/java/com/project1/group5/frame/boardImages/"; // 이미지 경로 설정
 
     MainPage mp;
@@ -37,13 +38,12 @@ public class BoardFrame extends JFrame {
         addComponents(); // GUI 추가 메서드
         updateBoardTable(); // 테이블 업데이트 메서드
 
-
-        table.getColumnModel().getColumn(0).setPreferredWidth(10);   // 게시글 너비 설정
+        table.getColumnModel().getColumn(0).setPreferredWidth(10); // 게시글 너비 설정
         table.getColumnModel().getColumn(1).setPreferredWidth(150);
         table.getColumnModel().getColumn(2).setPreferredWidth(10);
         table.getColumnModel().getColumn(5).setPreferredWidth(10);
 
-        JPanel panelImageLeft = new JPanel(new BorderLayout());   // 이미지 표시
+        JPanel panelImageLeft = new JPanel(new BorderLayout()); // 이미지 표시
         JPanel panelImageRight = new JPanel(new BorderLayout());
 
         imageLabels = new JLabel[imagePaths.length];// 이미지 배열 생성
@@ -65,7 +65,7 @@ public class BoardFrame extends JFrame {
         panelImageRight.setBackground(new Color(240, 255, 240));
 
         // 이미지 변경 타이머 설정
-        imageTimer = new Timer(5000, new ActionListener() { //5초마다 변경
+        imageTimer = new Timer(5000, new ActionListener() { // 5초마다 변경
             @Override
             public void actionPerformed(ActionEvent e) {
                 currentImageIndex = (currentImageIndex + 2) % imagePaths.length;
@@ -86,8 +86,9 @@ public class BoardFrame extends JFrame {
     public void updateImages() {
         imageLabels[currentImageIndex % 2].setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[currentImageIndex])
                 .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
-        imageLabels[(currentImageIndex + 1) % 2].setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[(currentImageIndex + 1) % imagePaths.length])
-                .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
+        imageLabels[(currentImageIndex + 1) % 2]
+                .setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[(currentImageIndex + 1) % imagePaths.length])
+                        .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
     }
 
     public void init() { //
@@ -134,13 +135,12 @@ public class BoardFrame extends JFrame {
         header.setFont(new Font("SansSerif", Font.BOLD, 11));
         header.setForeground(Color.WHITE);
         header.setBackground(new Color(60, 179, 113));
-        //중앙 정렬
+        // 중앙 정렬
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer();
         table.setBackground(new Color(245, 255, 250));
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
         scrollPane.setBackground(new Color(240, 255, 240)); // 배경색
     }
-
 
     public void addComponents() {
         JPanel panelButtons = new JPanel();
@@ -210,8 +210,7 @@ public class BoardFrame extends JFrame {
         // 버튼 모양 변경
         btnView.setFocusPainted(false);
         btnView.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
-//        btnView.addActionListener(e -> openView());
-
+        // btnView.addActionListener(e -> openView());
 
         JButton btnBackToMain = new JButton("뒤로가기");
         btnBackToMain.setBackground(Color.WHITE);
@@ -219,16 +218,15 @@ public class BoardFrame extends JFrame {
         btnView.setFocusPainted(false);
         btnView.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기 조절
         btnView.addActionListener(e -> openView());
-//        btnBackToMain.addActionListener(e -> new MainPage());
+        // btnBackToMain.addActionListener(e -> new MainPage());
         btnBackToMain.addActionListener(e -> {
-            dispose(); //닫기
+            dispose(); // 닫기
         });
         panelButtons.setBackground(new Color(240, 255, 240));
 
-
-//        panelButtons.add(btnAdd);
-//        panelButtons.add(btnEdit);
-//        panelButtons.add(btnDelete);
+        // panelButtons.add(btnAdd);
+        // panelButtons.add(btnEdit);
+        // panelButtons.add(btnDelete);
 
         if (mp != null && mp.getLoginCheck()) {
             panelButtons.add(btnAdd);
@@ -271,7 +269,7 @@ public class BoardFrame extends JFrame {
                 String username = rs.getString("username");
                 String hashText = rs.getString("hash_text");
                 int viewCount = rs.getInt("b_count");
-                Object[] row = {boardID, movieName, rating, username, hashText, viewCount};
+                Object[] row = { boardID, movieName, rating, username, hashText, viewCount };
                 tableModel.addRow(row);
             }
         } catch (SQLException ex) {
@@ -340,7 +338,7 @@ public class BoardFrame extends JFrame {
                 }
                 String hashText = rs.getString("hash_text");
                 int viewCount = rs.getInt("b_count");
-                Object[] row = {boardID, movieName, rating, username, hashText, viewCount};
+                Object[] row = { boardID, movieName, rating, username, hashText, viewCount };
                 tableModel.addRow(row);
             }
         } catch (SQLException ex) {

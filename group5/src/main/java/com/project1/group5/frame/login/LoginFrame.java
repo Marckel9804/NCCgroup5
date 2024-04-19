@@ -18,17 +18,17 @@ public class LoginFrame extends JFrame {
     private JPasswordField passwordField; // 비밀번호 입력 필드
     private JButton loginButton; // 로그인 버튼
 
-    //데이터베이스 가져오기
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    // 데이터베이스 가져오기
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
     // 데이터베이스 가져오기
     private String loggedInUsername = null;
     MainPage mp;
 
     // 로그인 프레임 생성자
     public LoginFrame(MainPage mp) {
-        int f_width = 1200;
+        int f_width = 1100;
         int f_height = 600;
         setTitle("Login"); // 프레임 타이틀 설정
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 종료 동작 설정
@@ -168,20 +168,19 @@ public class LoginFrame extends JFrame {
 
             try {
                 Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); // 데이터베이스 연결
-                CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?, ?, ?,?,?,?)}"); // 저장 프로시저 호출
+                CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?, ?, ?, ?, ?, ?)}"); // 저장 프로시저 호출
                 stmt.setString(1, id); // 아이디 설정
                 stmt.setString(2, password); // 비밀번호 설정
                 stmt.registerOutParameter(3, Types.INTEGER); // 결과 코드 파라미터 등록
                 stmt.registerOutParameter(4, Types.VARCHAR); // 유저 이름 반환
                 stmt.registerOutParameter(5, Types.INTEGER); // 나이 반환
                 stmt.registerOutParameter(6, Types.VARCHAR); // 아이디 반환
-                stmt.execute(); // 저장 프로시저 실행
+                stmt.execute(); // 저장 프로시저 실행\
 
                 int resultCode = stmt.getInt(3); // 결과 코드 가져오기
                 String userName = stmt.getString(4);
                 int userAge = stmt.getInt(5);
                 String userId = stmt.getString(6);
-
 
                 if (resultCode == 0) {
                     loggedInUsername = userName;
@@ -223,6 +222,7 @@ public class LoginFrame extends JFrame {
             }
         }
     }
+
     public String getLoggedInUsername() {
         return loggedInUsername;
     }
