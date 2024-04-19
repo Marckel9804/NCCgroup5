@@ -38,8 +38,11 @@ public class MainPage extends JFrame {
     public void init() {
         // 메인 프레임 생성
         loginCheck = false;
+        user_id = "그없";
+        user_name = "그없";
+        user_age = -1;
         otherFrame = false;
-        f_width = 1200;
+        f_width = 1100;
         f_height = 600;
         setDefaultCloseOperation(EXIT_ON_CLOSE); // 프레임 닫기 설정
         setSize(f_width, f_height); // 프레임 크기 설정
@@ -66,11 +69,7 @@ public class MainPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!otherFrame) {
-                    // 로그인 페이지로 이동하는 코드를 추가하세요.
-                    // Login 클래스의 인스턴스 생성
                     LoginFrame loginPage = new LoginFrame(MainPage.this);
-                    // 보이기 메소드 호출
-                    loginPage.setVisible(true);
                     otherFrame = true;
                     loginPage.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
@@ -92,10 +91,12 @@ public class MainPage extends JFrame {
                 if (!otherFrame) {
                     MovieRecommendFrame mf = new MovieRecommendFrame(MainPage.this);
                     otherFrame = true;
+                    MainPage.this.setVisible(false);
                     mf.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
+                            MainPage.this.setVisible(true);
                         }
                     });
                 }
@@ -106,7 +107,7 @@ public class MainPage extends JFrame {
         // 버튼을 프레임에 추가
         add(loginButton);
         add(runButton);
-
+        // removeAll();
         // 프레임을 보이도록 설정
         setVisible(true);
     }
@@ -143,6 +144,15 @@ public class MainPage extends JFrame {
         return user_name;
     }
 
+    public void erasePage() {
+
+        getContentPane().removeAll();
+        init();
+        revalidate();
+        repaint();
+
+    }
+
     public void loggedInPage() {
         ActionListener newL = new ActionListener() {
             @Override
@@ -150,10 +160,12 @@ public class MainPage extends JFrame {
                 if (!otherFrame) {
                     BoardFrame bf = new BoardFrame(MainPage.this);
                     otherFrame = true;
+                    MainPage.this.setVisible(false);
                     bf.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
+                            MainPage.this.setVisible(true);
                         }
                     });
                 }
@@ -165,10 +177,12 @@ public class MainPage extends JFrame {
                 if (!otherFrame) {
                     MovieRecommendFrame mr = new MovieRecommendFrame(MainPage.this);
                     otherFrame = true;
+                    MainPage.this.setVisible(false);
                     mr.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
+                            MainPage.this.setVisible(true);
                         }
                     });
                 }
@@ -176,8 +190,24 @@ public class MainPage extends JFrame {
         };
 
         loginButton.changeButton("게시판", lButton, newL);
+
         runButton.changeButton("영화추천", rButton, newR);
 
+        loginButton.setBounds(f_width / 2 - 130 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+
+        runButton.setBounds(f_width / 2 + 20, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        LoginPageButton lo = new LoginPageButton("로그아웃");
+        ActionListener logout = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPage.this.erasePage();
+            }
+
+        };
+        lo.setBounds(f_width / 2 + 20 + 140, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        lo.addActionListener(logout);
+        add(lo);
+        repaint();
     }
 
     public static void main(String[] args) {

@@ -7,26 +7,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
 public class MovieResultFrame extends JFrame {
-    /*여기있는 이미지를 프레임에 그려줄거임.*/
-    Image background = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/res2.png").getImage();//배경이미지
-    Image poster = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/poster.png").getImage();//포스터 샘플
+    /* 여기있는 이미지를 프레임에 그려줄거임. */
+    Image background = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/res2.png").getImage();// 배경이미지
+    Image poster = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/poster.png").getImage();// 포스터
+                                                                                                                   // 샘플
     Image conver = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/recover.png").getImage();
     Image oz = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/oz1.png").getImage();
     JPanel panelForGraphics;
     Graphics buffg;
     Image buffImage;
 
-    //프레임 크기
+    // 프레임 크기
     int f_width = 1200;
     int f_height = 600;
 
-    //버튼 객체
+    // 버튼 객체
     Buttons toBoard;
     Buttons regame;
 
-    //라벨들 객체
+    // 라벨들 객체
     JLabel title;
     JLabel year;
 
@@ -39,34 +39,41 @@ public class MovieResultFrame extends JFrame {
 
     JLabel runningTime;
 
-    /*생성자*/
+    /* 생성자 */
     MovieResultFrame() {
-        //homeframe();
+        // homeframe();
         Container c = getContentPane();
 
         setTitle("result");
-        setSize(1100, 600);//프레임의 크기
-        setResizable(false);//창의 크기를 변경하지 못하게
+        setSize(1100, 600);// 프레임의 크기
+        setResizable(false);// 창의 크기를 변경하지 못하게
+        setLocationRelativeTo(null);// 위치 = 모니터 정중앙
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        //영화 정보 라벨 생성
-
+        // 영화 정보 라벨 생성
 
         // 버튼 두개 생성
         toBoard = new Buttons(500, 500, "게시판으로");
         regame = new Buttons(605, 500, "다시하기");
 
         // 버튼에 각각 이벤트 달아주기
-        toBoard.addActionListener(new ActionListener() {    //게시판 창 띄우고 result창 끄기
+        toBoard.addActionListener(new ActionListener() { // 게시판 창 띄우고 result창 끄기
             @Override
             public void actionPerformed(ActionEvent e) {
-                new BoardFrame();
-                dispose();
+                BoardFrame bf = new BoardFrame();
+                MovieResultFrame.this.setVisible(false);
+                bf.addWindowListener((WindowListener) new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        MovieResultFrame.this.setVisible(true);
+                    }
+                });
             }
         });
-        regame.addActionListener(new ActionListener() {    //게임 다시하기
+        regame.addActionListener(new ActionListener() { // 게임 다시하기
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MovieRecommendFrame();
+                // new MovieRecommendFrame();
                 dispose();
             }
         });
@@ -75,8 +82,7 @@ public class MovieResultFrame extends JFrame {
 
         setVisible(true);
 
-
-        //배경화면 영화 포스터, 영화 내용 출력
+        // 배경화면 영화 포스터, 영화 내용 출력
         panelForGraphics = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -86,25 +92,25 @@ public class MovieResultFrame extends JFrame {
                 update(g);
             }
 
-            public void drawPoster() {   //출력될 영화 포스터 그리기
+            public void drawPoster() { // 출력될 영화 포스터 그리기
                 if (buffg != null) {
                     buffg.drawImage(poster, 120, 100, 200, 300, this);
                 }
             }
 
-            public void drawConver() {   // 말풍선 그리기
+            public void drawConver() { // 말풍선 그리기
                 if (buffg != null) {
                     buffg.drawImage(conver, 30, -90, 700, 720, this);
                 }
             }
 
-            public void drawOz() {   //오즈 그리기
+            public void drawOz() { // 오즈 그리기
                 if (buffg != null) {
                     buffg.drawImage(oz, 650, 150, 450, 500, this);
                 }
             }
 
-            public void drawBackground() {  // 배경화면 그리기
+            public void drawBackground() { // 배경화면 그리기
                 if (buffg != null) {
                     buffg.drawImage(background, 0, 0, f_width, f_height, this);
                 }
@@ -121,19 +127,17 @@ public class MovieResultFrame extends JFrame {
             }
         };
 
-
         panelForGraphics.setLayout(null);
-        //영화 정보들 선언
+        // 영화 정보들 선언
         title = new Labels(350, 100, "영화제목", 200, 20);
         year = new Labels(350, 120, "영화년도", 200, 20);
         country = new Labels(350, 140, "제작국가", 200, 20);
         director = new Labels(350, 160, "감독1, 감독2", 200, 20);
         runningTime = new Labels(350, 180, "상영시간", 200, 20);
-        genre = new Labels(350, 200, "장르들ㅁㄴㅇㄹㄴㅁㄹㄴㅇㅁㄻㅇㄴㄹ", 200, 40);
+        genre = new Labels(350, 200, "장르들", 200, 40);
         keyword = new Labels(350, 240, "키워드들", 200, 20);
 
-
-        //패널에 모든 라벨, 버튼들 추가
+        // 패널에 모든 라벨, 버튼들 추가
         panelForGraphics.add(title);
         panelForGraphics.add(year);
         panelForGraphics.add(country);
@@ -150,7 +154,7 @@ public class MovieResultFrame extends JFrame {
         setVisible(true);
     }
 
-    class Buttons extends JButton { //버튼 객체
+    class Buttons extends JButton { // 버튼 객체
         Buttons(int x, int y, String text) {
             // 위치, 글 조정
             setBounds(x, y, 100, 30);
@@ -179,13 +183,13 @@ public class MovieResultFrame extends JFrame {
         }
 
         @Override
-        protected void paintBorder(Graphics g) { //버튼 테두리 크리기
+        protected void paintBorder(Graphics g) { // 버튼 테두리 크리기
             g.setColor(Color.white);
             g.drawRoundRect(0, 0, getWidth(), getHeight(), 20, 20); // 테두리를 둥글게 그리는 부분
         }
     }
 
-    class Labels extends JLabel {    // 텍스트 라벨들 객체 (좌표, 들어갈 텍스트, 크기 높이)
+    class Labels extends JLabel { // 텍스트 라벨들 객체 (좌표, 들어갈 텍스트, 크기 높이)
         Labels(int x, int y, String text, int width, int height) {
             setBounds(x, y, width, height);
             setText(text);

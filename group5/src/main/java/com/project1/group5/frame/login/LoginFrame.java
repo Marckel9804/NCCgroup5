@@ -27,7 +27,7 @@ public class LoginFrame extends JFrame {
 
     // 로그인 프레임 생성자
     public LoginFrame(MainPage mp) {
-        int f_width = 1200;
+        int f_width = 1000;
         int f_height = 600;
         setTitle("Login"); // 프레임 타이틀 설정
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 종료 동작 설정
