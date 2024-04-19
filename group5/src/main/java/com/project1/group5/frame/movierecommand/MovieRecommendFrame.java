@@ -28,10 +28,22 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
     // 캐릭터 이미지 경로
     String[] imageList = { "pondering_dorothy", "pondering_scarecrow", "pondering_tin_man", "pondering_cowardly_lion",
+<<<<<<< HEAD
             "toto" };
     int charCount = imageList.length;
     String[] choiceImgList = { "shoe", "bag", "heart", "portion", "bone" };
     String[] choices = { "장르1", "장르2", "연도1", "연도2", "심의1", "심의2", "국가1", "국가2", "러닝타임1", "러닝타임2" };
+=======
+            "good_witch_glinda", "wicked_witch" };
+
+    // 선택지
+    int years[] = { 1980, 1990, 2000, 2010, 2020 };
+    String countries[] = { "한국", "미국" };
+    String ratings[] = { "전체", "12", "15", "청불" };
+    String updown[] = { "up", "down" };
+
+    String[] choices = { "장르1", "장르2", "연도1", "연도2", "심의1", "심의2", "국가1", "국가2", "러닝타임1", "러닝타임2", "감독1", "감독2" };
+>>>>>>> Frame
     // 캐릭터 이미지 받아올 이미지 배열
     Image[] characters;
     Image[] choiceImgs;
@@ -57,7 +69,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
     int nthChacracter = 0;
 
     // 키보드, 마우스 액션을 위한 변수
-    boolean isKeyPressed = false;
     int mousex;
     int mousey;
 
@@ -95,11 +106,13 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
             toMyPage = new ToJbutton(f_width - 300, 10, "마이페이지", mypage);
         } else {
             ActionListener login = new ActionListener() {
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (!otherFrame) {
                         LoginFrame loginPage = new LoginFrame(mp);
                         loginPage.setVisible(true);
+<<<<<<< HEAD
                         MovieRecommendFrame.this.setVisible(false);
                         // otherFrame = true;
                         loginPage.addWindowListener((WindowListener) new WindowAdapter() {
@@ -108,11 +121,15 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                                 MovieRecommendFrame.this.setVisible(true);
                             }
                         });
+=======
+                        MovieRecommendFrame.this.dispose();
+>>>>>>> Frame
                     }
                 }
             };
             toMyPage = new ToJbutton(f_width - 300, 10, "로그인하기", login);
         }
+
         ActionListener board = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -250,7 +267,10 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                 }
             }
         };
+<<<<<<< HEAD
 
+=======
+>>>>>>> Frame
         addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
@@ -269,26 +289,10 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // 왼쪽 오른쪽 키를 누르면 캐릭터 이미지가 넘어가도록 설계한건데 차후 키보드를 통해 왼쪽 오른쪽 선택지를 고르게 할까말까... 암튼 나중엔
-        // 쓸모없음
-        // if (!isKeyPressed) {
-        // if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-        // repaint();
-        // nthChacracter = (nthChacracter + 1) % 6;
-        // isKeyPressed = true;
-        // } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-        // repaint();
-        // nthChacracter = (nthChacracter + 5) % 6;
-        // isKeyPressed = true;
-        // }
-        // }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // if (e.getKeyCode() > 0) {// 키보드 누를때 꾹 눌리면서 눌리고 있는동안 반복해서 실행되는 현상을 방지
-        // isKeyPressed = false;
-        // }
     }
 
     @Override

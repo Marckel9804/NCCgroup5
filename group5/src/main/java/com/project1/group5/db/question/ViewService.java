@@ -4,12 +4,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.project1.group5.db.OzoDB;
+
 public class ViewService {
     static InMovieDTO inMovieDTO = new InMovieDTO();
     String currentViewName = "moviejson";
-    String url = "jdbc:mysql://localhost:3306/world";
-    String username = "root";
-    String password = "1234";
+    String url = OzoDB.DB_URL;
+    String username = OzoDB.DB_USER;
+    String password = OzoDB.DB_PASSWORD;
     String sql = "";
     public String selKeyword;
     public String selGenre;
@@ -21,11 +23,11 @@ public class ViewService {
     Connection connection;
     Statement statement;
 
-    //test를 위한 main thread
+    // test를 위한 main thread
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         ViewService vs = new ViewService();
 
-        //view 만드는 예시
+        // view 만드는 예시
 
         vs.year = 2021;
         System.out.println("년도로 뷰 만들기");
@@ -33,7 +35,7 @@ public class ViewService {
         System.out.println(vs.year);
         vs.selectFromCurrentView();
 
-        vs.country = "미국";
+        vs.country = "한국";
         System.out.println("국가 정한 뷰");
         vs.selectCreate("country");
         vs.selectFromCurrentView();
@@ -43,7 +45,7 @@ public class ViewService {
         vs.selectCreate("rating");
         vs.selectFromCurrentView();
 
-        vs.selUpdown = "up";
+        vs.selUpdown = "down";
         System.out.println("시간 120분 이상 이하로 뷰 만들기");
         vs.selectCreate("time");
         vs.selectFromCurrentView();
@@ -63,7 +65,6 @@ public class ViewService {
         System.out.println("선택된 키워드: " + vs.selKeyword);
         vs.selectCreate("keyword");
         vs.selectFromCurrentView();
-
 
         vs.dropView("filtered_view_keyword");
         vs.dropView("filtered_view_year");
@@ -156,8 +157,9 @@ public class ViewService {
             List<String> keywordList = parseJsonArray(rs.getString("keyword"));
             List<String> directorList = parseJsonArray(rs.getString("director"));
 
-            InMovieDTO movie = new InMovieDTO(rs.getString("movie_id"), rs.getString("title"), Integer.parseInt(rs.getString("release_year"))
-                    , genreList, keywordList, rs.getString("country"), directorList,
+            InMovieDTO movie = new InMovieDTO(rs.getString("movie_id"), rs.getString("title"),
+                    Integer.parseInt(rs.getString("release_year")), genreList, keywordList, rs.getString("country"),
+                    directorList,
                     rs.getString("running_time"), rs.getString("rating"));
 
             movieList.add(movie);
@@ -184,7 +186,7 @@ public class ViewService {
         return res;
     }
 
-    //view 지우기
+    // view 지우기
     public void dropView(String viewName) throws SQLException, ClassNotFoundException {
         connectDb();
         sql = "call dropView('" + viewName + "');";
