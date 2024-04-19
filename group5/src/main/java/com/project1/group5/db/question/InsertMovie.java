@@ -10,9 +10,9 @@ import java.util.*;
 public class InsertMovie {
     public static void main(String[] args) {
         System.out.println("");
-        String url = "jdbc:mysql://localhost:3306/movie";
+        String url = "jdbc:mysql://localhost:3306/sm";
         String username = "root";
-        String password = "9806";
+        String password = "1234";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,12 +32,13 @@ public class InsertMovie {
                     String director = resultSet.getString("director");
                     String running_time = resultSet.getString("running_time");
                     String rating = resultSet.getString("rating");
+                    int year = resultSet.getInt("release_year");
 
                     List<String> genreList = parseJsonArray(genre);
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId,  title, year, genreList, keywordList, country, directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -71,12 +72,13 @@ public class InsertMovie {
                     String director = resultSet.getString("director");
                     String running_time = resultSet.getString("running_time");
                     String rating = resultSet.getString("rating");
+                    int year = resultSet.getInt("release_year");
 
                     List<String> genreList = parseJsonArray(genre);
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -110,12 +112,13 @@ public class InsertMovie {
                     String director = resultSet.getString("director");
                     String running_time = resultSet.getString("running_time");
                     String rating = resultSet.getString("rating");
+                    int year = resultSet.getInt("release_year");
 
                     List<String> genreList = parseJsonArray(genre);
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -148,12 +151,13 @@ public class InsertMovie {
                     String director = resultSet.getString("director");
                     String running_time = resultSet.getString("running_time");
                     String rating = resultSet.getString("rating");
+                    int year = resultSet.getInt("release_year");
 
                     List<String> genreList = parseJsonArray(genre);
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -186,12 +190,13 @@ public class InsertMovie {
                     String director = resultSet.getString("director");
                     String running_time = resultSet.getString("running_time");
                     String rating = resultSet.getString("rating");
+                    int year = resultSet.getInt("release_year");
 
                     List<String> genreList = parseJsonArray(genre);
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
                             running_time, rating);
                     movies.add(movie);
                 }

@@ -1,5 +1,6 @@
 package com.project1.group5.frame.login;
 
+import com.project1.group5.db.OzoDB;
 import com.project1.group5.frame.mainPage.MainPage;
 import com.project1.group5.frame.register.RegisterFrame;
 
@@ -8,25 +9,29 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
+
 public class LoginFrame extends JFrame {
     private JTextField idField; // 아이디 입력 필드
     private JPasswordField passwordField; // 비밀번호 입력 필드
     private JButton loginButton; // 로그인 버튼
-
-    //데이터베이스 가져오기
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/project";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    // 데이터베이스 가져오기
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
+    // 데이터베이스 가져오기
+    private String loggedInUsername = null;
     MainPage mp;
 
 
     // 로그인 프레임 생성자
-    public LoginFrame() {
+
+    public LoginFrame(MainPage mp) {
+        int f_width = 1100;
+        int f_height = 600;
         setTitle("Login"); // 프레임 타이틀 설정
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 종료 동작 설정
-        setSize(800, 600); // 프레임 크기 설정
+        setSize(f_width, f_height); // 프레임 크기 설정
         setLocationRelativeTo(null); // 프레임을 화면 중앙에 배치
-
         initializeDB(); // 데이터베이스 초기화
 
         // 메인 패널 생성
@@ -38,13 +43,17 @@ public class LoginFrame extends JFrame {
         imagePanel.setBackground(Color.WHITE);
         ImageIcon icon = new ImageIcon("C:\\Users\\lg\\Desktop\\login1.png"); // 이미지 아이콘 경로
         JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBounds(400 - icon.getIconWidth() / 2 - 10, 30, icon.getIconWidth(), icon.getIconHeight()); // 이미지 아이콘 위치 설정
+        imageLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 10, 30, icon.getIconWidth(), icon.getIconHeight()); // 이미지
         imagePanel.add(imageLabel);
 
 // 텍스트 레이블 추가
         JLabel userLoginLabel = new JLabel("User Login");
         userLoginLabel.setFont(new Font("Arial", Font.BOLD, 20)); // 폰트 설정
-        userLoginLabel.setBounds(400 - icon.getIconWidth() / 2 - 45, 35 + icon.getIconHeight(), 150, 20); // 텍스트 레이블 위치 설정
+
+        userLoginLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 45, 30 + icon.getIconHeight(), 150, 20); // 텍스트
+        // 레이블
+        // 위치
+        // 설정
         userLoginLabel.setHorizontalAlignment(SwingConstants.CENTER); // 가운데 정렬
         userLoginLabel.setPreferredSize(new Dimension(150, 20)); // 레이블의 크기 설정
         imagePanel.add(userLoginLabel);
@@ -52,7 +61,7 @@ public class LoginFrame extends JFrame {
 
         JLabel welcomeLabel = new JLabel("Welcome to the ozo");
         welcomeLabel.setFont(new Font("Arial", Font.PLAIN, 16)); // 폰트 설정
-        welcomeLabel.setBounds(400 - icon.getIconWidth() / 2 - 50, 60 + icon.getIconHeight(), 150, 20); // 텍스트 레이블 위치 설정
+        welcomeLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 50, 55 + icon.getIconHeight(), 150, 20); // 텍스트
         welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER); // 가운데 정렬
         imagePanel.add(welcomeLabel);
 
@@ -160,27 +169,49 @@ public class LoginFrame extends JFrame {
 
             try {
                 Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); // 데이터베이스 연결
-                CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?, ?, ?)}"); // 저장 프로시저 호출
+                CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?, ?, ?, ?, ?, ?)}"); // 저장 프로시저 호출
                 stmt.setString(1, id); // 아이디 설정
                 stmt.setString(2, password); // 비밀번호 설정
                 stmt.registerOutParameter(3, Types.INTEGER); // 결과 코드 파라미터 등록
-                stmt.execute(); // 저장 프로시저 실행
+                stmt.registerOutParameter(4, Types.VARCHAR); // 유저 이름 반환
+                stmt.registerOutParameter(5, Types.INTEGER); // 나이 반환
+                stmt.registerOutParameter(6, Types.VARCHAR); // 아이디 반환
+                stmt.execute(); // 저장 프로시저 실행\
 
                 int resultCode = stmt.getInt(3); // 결과 코드 가져오기
+                String userName = stmt.getString(4);
+                int userAge = stmt.getInt(5);
+                String userId = stmt.getString(6);
+
+                if (resultCode == 0) {
+                    loggedInUsername = userName;
+                }
 
                 // 결과 코드에 따라 메시지 출력
                 switch (resultCode) {
                     case 0:
+                        loggedInUsername = userName; // Set loggedInUsername only when login is successful
                         JOptionPane.showMessageDialog(LoginFrame.this, "로그인 성공");
+                        SwingUtilities.invokeLater(() -> {
+                            mp.setLoginCheck(true);
+                            mp.setID(userId);
+                            mp.setName(userName);
+                            mp.setAge(userAge);
+                            mp.loggedInPage();
+                            LoginFrame.this.dispose();
+                        });
                         break;
                     case 1:
                         JOptionPane.showMessageDialog(LoginFrame.this, "사용자가 존재하지 않습니다");
+                        loggedInUsername = null;
                         break;
                     case 2:
                         JOptionPane.showMessageDialog(LoginFrame.this, "잘못된 비밀번호입니다");
+                        loggedInUsername = null;
                         break;
                     default:
                         JOptionPane.showMessageDialog(LoginFrame.this, "예상치 못한 결과 코드: " + resultCode);
+                        loggedInUsername = null;
                 }
 
                 stmt.close(); // statement 닫기
@@ -195,6 +226,6 @@ public class LoginFrame extends JFrame {
 
     // 메인 메서드
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(LoginFrame::new); // 로그인 프레임 생성
+
     }
 }
