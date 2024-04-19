@@ -31,9 +31,13 @@ public class MainPage extends JFrame {
     ActionListener lButton;
     ActionListener rButton;
 
-    MainPage() {
+
+    public MainPage() {
+        // 메인 프레임 생성
+
         init();
     }
+
 
     public void init() {
         // 메인 프레임 생성
@@ -61,7 +65,7 @@ public class MainPage extends JFrame {
 
         // 로그인 버튼 생성
         loginButton = new LoginPageButton("로그인");
-        loginButton.setBounds(f_width / 2 - 130 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        loginButton.setBounds(f_width / 2 - 120 - 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
         lButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,7 +80,6 @@ public class MainPage extends JFrame {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
-
                         }
                     });
                 }
@@ -85,7 +88,7 @@ public class MainPage extends JFrame {
         loginButton.addActionListener(lButton);
 
         runButton = new LoginPageButton("비회원실행");
-        runButton.setBounds(f_width / 2 + 20, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
         rButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -163,9 +166,9 @@ public class MainPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!otherFrame) {
-                    MovieRecommendFrame mr = new MovieRecommendFrame(MainPage.this);
+                    MovieRecommendFrame mf = new MovieRecommendFrame(MainPage.this);
                     otherFrame = true;
-                    mr.addWindowListener((WindowListener) new WindowAdapter() {
+                    mf.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
@@ -190,7 +193,7 @@ public class MainPage extends JFrame {
 
 class LoginPageButton extends JButton {
     LoginPageButton(String text) {
-        int[] rgb = { 208, 154, 255 };
+        int[] rgb = {208, 154, 255};
         setOpaque(false);
         setContentAreaFilled(false);// 배경 투명화
         setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // 안쪽 여백
@@ -270,18 +273,4 @@ class LoginPageButton extends JButton {
         this.addActionListener(newL);
 
     }
-
-    // public static void main(String[] args) {
-    // // 테스트를 위한 JFrame 생성
-    // JFrame frame = new JFrame("Button Test");
-    // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    // frame.setSize(200, 200);
-    // frame.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); // 레이아웃 설정
-
-    // // LoginPageButton 추가
-    // LoginPageButton button = new LoginPageButton("Login");
-    // frame.add(button);
-
-    // frame.setVisible(true);
-    // }
 }
