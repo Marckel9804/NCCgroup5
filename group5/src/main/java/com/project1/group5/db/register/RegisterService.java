@@ -32,11 +32,12 @@ public class RegisterService {
             cs.setString(8, dto.getBirth_date());
             cs.setInt(9, dto.getAge());
             cs.setString(10, dto.getGender());
-            // System.out.println(cs.toString());
+             System.out.println(cs.toString());
             cs.execute();
-            // System.out.println("성공했냐?");
+             System.out.println("성공했냐?");
 
             res = cs.getInt(1);
+            System.out.println("res: "+res);
             String message = cs.getString(2);
             // System.out.println(message);
 

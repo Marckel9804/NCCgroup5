@@ -23,8 +23,8 @@ public class RegisterDTO {
     }
 
     public RegisterDTO(String user_id, String username, String email, String password, String phone_number,
-                       String birth_date,
-                       String gender) {
+            String birth_date,
+            String gender) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
@@ -45,8 +45,5 @@ public class RegisterDTO {
         // 기간에서 년도를 가져와서 나이를 계산합니다.
         age = period.getYears() + 1;
         // System.out.println(age);
-    }
-
-    public RegisterDTO(String text, String text1, String text2, String s, String text3, String text4) {
     }
 }

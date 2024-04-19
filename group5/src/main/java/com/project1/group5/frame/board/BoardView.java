@@ -1,9 +1,6 @@
 package com.project1.group5.frame.board;
 
 import javax.swing.*;
-
-import com.project1.group5.db.OzoDB;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -26,9 +23,9 @@ public class BoardView extends JFrame {
     private JFrame parentFrame; // 부모 프레임 변수 추가
 
     // 데이터베이스 연결
-    private static final String DB_URL = OzoDB.DB_URL;
-    private static final String DB_USER = OzoDB.DB_USER;
-    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "1234";
 
     public BoardView(int boardID, JFrame parentFrame) {
         this.boardID = boardID;
@@ -44,7 +41,7 @@ public class BoardView extends JFrame {
         lblRating = new JLabel("평점:");
         lblReview = new JLabel("리뷰:");
         lblHashText = new JLabel("해시태그:");
-        lblUsername = new JLabel(); // 작성자 정보 표시
+        lblUsername = new JLabel(); // 작성자 정보 표시를 위한 라벨 초기화
 
         tfMovieName = new JTextField(30);
         tfRating = new JTextField(30);

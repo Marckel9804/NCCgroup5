@@ -7,10 +7,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import com.project1.group5.db.OzoDB;
-import com.project1.group5.frame.mainPage.MainPage;
-
-
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -131,11 +127,11 @@ public class BoardFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-        Font font = new Font("SansSerif", Font.BOLD, 15);
+        Font font = new Font("SansSerif", Font.BOLD, 11);
         table.setFont(font);
         // 제목열
         JTableHeader header = table.getTableHeader();
-        header.setFont(new Font("SansSerif", Font.BOLD, 15));
+        header.setFont(new Font("SansSerif", Font.BOLD, 11));
         header.setForeground(Color.WHITE);
         header.setBackground(new Color(60, 179, 113));
         //중앙 정렬
