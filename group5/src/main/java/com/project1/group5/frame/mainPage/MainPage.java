@@ -66,7 +66,7 @@ public class MainPage extends JFrame {
 
         // 로그인 버튼 생성
         loginButton = new LoginPageButton("로그인");
-        loginButton.setBounds(f_width / 2 - 120 - 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
+        loginButton.setBounds(f_width / 2 - 140 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
         lButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,7 +85,7 @@ public class MainPage extends JFrame {
         loginButton.addActionListener(lButton);
 
         runButton = new LoginPageButton("비회원실행");
-        runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 120, 40); // 좌표와 크기 설정
+        runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
         rButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -146,7 +146,6 @@ public class MainPage extends JFrame {
     }
 
     public void erasePage() {
-
         getContentPane().removeAll();
         init();
         revalidate();
@@ -195,9 +194,9 @@ public class MainPage extends JFrame {
 
         runButton.changeButton("영화추천", rButton, newR);
 
-        loginButton.setBounds(f_width / 2 - 130 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        loginButton.setBounds(f_width / 2 - 140 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
 
-        runButton.setBounds(f_width / 2 + 20, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
         LoginPageButton lo = new LoginPageButton("로그아웃");
         ActionListener logout = new ActionListener() {
             @Override
@@ -206,7 +205,7 @@ public class MainPage extends JFrame {
             }
 
         };
-        lo.setBounds(f_width / 2 + 20 + 140, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        lo.setBounds(f_width / 2 - 70, f_height - f_height / 4 + 40, 140, 40); // 좌표와 크기 설정
         lo.addActionListener(logout);
         add(lo);
         repaint();

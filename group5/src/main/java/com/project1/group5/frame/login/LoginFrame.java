@@ -19,16 +19,16 @@ public class LoginFrame extends JFrame {
     private JButton loginButton; // 로그인 버튼
 
     // 데이터베이스 가져오기
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
     // 데이터베이스 가져오기
     private String loggedInUsername = null;
     MainPage mp;
 
     // 로그인 프레임 생성자
     public LoginFrame(MainPage mp) {
-        int f_width = 1000;
+        int f_width = 1100;
         int f_height = 600;
         setTitle("Login"); // 프레임 타이틀 설정
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 종료 동작 설정
@@ -175,7 +175,7 @@ public class LoginFrame extends JFrame {
                 stmt.registerOutParameter(4, Types.VARCHAR); // 유저 이름 반환
                 stmt.registerOutParameter(5, Types.INTEGER); // 나이 반환
                 stmt.registerOutParameter(6, Types.VARCHAR); // 아이디 반환
-                stmt.execute(); // 저장 프로시저 실행
+                stmt.execute(); // 저장 프로시저 실행\
 
                 int resultCode = stmt.getInt(3); // 결과 코드 가져오기
                 String userName = stmt.getString(4);

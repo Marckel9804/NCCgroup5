@@ -1,7 +1,12 @@
 package com.project1.group5.frame.movierecommand;
 
 import com.project1.group5.frame.mypage.MyPageFrame;
+
+import lombok.val;
+
 import com.project1.group5.db.OzoDB;
+import com.project1.group5.db.question.InMovieDTO;
+import com.project1.group5.db.question.ViewService;
 import com.project1.group5.frame.board.BoardFrame;
 import com.project1.group5.frame.login.LoginFrame;
 import com.project1.group5.frame.mainPage.MainPage;
@@ -12,8 +17,11 @@ import java.awt.geom.Rectangle2D;
 import java.sql.*;
 
 import javax.swing.*;
+import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
 
-public class MovieRecommendFrame extends JFrame implements KeyListener, MouseListener, MouseMotionListener, Runnable {
+public class MovieRecommendFrame extends JFrame implements MouseListener, MouseMotionListener {
 
     // graphics 라이브러리를 사용하기 위한 객체
     Image buffImage;
@@ -37,7 +45,14 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
     String ratings[] = { "전체", "12", "15", "청불" };
 
     String[] choiceImgList = { "shoe", "bag", "heart", "portion", "bone" };
-    String[] choices = { "장르1", "장르2", "연도1", "연도2", "심의1", "심의2", "국가1", "국가2", "러닝타임1", "러닝타임2" };
+    String[] choices = { "어느 연도의 영화를 선호하시나요?", "몇세 이용가 영화를 선호하시나요?", "2시간보다 긴 영화를 좋아하시나요?",
+            "어떤 장르를 좋아하시나요?", "어떤 키워드의 영화가 좋으신가요?" };
+    String[] order = { "year", "rating", "time", "genre", "keyword" };
+
+    String currChoice1;
+    String currChoice2;
+
+    Image conver;
 
     // 캐릭터 이미지 받아올 이미지 배열
     Image[] characters;
@@ -46,12 +61,11 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
     // 기타 임시 이미지들... 차후 삭제 예정
     Image ozo;
     Image ozland;
-    Image rc;
-    Image bc;
 
-    // 임시로 선택지 띄우기 위한 J라벨
+    // J라벨
     JLabel jl_left;
     JLabel jl_right;
+    JLabel question;
 
     ToJButton toMyPage;
     ToJButton toBoard;
@@ -67,19 +81,26 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
     int mousex;
     int mousey;
 
+    List<String> genres;
+    List<String> keywords;
+    ArrayList<InMovieDTO> movieResult;
     MainPage mp;
+    ViewService vs;
     boolean otherFrame;
 
     public MovieRecommendFrame() {
+        vs = new ViewService();
         init();
         panelForGraphics.setLayout(null);
         panelForGraphics.add(jl_left);
         panelForGraphics.add(jl_right);
+        panelForGraphics.add(question);
         add(panelForGraphics);
     }
 
     public MovieRecommendFrame(MainPage mp) {
         this.mp = mp;
+        vs = new ViewService();
         init();
         if (mp.getLoginCheck()) {
             ActionListener mypage = new ActionListener() {
@@ -144,6 +165,7 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
         panelForGraphics.setLayout(null);
         panelForGraphics.add(jl_left);
         panelForGraphics.add(jl_right);
+        panelForGraphics.add(question);
         panelForGraphics.add(toMyPage);
         panelForGraphics.add(toBoard);
         add(panelForGraphics);
@@ -155,6 +177,26 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
         f_height = 550 + menu;
         otherFrame = false;
 
+        try {
+            vs.dropView("filtered_view_keyword");
+        } catch (Exception e) {
+        }
+        try {
+            vs.dropView("filtered_view_year");
+        } catch (Exception e) {
+        }
+        try {
+            vs.dropView("filtered_view_genre");
+        } catch (Exception e) {
+        }
+        try {
+            vs.dropView("filtered_view_time");
+        } catch (Exception e) {
+        }
+        try {
+            vs.dropView("filtered_view_rating");
+        } catch (Exception e) {
+        }
         setSize(f_width, f_height);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -172,16 +214,32 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
         }
         ozo = new ImageIcon(imgDir + "ozo.png").getImage();
         ozland = new ImageIcon(imgDir + "ozland.png").getImage();
+        conver = new ImageIcon(imgDir + "recover.png").getImage();
+
+        int yearLen = years.length;
+
+        Random rnd = new Random();
+        int yearL = rnd.nextInt(yearLen);
+        int yearR = rnd.nextInt(yearLen);
+
+        while (yearL == yearR) {
+            yearR = rnd.nextInt(yearLen);
+        }
 
         // J라벨 임의로 위치 및 텍스트 조정
-        jl_left = new JLabel(choices[nthChacracter * 2]);
-        jl_right = new JLabel(choices[nthChacracter * 2 + 1]);
-        jl_left.setBounds(f_width / 2 + 200, f_height / 2 - 75, 200, 30);
-        jl_right.setBounds(f_width / 2, f_height / 2 - 75, 200, 30);
-        jl_right.setForeground(Color.red);
-        jl_left.setForeground(Color.blue);
+        jl_left = new JLabel(years[yearL] + "");
+        jl_right = new JLabel(years[yearR] + "");
+        jl_left.setBounds(f_width / 2, f_height / 2 - 75, 200, 30);
+        jl_right.setBounds(f_width / 2 + 290, f_height / 2 - 75, 200, 30);
+        jl_right.setForeground(Color.BLACK);
+        jl_left.setForeground(Color.BLACK);
         jl_left.setFont(new Font(null, Font.BOLD, 30));
         jl_right.setFont(new Font(null, Font.BOLD, 30));
+
+        question = new JLabel(choices[nthChacracter]);
+        question.setBounds(f_width / 2 + 10, f_height / 6 + 25, 500, 30);
+        question.setForeground(Color.BLACK);
+        question.setFont(new Font(null, Font.BOLD, 25));
 
         // 그래픽을 먼저 로딩시키기 위해 사진들을 전부 Jpanel에 붙여서 프레임 위에 붙일것임
         panelForGraphics = new JPanel() {
@@ -213,18 +271,25 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                 }
             }
 
+            public void drawConver() {
+                if (buffg != null) {
+                    buffg.drawImage(conver, f_width / 2 - 50, menu, f_width / 2 + 50, f_height / 4 + 30, this);
+                }
+            }
+
             public void drawChoices() {
                 if (buffg != null) {
                     buffg.drawImage(choiceImgs[nthChacracter * 2], f_width / 2, f_height / 2 - 30, 180, 180, this);
                     rc_s = new Rectangle2D.Double(f_width / 2, f_height / 2 - 30, 180, 180);
-                    buffg.drawImage(choiceImgs[nthChacracter * 2 + 1], f_width / 2 + 200, f_height / 2 - 30, 180, 180,
+                    buffg.drawImage(choiceImgs[nthChacracter * 2 + 1], f_width / 2 + 250, f_height / 2 - 30, 180, 180,
                             this);
-                    bc_s = new Rectangle2D.Double(f_width / 2 + 200, f_height / 2 - 30, 150, 150);
+                    bc_s = new Rectangle2D.Double(f_width / 2 + 250, f_height / 2 - 30, 180, 180);
                 }
             }
 
             public void update(Graphics g) {
                 drawOzland();
+                drawConver();
                 drawCharacter();
                 drawChoices();
                 drawOzo();
@@ -233,7 +298,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
                 }
             }
         };
-        addKeyListener(this);
         addMouseListener(this);
         addMouseMotionListener(this);
         setBackground(new Color(32, 141, 198));
@@ -246,45 +310,121 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
-    @Override
     public void mouseClicked(MouseEvent e) {
-        if (rc_s.contains(e.getPoint())) {// 만약 클릭된 포인트를 이전에 생성한 shape객체가 포함하고 있을 경우~ 뭐뭐 한다. 안의 코드는 차후 수정
-            System.out.println(choices[nthChacracter * 2 + 1] + "가 선택됨");
-        }
-        if (bc_s.contains(e.getPoint())) {// 마찬가지. 애는 왼쪽 도형
-            System.out.println(choices[nthChacracter * 2] + "가 선택됨");
-        }
-        if (nthChacracter == 4) {
-            if (!otherFrame) {
-                MovieResultFrame mrf = new MovieResultFrame();
-                MovieRecommendFrame.this.setVisible(false);
-                // otherFrame = true;
-                mrf.addWindowListener((WindowListener) new WindowAdapter() {
-                    @Override
-                    public void windowClosed(WindowEvent e) {
-                        MovieRecommendFrame.this.dispose();
-                        // System.out.println("창 꺼짐");
-                    }
-                });
-            }
+        try {
 
-        } else {
-            nthChacracter = (nthChacracter + 1);
-            jl_left.setText(choices[nthChacracter * 2]);
-            jl_right.setText(choices[nthChacracter * 2 + 1]);
-            repaint();
+            if (rc_s.contains(e.getPoint())) {// 만약 클릭된 포인트를 이전에 생성한 shape객체가 포함하고 있을 경우~ 뭐뭐 한다. 안의 코드는 차후 수정
+                // 오른쪽 골랐을 때
+                qOrder(nthChacracter, jl_right.getText());
+                nthChacracter = (nthChacracter + 1);
+            }
+            if (bc_s.contains(e.getPoint())) {// 마찬가지. 애는 왼쪽 도형
+                // 왼쪽 골랐을 때
+                qOrder(nthChacracter, jl_left.getText());
+                nthChacracter = (nthChacracter + 1);
+            }
+            if (nthChacracter > 4) {
+                if (!otherFrame) {
+                    MovieResultFrame mrf = new MovieResultFrame(movieResult.get(0));
+                    MovieRecommendFrame.this.setVisible(false);
+                    // otherFrame = true;
+                    mrf.addWindowListener((WindowListener) new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            MovieRecommendFrame.this.dispose();
+                            // System.out.println("창 꺼짐");
+                        }
+                    });
+                }
+
+            } else {
+                question.setText(choices[nthChacracter]);
+                repaint();
+            }
+        } catch (Exception ex) {
+            // TODO: handle exception
         }
+    }
+
+    public void qOrder(int type, String val) {
+        int arrLen;
+        Random rnd = new Random();
+        int leftNum;
+        int rightNum;
+        System.out.println(val + "를 고름");
+        try {
+            switch (type) {
+                case 0:
+                    vs.year = Integer.parseInt(val);
+                    vs.selectCreate("year");
+                    arrLen = ratings.length;
+
+                    leftNum = rnd.nextInt(arrLen);
+                    rightNum = rnd.nextInt(arrLen);
+
+                    while (leftNum == rightNum) {
+                        rightNum = rnd.nextInt(arrLen);
+                    }
+                    jl_left.setText(ratings[leftNum]);
+                    jl_right.setText(ratings[rightNum]);
+                    // vs.selectFromCurrentView();
+                    break;
+                case 1:
+                    vs.rating = val;
+                    vs.selectCreate("rating");
+                    jl_left.setText("up");
+                    jl_right.setText("down");
+                    // vs.selectFromCurrentView();
+                    break;
+                case 2:
+                    vs.selUpdown = val;
+                    vs.selectCreate("time");
+                    // vs.selectFromCurrentView();
+                    genres = vs.returnList("genre");
+                    arrLen = genres.size();
+
+                    leftNum = rnd.nextInt(arrLen);
+                    rightNum = rnd.nextInt(arrLen);
+
+                    while (leftNum == rightNum) {
+                        rightNum = rnd.nextInt(arrLen);
+                    }
+
+                    jl_left.setText(genres.get(leftNum));
+                    jl_right.setText(genres.get(rightNum));
+                    break;
+                case 3:
+                    vs.selGenre = val;
+                    vs.selectCreate("genre");
+                    // vs.selectFromCurrentView();
+                    keywords = vs.returnList("keyword");
+                    arrLen = keywords.size();
+
+                    leftNum = rnd.nextInt(arrLen);
+                    rightNum = rnd.nextInt(arrLen);
+
+                    while (leftNum == rightNum) {
+                        rightNum = rnd.nextInt(arrLen);
+                    }
+
+                    jl_left.setText(keywords.get(leftNum));
+                    jl_right.setText(keywords.get(rightNum));
+                    keywords = vs.returnList("keyword");
+                    break;
+                case 4:
+                    vs.selKeyword = val;
+                    vs.selectCreate("keyword");
+                    vs.selectFromCurrentView();
+                    movieResult = vs.selectFromCurrentView();
+                    break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("switch문 실행 안헸음");
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -312,11 +452,6 @@ public class MovieRecommendFrame extends JFrame implements KeyListener, MouseLis
 
     @Override
     public void mouseDragged(MouseEvent e) {
-    }
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Unimplemented method 'run'");
     }
 
     class ToJButton extends JButton {
