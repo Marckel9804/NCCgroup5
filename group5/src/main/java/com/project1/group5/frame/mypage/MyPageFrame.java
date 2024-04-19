@@ -1,7 +1,9 @@
 package com.project1.group5.frame.mypage;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import com.project1.group5.db.OzoDB;
 import com.project1.group5.frame.mainpage.MainPage;
@@ -19,8 +21,6 @@ public class MyPageFrame extends JFrame {
     private String birth_date;
     private String gender;
     private String password;
-
-    private JTextField usernameField;
 
     private Connection con;
     private PreparedStatement pstm;
@@ -54,10 +54,17 @@ public class MyPageFrame extends JFrame {
         // (하위패널들을 세로로 정렬하기위한 패널)
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setBackground(Color.WHITE);
+        //메인패널 테두리 설정
+        LineBorder lineBorder = new LineBorder(new Color(208, 154, 255), 5);
+        EmptyBorder margin = new EmptyBorder(60, 60, 60, 60); // 상, 좌, 하, 우 마진 설정
+        CompoundBorder compoundBorder = new CompoundBorder(margin, lineBorder);
+        mainPanel.setBorder(compoundBorder);
 
         // 하위 패널 1. 유저 이름
         JPanel namePanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // 하위 패널 안의 컴포넌트들은 좌우로 정렬된다.
         namePanel.setBorder(new EmptyBorder(30, 50, 0, 0)); // 간격 설정
+        namePanel.setBackground(Color.WHITE);
         mainPanel.add(namePanel);
 
         JLabel infoName = new JLabel("이름");
@@ -73,6 +80,7 @@ public class MyPageFrame extends JFrame {
         // 하위 패널 2. 이메일
         JPanel emailPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         emailPanel.setBorder(new EmptyBorder(0, 50, 0, 0));
+        emailPanel.setBackground(Color.WHITE);
         mainPanel.add(emailPanel);
 
         JLabel infoEmail = new JLabel("이메일");
@@ -88,6 +96,7 @@ public class MyPageFrame extends JFrame {
         // 하위 패널 3. 전화번호
         JPanel telPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         telPanel.setBorder(new EmptyBorder(0, 50, 0, 0));
+        telPanel.setBackground(Color.WHITE);
         mainPanel.add(telPanel);
 
         JLabel infoTel = new JLabel("전화번호");
@@ -103,6 +112,7 @@ public class MyPageFrame extends JFrame {
         // 하위 패널 4. 생일
         JPanel birthdayPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         birthdayPanel.setBorder(new EmptyBorder(0, 50, 0, 0));
+        birthdayPanel.setBackground(Color.WHITE);
         mainPanel.add(birthdayPanel);
 
         JLabel infoBirthDate = new JLabel("생일");
@@ -118,6 +128,7 @@ public class MyPageFrame extends JFrame {
         // 하위 패널 5. 성별
         JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         genderPanel.setBorder(new EmptyBorder(0, 50, 0, 0));
+        genderPanel.setBackground(Color.WHITE);
         mainPanel.add(genderPanel);
 
         JLabel infoGender = new JLabel("성별");
@@ -133,6 +144,7 @@ public class MyPageFrame extends JFrame {
         // 하위 패널 6-1. 비밀번호
         JPanel passwordPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         passwordPanel.setBorder(new EmptyBorder(0, 50, 30, 0));
+        passwordPanel.setBackground(Color.WHITE);
         mainPanel.add(passwordPanel);
 
         JLabel infoPassword = new JLabel("비밀번호");
@@ -224,7 +236,7 @@ public class MyPageFrame extends JFrame {
         }
     }
 
-    // public static void main(String[] args) {
-    // new MyPageFrame(null);
-    // }
+//    public static void main(String[] args) {
+//        new MyPageFrame(null);
+//    }
 }
