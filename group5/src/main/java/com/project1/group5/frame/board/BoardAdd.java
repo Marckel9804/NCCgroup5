@@ -28,9 +28,9 @@ public class BoardAdd extends JFrame {
     private JButton btnCancel; // 추가된 취소 버튼
 
     // 데이터베이스 연결
-    private static final String DB_URL = OzoDB.DB_URL;
-    private static final String DB_USER = OzoDB.DB_USER;
-    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
+    private static final String DB_URL = OzoDB.DB_URL;;
+    private static final String DB_USER = OzoDB.DB_USER;;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;;
 
     BoardFrame board;
 

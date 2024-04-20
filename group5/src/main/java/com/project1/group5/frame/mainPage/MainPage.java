@@ -31,15 +31,20 @@ public class MainPage extends JFrame {
     ActionListener lButton;
     ActionListener rButton;
 
-    MainPage() {
+    public MainPage() {
+        // 메인 프레임 생성
+
         init();
     }
 
     public void init() {
         // 메인 프레임 생성
         loginCheck = false;
+        user_id = "그없";
+        user_name = "그없";
+        user_age = -1;
         otherFrame = false;
-        f_width = 1200;
+        f_width = 1100;
         f_height = 600;
         setDefaultCloseOperation(EXIT_ON_CLOSE); // 프레임 닫기 설정
         setSize(f_width, f_height); // 프레임 크기 설정
@@ -54,29 +59,24 @@ public class MainPage extends JFrame {
         ImageIcon icon = new ImageIcon(imgDir + "ozo.png");
 
         JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBounds(0, 0, f_width, f_height); // 이미지 사이즈와 위치 설정
+        imageLabel.setBounds(0, -50, f_width, f_height); // 이미지 사이즈와 위치 설정 // 수정한거
 
         // 이미지를 프레임에 추가 (상단에 추가)
         add(imageLabel);
 
         // 로그인 버튼 생성
         loginButton = new LoginPageButton("로그인");
-        loginButton.setBounds(f_width / 2 - 130 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        loginButton.setBounds(f_width / 2 - 140 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
         lButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!otherFrame) {
-                    // 로그인 페이지로 이동하는 코드를 추가하세요.
-                    // Login 클래스의 인스턴스 생성
                     LoginFrame loginPage = new LoginFrame(MainPage.this);
-                    // 보이기 메소드 호출
-                    loginPage.setVisible(true);
                     otherFrame = true;
                     loginPage.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
-
                         }
                     });
                 }
@@ -85,17 +85,19 @@ public class MainPage extends JFrame {
         loginButton.addActionListener(lButton);
 
         runButton = new LoginPageButton("비회원실행");
-        runButton.setBounds(f_width / 2 + 20, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
         rButton = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!otherFrame) {
                     MovieRecommendFrame mf = new MovieRecommendFrame(MainPage.this);
                     otherFrame = true;
+                    MainPage.this.setVisible(false);
                     mf.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
+                            MainPage.this.setVisible(true);
                         }
                     });
                 }
@@ -106,7 +108,7 @@ public class MainPage extends JFrame {
         // 버튼을 프레임에 추가
         add(loginButton);
         add(runButton);
-
+        // removeAll();
         // 프레임을 보이도록 설정
         setVisible(true);
     }
@@ -143,6 +145,14 @@ public class MainPage extends JFrame {
         return user_name;
     }
 
+    public void erasePage() {
+        getContentPane().removeAll();
+        init();
+        revalidate();
+        repaint();
+
+    }
+
     public void loggedInPage() {
         ActionListener newL = new ActionListener() {
             @Override
@@ -150,10 +160,12 @@ public class MainPage extends JFrame {
                 if (!otherFrame) {
                     BoardFrame bf = new BoardFrame(MainPage.this);
                     otherFrame = true;
+                    MainPage.this.setVisible(false);
                     bf.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
+                            MainPage.this.setVisible(true);
                         }
                     });
                 }
@@ -163,12 +175,15 @@ public class MainPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!otherFrame) {
-                    MovieRecommendFrame mr = new MovieRecommendFrame(MainPage.this);
+                    MovieRecommendFrame mf = new MovieRecommendFrame(MainPage.this);
                     otherFrame = true;
-                    mr.addWindowListener((WindowListener) new WindowAdapter() {
+                    MainPage.this.setVisible(false);
+                    mf.addWindowListener((WindowListener) new WindowAdapter() {
+
                         @Override
                         public void windowClosed(WindowEvent e) {
                             otherFrame = false;
+                            MainPage.this.setVisible(true);
                         }
                     });
                 }
@@ -176,8 +191,25 @@ public class MainPage extends JFrame {
         };
 
         loginButton.changeButton("게시판", lButton, newL);
+
         runButton.changeButton("영화추천", rButton, newR);
 
+        loginButton.setBounds(f_width / 2 - 140 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+
+        runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
+        // LoginPageButton lo = new LoginPageButton("로그아웃");
+        // ActionListener logout = new ActionListener() {
+        // @Override
+        // public void actionPerformed(ActionEvent e) {
+        // MainPage.this.erasePage();
+        // }
+
+        // };
+        // lo.setBounds(f_width / 2 - 70, f_height - f_height / 4 + 40, 140, 40); // 좌표와
+        // 크기 설정
+        // lo.addActionListener(logout);
+        // add(lo);
+        // repaint();
     }
 
     public static void main(String[] args) {
@@ -270,18 +302,4 @@ class LoginPageButton extends JButton {
         this.addActionListener(newL);
 
     }
-
-    // public static void main(String[] args) {
-    // // 테스트를 위한 JFrame 생성
-    // JFrame frame = new JFrame("Button Test");
-    // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    // frame.setSize(200, 200);
-    // frame.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); // 레이아웃 설정
-
-    // // LoginPageButton 추가
-    // LoginPageButton button = new LoginPageButton("Login");
-    // frame.add(button);
-
-    // frame.setVisible(true);
-    // }
 }

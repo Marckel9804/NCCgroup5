@@ -10,9 +10,9 @@ import java.util.*;
 public class InsertMovie {
     public static void main(String[] args) {
         System.out.println("");
-        String url = "jdbc:mysql://localhost:3306/movie";
+        String url = "jdbc:mysql://localhost:3306/sm";
         String username = "root";
-        String password = "9806";
+        String password = "1234";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
