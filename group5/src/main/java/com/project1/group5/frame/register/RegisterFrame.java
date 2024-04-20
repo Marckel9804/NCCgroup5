@@ -1,12 +1,12 @@
 package com.project1.group5.frame.register;
 
+import com.project1.group5.db.OzoDB;
 import com.project1.group5.db.register.RegisterDTO;
 import com.project1.group5.db.register.RegisterService;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 
 import java.awt.*;
 import java.awt.event.*;
@@ -28,9 +28,9 @@ public class RegisterFrame extends JFrame {
     private JButton registerButton; // 회원가입 버튼
 
     // 데이터베이스 가져오기
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/project";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
 
     // 회원가입 프레임 생성자
     public RegisterFrame() {
@@ -51,7 +51,7 @@ public class RegisterFrame extends JFrame {
         registerLabel.setForeground(Color.BLACK); // 텍스트 색상 설정
         // 메인 패널에 회원가입 텍스트 라벨 추가
 
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0)); //상단에 여백 준거
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0)); // 상단에 여백 준거
         mainPanel.add(registerLabel, BorderLayout.PAGE_START);
 
         JPanel centerPanel = new JPanel(new GridBagLayout());
@@ -124,7 +124,7 @@ public class RegisterFrame extends JFrame {
             }
         });
         idPanel.add(idField); // 아이디 입력 필드를 idPanel에 추가
-// 아이디 입력 시 실시간 피드백 문구 처리
+        // 아이디 입력 시 실시간 피드백 문구 처리
         idLengthLabel.setVisible(false);
         idField.addFocusListener(new FocusListener() {
             @Override
@@ -147,7 +147,7 @@ public class RegisterFrame extends JFrame {
         checkDuplicateButton.setPreferredSize(new Dimension(85, 35));
         checkDuplicateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String id = idField.getText();  // 입력된 아이디 가져오기
+                String id = idField.getText(); // 입력된 아이디 가져오기
 
                 // 데이터베이스 연결
                 try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
@@ -175,18 +175,17 @@ public class RegisterFrame extends JFrame {
         centerPanel.add(idPanel, gbc);
         gbc.gridy++;
 
-// 아이디 입력 필드와 중복확인 버튼을 같은 패널에 추가
+        // 아이디 입력 필드와 중복확인 버튼을 같은 패널에 추가
         idPanel.add(idField);
         idPanel.add(checkDuplicateButton);
         // idPanel을 centerPanel에 추가할 때, 그리드백스 레이아웃의 GridBagConstraints의 gridx 값을 1로 설정하여
 
-// 아이디 입력 필드 바로 밑에 실시간 피드백 문구 배치
+        // 아이디 입력 필드 바로 밑에 실시간 피드백 문구 배치
 
         centerPanel.add(idPanel, gbc);
         gbc.gridy++;
         centerPanel.add(idLengthLabel, gbc);
         gbc.gridy++;
-
 
         // 비밀번호 입력 필드
         passwordField = new JPasswordField(20);
@@ -197,7 +196,7 @@ public class RegisterFrame extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridy++;
 
-// 비밀번호 입력 시 길이 확인하는 라벨
+        // 비밀번호 입력 시 길이 확인하는 라벨
         JLabel passwordLengthLabel = new JLabel("비밀번호는 최소 8자 이상이어야 합니다.");
         passwordLengthLabel.setForeground(Color.RED); // 빨간색으로 설정
         passwordLengthLabel.setFont(passwordLengthLabel.getFont().deriveFont(Font.PLAIN, 10)); // 작은 글씨로 설정
@@ -252,7 +251,7 @@ public class RegisterFrame extends JFrame {
             }
         });
 
-// 비밀번호 입력 시 실시간 피드백 문구 처리
+        // 비밀번호 입력 시 실시간 피드백 문구 처리
         passwordLengthLabel.setVisible(false);
         passwordField.addFocusListener(new FocusListener() {
             @Override
@@ -270,7 +269,7 @@ public class RegisterFrame extends JFrame {
             }
         });
 
-// 비밀번호 확인 입력 필드
+        // 비밀번호 확인 입력 필드
         JPasswordField confirmPasswordField = new JPasswordField(20);
         confirmPasswordField.setPreferredSize(new Dimension(200, 35));
         confirmPasswordField.setEchoChar((char) 0); // 입력 전에는 텍스트 보이도록 설정
@@ -279,7 +278,7 @@ public class RegisterFrame extends JFrame {
 
         gbc.gridy++;
 
-// 비밀번호 확인 시 일치 여부 확인하는 라벨
+        // 비밀번호 확인 시 일치 여부 확인하는 라벨
         JLabel confirmPasswordLabel = new JLabel("");
         confirmPasswordLabel.setForeground(Color.RED); // 빨간색으로 설정
         confirmPasswordLabel.setFont(confirmPasswordLabel.getFont().deriveFont(Font.PLAIN, 10)); // 작은 글씨로 설정
@@ -339,7 +338,6 @@ public class RegisterFrame extends JFrame {
         gbc.gridy++;
         centerPanel.add(confirmPasswordLabel, gbc);
         gbc.gridy++;
-
 
         // 이메일 입력 필드
         emailField = new JTextField(20);
@@ -475,7 +473,7 @@ public class RegisterFrame extends JFrame {
         registerButton.setPreferredSize(new Dimension(200, 35));
         registerButton.setBackground(new Color(208, 154, 255)); // 배경색 설정
 
-        registerButton.setBorder(BorderFactory.createLineBorder(new Color(143, 188, 143))); //테두리색
+        registerButton.setBorder(BorderFactory.createLineBorder(new Color(143, 188, 143))); // 테두리색
         registerButton.setFocusPainted(false); // 포커스 시 테두리 없애기
 
         registerButton.setFont(registerButton.getFont().deriveFont(Font.BOLD)); // 폰트 굵게 설정
@@ -516,14 +514,30 @@ public class RegisterFrame extends JFrame {
             // RegisterDTO 객체 생성
             try {
                 String gender = "";
+                String yy = yearField.getText();
+                String MM = monthField.getText();
+                String dd = dayField.getText();
+                if (yy.length() < 4) {
+                    int j = yy.length();
+                    for (int i = 0; i < 4 - j; i++) {
+                        System.out.println(i);
+                        yy = "0" + yy;
+                    }
+                }
+                if (MM.length() < 2) {
+                    MM = "0" + MM;
+                }
+                if (dd.length() < 2) {
+                    dd = "0" + dd;
+                }
                 if (male.isSelected()) {
-                    gender = male.getText();
+                    gender = "Male";
                 }
                 if (female.isSelected()) {
-                    gender = male.getText();
+                    gender = "Female";
                 }
 
-                String birthday = yearField.getText() + "-" + monthField.getText() + "-" + dayField.getText();
+                String birthday = yy + "-" + MM + "-" + dd;
                 System.out.println("생일까지 불러오기 성공" + birthday);
                 RegisterDTO dto = new RegisterDTO(idField.getText(), usernameField.getText(), emailField.getText(),
                         new String(passwordField.getPassword()), phoneNumberField.getText(), birthday,

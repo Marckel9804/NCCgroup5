@@ -1,6 +1,9 @@
 package com.project1.group5.frame.board;
 
 import javax.swing.*;
+
+import com.project1.group5.db.OzoDB;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,19 +24,21 @@ public class BoardEdit extends JFrame {
     private JButton btnSave;
 
     // 데이터베이스 연결
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/sm";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_URL = OzoDB.DB_URL;
+    private static final String DB_USER = OzoDB.DB_USER;
+    private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;
     private int board_id;
 
     BoardFrame board;
+
     public BoardEdit(String movieName, int rating, String review, String hashText, JFrame parentFrame) {
         init();
         setDisplay();
         setData(movieName, rating, review, hashText);
         addListeners(parentFrame);
-//        board = (Board) parentFrame;
+        // board = (Board) parentFrame;
     }
+
     public BoardEdit(String movieName, int rating, String review, String hashText, JFrame parentFrame, int boardID) {
         init();
         setDisplay();
@@ -43,7 +48,8 @@ public class BoardEdit extends JFrame {
         board = (BoardFrame) parentFrame;
     }
 
-    public BoardEdit(String movieName, int rating, String username, String hashText, String username1, BoardFrame boardFrame, int boardID) {
+    public BoardEdit(String movieName, int rating, String username, String hashText, String username1,
+            BoardFrame boardFrame, int boardID) {
     }
 
     public void init() {
@@ -53,7 +59,7 @@ public class BoardEdit extends JFrame {
         lblHashText = new JLabel("해시태그:");
 
         tfMovieName = new JTextField(20);
-        cmbRating = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        cmbRating = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         taReview = new JTextArea(10, 20);
         tfHashText = new JTextField(20);
 
@@ -111,7 +117,7 @@ public class BoardEdit extends JFrame {
                 dispose();
 
                 // 부모 프레임 재표시
-                board.updateBoardTable(); //DB갖다와라
+                board.updateBoardTable(); // DB갖다와라
                 board.repaint();
                 // parentFrame.setVisible(true);
             }
