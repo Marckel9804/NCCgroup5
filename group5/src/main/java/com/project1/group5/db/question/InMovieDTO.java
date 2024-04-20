@@ -21,10 +21,10 @@ public class InMovieDTO {
     private String rating;
 
 
-    InMovieDTO() {
+    public InMovieDTO() {
     }
 
-    InMovieDTO(String movie_id, String title, int release_year, List<String> genre, List<String> keyword, String country, List<String> director, String running_time, String rating) {
+    public InMovieDTO(String movie_id, String title, int release_year, List<String> genre, List<String> keyword, String country, List<String> director, String running_time, String rating) {
         this.movie_id = movie_id;
         this.title = title;
         this.release_year = release_year;
