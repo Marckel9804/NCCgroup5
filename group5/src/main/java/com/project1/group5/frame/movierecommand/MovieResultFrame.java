@@ -1,11 +1,15 @@
 package com.project1.group5.frame.movierecommand;
 
+import com.project1.group5.db.question.InMovieDTO;
+import com.project1.group5.db.question.ViewService;
 import com.project1.group5.frame.board.BoardFrame;
 
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MovieResultFrame extends JFrame {
@@ -40,7 +44,9 @@ public class MovieResultFrame extends JFrame {
     JLabel runningTime;
 
     /*생성자*/
-    MovieResultFrame() {
+    MovieResultFrame(InMovieDTO movie) {
+        ViewService vs = new ViewService();
+
         //homeframe();
         Container c = getContentPane();
 
@@ -124,13 +130,13 @@ public class MovieResultFrame extends JFrame {
 
         panelForGraphics.setLayout(null);
         //영화 정보들 선언
-        title = new Labels(350, 100, "영화제목", 200, 20);
-        year = new Labels(350, 120, "영화년도", 200, 20);
-        country = new Labels(350, 140, "제작국가", 200, 20);
-        director = new Labels(350, 160, "감독1, 감독2", 200, 20);
-        runningTime = new Labels(350, 180, "상영시간", 200, 20);
-        genre = new Labels(350, 200, "장르들ㅁㄴㅇㄹㄴㅁㄹㄴㅇㅁㄻㅇㄴㄹ", 200, 40);
-        keyword = new Labels(350, 240, "키워드들", 200, 20);
+        title = new Labels(350, 100, "영화제목 : " + movie.getTitle(), 200, 20);
+        year = new Labels(350, 120, "영화년도 : " + movie.getRelease_year(), 200, 20);
+        country = new Labels(350, 140, "제작국가 : " + movie.getCountry(), 200, 20);
+        director = new Labels(350, 160, "감독 : " + movie.getDirector(), 200, 20);
+        runningTime = new Labels(350, 180, "상영시간 : " + movie.getRunning_time(), 200, 20);
+        genre = new Labels(350, 200, "<html>장르 : <br>" + movie.getGenre() + "sssssss</html>", 200, 60);
+        keyword = new Labels(350, 260, "<html>키워드 : <br>" + movie.getKeyword() + "ssssssssss</html>", 200, 60);
 
 
         //패널에 모든 라벨, 버튼들 추가
@@ -189,10 +195,23 @@ public class MovieResultFrame extends JFrame {
         Labels(int x, int y, String text, int width, int height) {
             setBounds(x, y, width, height);
             setText(text);
+
+            setFont(getFont().deriveFont(20f));
         }
     }
 
     public static void main(String[] args) {
-        new MovieResultFrame();
+        List<String> genres = new ArrayList<String>();
+        List<String> keywords = new ArrayList<String>();
+        List<String> diretors = new ArrayList<String>();
+        genres.add("액션");
+        keywords.add("사막");
+        keywords.add("SF");
+        keywords.add("전쟁");
+        keywords.add("혁명");
+        diretors.add("아담 윈가드");
+        InMovieDTO movie = new InMovieDTO("m_01", "듄2", 2024, genres, keywords, "미국", diretors, "115", "12");
+
+        new MovieResultFrame(movie);
     }
 }
