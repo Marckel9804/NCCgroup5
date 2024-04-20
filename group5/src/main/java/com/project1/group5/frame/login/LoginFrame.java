@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 
-
 public class LoginFrame extends JFrame {
     private JTextField idField; // 아이디 입력 필드
     private JPasswordField passwordField; // 비밀번호 입력 필드
@@ -22,10 +21,10 @@ public class LoginFrame extends JFrame {
     private String loggedInUsername = null;
     MainPage mp;
 
-
     // 로그인 프레임 생성자
 
     public LoginFrame(MainPage mp) {
+        this.mp = mp;
         int f_width = 1100;
         int f_height = 600;
         setTitle("Login"); // 프레임 타이틀 설정
@@ -38,19 +37,19 @@ public class LoginFrame extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.WHITE);
 
-// 이미지 패널 생성
+        // 이미지 패널 생성
         JPanel imagePanel = new JPanel(null); // 레이아웃 매니저를 null로 설정하여 직접 위치 지정
         imagePanel.setBackground(Color.WHITE);
-        ImageIcon icon = new ImageIcon("C:\\Users\\lg\\Desktop\\login1.png"); // 이미지 아이콘 경로
+        ImageIcon icon = new ImageIcon("src/main/java/com/project1/group5/frame/loginImages/login1.png"); // 이미지 아이콘 경로
         JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 10, 30, icon.getIconWidth(), icon.getIconHeight()); // 이미지
+        imageLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 10, 50, icon.getIconWidth(), icon.getIconHeight()); // 이미지
         imagePanel.add(imageLabel);
 
-// 텍스트 레이블 추가
+        // 텍스트 레이블 추가
         JLabel userLoginLabel = new JLabel("User Login");
         userLoginLabel.setFont(new Font("Arial", Font.BOLD, 20)); // 폰트 설정
 
-        userLoginLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 45, 30 + icon.getIconHeight(), 150, 20); // 텍스트
+        userLoginLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 45, 60 + icon.getIconHeight(), 150, 20); // 텍스트
         // 레이블
         // 위치
         // 설정
@@ -58,15 +57,13 @@ public class LoginFrame extends JFrame {
         userLoginLabel.setPreferredSize(new Dimension(150, 20)); // 레이블의 크기 설정
         imagePanel.add(userLoginLabel);
 
-
         JLabel welcomeLabel = new JLabel("Welcome to the ozo");
         welcomeLabel.setFont(new Font("Arial", Font.PLAIN, 16)); // 폰트 설정
-        welcomeLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 50, 55 + icon.getIconHeight(), 150, 20); // 텍스트
+        welcomeLabel.setBounds(f_width / 2 - icon.getIconWidth() / 2 - 50, 80 + icon.getIconHeight(), 150, 20); // 텍스트
         welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER); // 가운데 정렬
         imagePanel.add(welcomeLabel);
 
         add(imagePanel); // 이미지 패널을 프레임에 추가
-
 
         // 중앙 패널 생성
         JPanel centerPanel = new JPanel(new GridBagLayout());
@@ -76,30 +73,105 @@ public class LoginFrame extends JFrame {
         gbc.gridy = 0;
         gbc.insets = new Insets(8, 10, 8, 10);
 
-// 아이디 레이블 및 필드 추가
+        // 아이디 레이블 및 필드 추가
         JLabel usernameLabel = new JLabel("ID");
-        usernameLabel.setForeground(Color.WHITE); // 글씨 색상을 흰색으로 설정
+        usernameLabel.setForeground(Color.WHITE);
         centerPanel.add(usernameLabel, gbc);
 
         gbc.gridy++;
-        idField = new JTextField("아이디를 입력하세요", 20); // 텍스트 필드 생성 시 기본 텍스트를 설정
+        JPanel idPanel = new JPanel(new BorderLayout(10, 0)); // 가로 간격 10픽셀로 설정
+        idPanel.setBackground(Color.WHITE); // 배경색 바꿈
+        idField = new JTextField("");
+        idField = new JTextField("아이디를 입력하세요", 16);
         idField.setPreferredSize(new Dimension(200, 40));
-        idField.setForeground(Color.GRAY); // 초기에 회색으로 표시
-        centerPanel.add(idField, gbc);
+        idField.setForeground(Color.GRAY);
 
-// 비밀번호 레이블 및 필드 추가
+        // 아이콘 크기 조정
+        ImageIcon userIcon = new ImageIcon("C:\\Users\\lg\\Desktop\\idimage.png");
+        Image userIconImage = userIcon.getImage();
+        Image resizedUserIconImage = userIconImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+        ImageIcon resizedUserIcon = new ImageIcon(resizedUserIconImage);
+
+        // 아이콘과 입력 필드 결합
+        JLabel userIconLabel = new JLabel(resizedUserIcon);
+        userIconLabel.setOpaque(true); // 불투명 설정
+        userIconLabel.setBackground(Color.WHITE); // 배경색 하얀색으로 설정
+        idPanel.add(userIconLabel, BorderLayout.WEST);
+        idPanel.add(idField, BorderLayout.CENTER);
+        centerPanel.add(idPanel, gbc);
+
+        // 아이디 필드에 포커스 이벤트 추가
+        idField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // 텍스트 필드에 포커스를 얻으면, 현재 텍스트가 "아이디를 입력하세요"인 경우에만 텍스트를 지우고, 색상을 검정색으로 변경
+                if (idField.getText().equals("아이디를 입력하세요")) {
+                    idField.setText("");
+                    idField.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                // 포커스를 잃으면, 텍스트 필드가 비어있는 경우 다시 안내 문구를 추가하고, 색상을 회색으로 변경
+                if (idField.getText().isEmpty()) {
+                    idField.setText("아이디를 입력하세요");
+                    idField.setForeground(Color.GRAY);
+                }
+            }
+        });
+
+        // 비밀번호 레이블 및 필드 추가
         gbc.gridy++;
         JLabel passwordLabel = new JLabel("Password");
         passwordLabel.setForeground(Color.WHITE); // 글씨 색상을 흰색으로 설정
         centerPanel.add(passwordLabel, gbc);
 
         gbc.gridy++;
-        passwordField = new JPasswordField("비밀번호를 입력하세요", 20); // 텍스트 필드 생성 시 기본 텍스트를 설정
+        JPanel passwordPanel = new JPanel(new BorderLayout(10, 0)); // 가로 간격 10픽셀로 설정
+        passwordPanel.setBackground(Color.WHITE); // JPanel의 배경색 설정
+        passwordField = new JPasswordField("비밀번호를 입력하세요", 16);
         passwordField.setPreferredSize(new Dimension(200, 40));
-        passwordField.setForeground(Color.GRAY); // 초기에 회색으로 표시
+        passwordField.setForeground(Color.GRAY);
+        passwordField.setBackground(Color.WHITE); // 입력 필드 배경색 설정
         passwordField.setEchoChar((char) 0); // 입력 전에는 텍스트 보이도록 설정
-        centerPanel.add(passwordField, gbc);
 
+        // 아이콘 크기 조정
+        ImageIcon lockIcon = new ImageIcon("C:\\Users\\lg\\Desktop\\passwordimage.png");
+        Image lockIconImage = lockIcon.getImage();
+        Image resizedLockIconImage = lockIconImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+        ImageIcon resizedLockIcon = new ImageIcon(resizedLockIconImage);
+
+        // 아이콘과 입력 필드 결합
+        JLabel lockIconLabel = new JLabel(resizedLockIcon);
+        lockIconLabel.setOpaque(true); // 불투명 설정
+        lockIconLabel.setBackground(Color.WHITE); // 배경색 하얀색으로 설정
+        passwordPanel.add(lockIconLabel, BorderLayout.WEST);
+        passwordPanel.add(passwordField, BorderLayout.CENTER);
+        centerPanel.add(passwordPanel, gbc);
+
+        // 비밀번호 필드에 포커스 이벤트 추가
+        passwordField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                // 비밀번호 필드에 포커스를 얻으면, 현재 텍스트가 "비밀번호를 입력하세요"인 경우에만 텍스트를 지우고, 색상을 검정색으로 변경
+                if (String.valueOf(passwordField.getPassword()).equals("비밀번호를 입력하세요")) {
+                    passwordField.setText("");
+                    passwordField.setForeground(Color.BLACK);
+                    passwordField.setEchoChar('*'); // 비밀번호 입력 중에는 *로 표시
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                // 포커스를 잃으면, 비밀번호 필드가 비어있는 경우 다시 안내 문구를 추가하고, 색상을 회색으로 변경
+                if (String.valueOf(passwordField.getPassword()).isEmpty()) {
+                    passwordField.setText("비밀번호를 입력하세요");
+                    passwordField.setForeground(Color.GRAY);
+                    passwordField.setEchoChar((char) 0); // 입력 전에는 텍스트 보이도록 설정
+                }
+            }
+        });
 
         // 로그인 버튼 추가
         gbc.gridy++;
@@ -113,7 +185,6 @@ public class LoginFrame extends JFrame {
         loginButton.setFont(loginButton.getFont().deriveFont(Font.BOLD)); // 폰트 굵게 설정
 
         centerPanel.add(loginButton, gbc);
-
 
         // 회원 가입 텍스트 추가
         gbc.gridy++;

@@ -107,7 +107,7 @@ public class MovieRecommendFrame extends JFrame implements MouseListener, MouseM
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (!otherFrame) {
-                        MyPageFrame myPage = new MyPageFrame(mp);
+                        MyPageFrame myPage = new MyPageFrame(mp, MovieRecommendFrame.this);
                         myPage.setVisible(true);
                         otherFrame = true;
                         myPage.addWindowListener((WindowListener) new WindowAdapter() {
@@ -314,13 +314,13 @@ public class MovieRecommendFrame extends JFrame implements MouseListener, MouseM
         try {
 
             if (rc_s.contains(e.getPoint())) {// 만약 클릭된 포인트를 이전에 생성한 shape객체가 포함하고 있을 경우~ 뭐뭐 한다. 안의 코드는 차후 수정
-                // 오른쪽 골랐을 때
-                qOrder(nthChacracter, jl_right.getText());
+                // 왼쪽 골랐을 때
+                qOrder(nthChacracter, jl_left.getText());
                 nthChacracter = (nthChacracter + 1);
             }
             if (bc_s.contains(e.getPoint())) {// 마찬가지. 애는 왼쪽 도형
-                // 왼쪽 골랐을 때
-                qOrder(nthChacracter, jl_left.getText());
+                // 오른쪽 골랐을 때
+                qOrder(nthChacracter, jl_right.getText());
                 nthChacracter = (nthChacracter + 1);
             }
             if (nthChacracter > 4) {

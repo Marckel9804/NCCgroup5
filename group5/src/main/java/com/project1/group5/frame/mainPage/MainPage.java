@@ -59,7 +59,7 @@ public class MainPage extends JFrame {
         ImageIcon icon = new ImageIcon(imgDir + "ozo.png");
 
         JLabel imageLabel = new JLabel(icon);
-        imageLabel.setBounds(0, 0, f_width, f_height); // 이미지 사이즈와 위치 설정
+        imageLabel.setBounds(0, -50, f_width, f_height); // 이미지 사이즈와 위치 설정 // 수정한거
 
         // 이미지를 프레임에 추가 (상단에 추가)
         add(imageLabel);
@@ -197,18 +197,19 @@ public class MainPage extends JFrame {
         loginButton.setBounds(f_width / 2 - 140 - 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
 
         runButton.setBounds(f_width / 2 + 10, f_height - f_height / 4, 140, 40); // 좌표와 크기 설정
-        LoginPageButton lo = new LoginPageButton("로그아웃");
-        ActionListener logout = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainPage.this.erasePage();
-            }
+        // LoginPageButton lo = new LoginPageButton("로그아웃");
+        // ActionListener logout = new ActionListener() {
+        // @Override
+        // public void actionPerformed(ActionEvent e) {
+        // MainPage.this.erasePage();
+        // }
 
-        };
-        lo.setBounds(f_width / 2 - 70, f_height - f_height / 4 + 40, 140, 40); // 좌표와 크기 설정
-        lo.addActionListener(logout);
-        add(lo);
-        repaint();
+        // };
+        // lo.setBounds(f_width / 2 - 70, f_height - f_height / 4 + 40, 140, 40); // 좌표와
+        // 크기 설정
+        // lo.addActionListener(logout);
+        // add(lo);
+        // repaint();
     }
 
     public static void main(String[] args) {
