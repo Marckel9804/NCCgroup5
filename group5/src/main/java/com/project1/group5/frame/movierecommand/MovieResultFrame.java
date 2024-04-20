@@ -1,13 +1,19 @@
 package com.project1.group5.frame.movierecommand;
 
+import com.project1.group5.db.question.ImageService;
 import com.project1.group5.db.question.InMovieDTO;
 import com.project1.group5.db.question.ViewService;
 import com.project1.group5.frame.board.BoardFrame;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +52,17 @@ public class MovieResultFrame extends JFrame {
 
 
     /* 생성자 */
-    MovieResultFrame(InMovieDTO movie) {
+    MovieResultFrame(InMovieDTO movie) throws SQLException, ClassNotFoundException, IOException {
         ViewService vs = new ViewService();
+        ImageService is = new ImageService();
+
+        byte[] imageBytes = is.returnImage(movie.getMovie_id());
+
+        ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+        BufferedImage bImage = ImageIO.read(bis);
+
+        poster = new ImageIcon(bImage).getImage();
+        is.con.close();
 
         // homeframe();
         Container c = getContentPane();

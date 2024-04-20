@@ -9,7 +9,7 @@ import java.sql.*;
 public class ImageService {
     String movieId;
     String imgSrc;
-    Connection con;
+    public Connection con;
 
     public byte[] returnImage(String id) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
