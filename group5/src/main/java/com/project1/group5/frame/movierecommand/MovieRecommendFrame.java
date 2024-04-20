@@ -324,6 +324,7 @@ public class MovieRecommendFrame extends JFrame implements MouseListener, MouseM
                 nthChacracter = (nthChacracter + 1);
             }
             if (nthChacracter > 4) {
+                System.out.println("창 넘길거임");
                 if (!otherFrame) {
                     MovieResultFrame mrf = new MovieResultFrame(movieResult.get(0));
                     MovieRecommendFrame.this.setVisible(false);
@@ -331,6 +332,7 @@ public class MovieRecommendFrame extends JFrame implements MouseListener, MouseM
                     mrf.addWindowListener((WindowListener) new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
+                            otherFrame = true;
                             MovieRecommendFrame.this.dispose();
                             // System.out.println("창 꺼짐");
                         }
