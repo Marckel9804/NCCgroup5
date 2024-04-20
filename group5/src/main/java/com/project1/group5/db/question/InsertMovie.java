@@ -3,6 +3,8 @@ package com.project1.group5.db.question;
 import java.sql.*;
 import java.util.*;
 
+import com.project1.group5.db.OzoDB;
+
 // 현재 질문 순서 : 장르 -> 등급 -> 키워드 -> 국가 -> 러닝타임
 // 해야하는 것 ,,?  : 러닝타임 범위로 묶어서 / +개봉년도 안넣었는데 넣고 러닝타임처럼 범위 묶어서 추가,,,,?
 // 키워드 중복 없이 가져오기,,?
@@ -10,9 +12,9 @@ import java.util.*;
 public class InsertMovie {
     public static void main(String[] args) {
         System.out.println("");
-        String url = "jdbc:mysql://localhost:3306/sm";
-        String username = "root";
-        String password = "1234";
+        String url = OzoDB.DB_URL;
+        String username = OzoDB.DB_USER;
+        String password = OzoDB.DB_PASSWORD;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -38,7 +40,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId,  title, year, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country,
+                            directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -78,7 +81,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country,
+                            directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -118,7 +122,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country,
+                            directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -157,7 +162,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country,
+                            directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
@@ -196,7 +202,8 @@ public class InsertMovie {
                     List<String> keywordList = parseJsonArray(keyword);
                     List<String> directorList = parseJsonArray(director);
 
-                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country, directorList,
+                    InMovieDTO movie = new InMovieDTO(movieId, title, year, genreList, keywordList, country,
+                            directorList,
                             running_time, rating);
                     movies.add(movie);
                 }
