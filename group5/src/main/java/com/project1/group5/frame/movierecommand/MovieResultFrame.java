@@ -1,21 +1,27 @@
 package com.project1.group5.frame.movierecommand;
 
+import com.project1.group5.db.question.ImageService;
 import com.project1.group5.db.question.InMovieDTO;
 import com.project1.group5.db.question.ViewService;
 import com.project1.group5.frame.board.BoardFrame;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieResultFrame extends JFrame
+public class MovieResultFrame extends JFrame {
     /* 여기있는 이미지를 프레임에 그려줄거임. */
     Image background = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/res2.png").getImage();// 배경이미지
     Image poster = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/poster.png").getImage();// 포스터
-                                                                                                                   // 샘플
+    // 샘플
     Image conver = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/recover.png").getImage();
     Image oz = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/oz1.png").getImage();
     JPanel panelForGraphics;
@@ -44,8 +50,17 @@ public class MovieResultFrame extends JFrame
     JLabel runningTime;
 
     /* 생성자 */
-    MovieResultFrame(InMovieDTO movie) {
+    MovieResultFrame(InMovieDTO movie) throws SQLException, ClassNotFoundException, IOException {
         ViewService vs = new ViewService();
+        ImageService is = new ImageService();
+
+        byte[] imageBytes = is.returnImage(movie.getMovie_id());
+
+        ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+        BufferedImage bImage = ImageIO.read(bis);
+
+        poster = new ImageIcon(bImage).getImage();
+        is.con.close();
 
         // homeframe();
         Container c = getContentPane();
@@ -128,14 +143,16 @@ public class MovieResultFrame extends JFrame
         };
 
         panelForGraphics.setLayout(null);
+
         // 영화 정보들 선언
+
         title = new Labels(350, 100, "영화제목 : " + movie.getTitle(), 200, 20);
         year = new Labels(350, 120, "영화년도 : " + movie.getRelease_year(), 200, 20);
         country = new Labels(350, 140, "제작국가 : " + movie.getCountry(), 200, 20);
         director = new Labels(350, 160, "감독 : " + movie.getDirector(), 200, 20);
         runningTime = new Labels(350, 180, "상영시간 : " + movie.getRunning_time(), 200, 20);
-        genre = new Labels(350, 200, "<html>장르 : <br>" + movie.getGenre() + "sssssss</html>", 200, 60);
-        keyword = new Labels(350, 260, "<html>키워드 : <br>" + movie.getKeyword() + "ssssssssss</html>", 200, 60);
+        genre = new Labels(350, 200, "<html>장르 : <br>" + movie.getGenre() + "</html>", 200, 60);
+        keyword = new Labels(350, 260, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 200, 60);
 
         // 패널에 모든 라벨, 버튼들 추가
         panelForGraphics.add(title);
@@ -198,7 +215,7 @@ public class MovieResultFrame extends JFrame
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
         List<String> genres = new ArrayList<String>();
         List<String> keywords = new ArrayList<String>();
         List<String> diretors = new ArrayList<String>();
@@ -208,9 +225,10 @@ public class MovieResultFrame extends JFrame
         keywords.add("전쟁");
         keywords.add("혁명");
         diretors.add("아담 윈가드");
-        // InMovieDTO movie = new InMovieDTO("m_01", "듄2", 2024, genres, keywords, "미국",
-        // diretors, "115", "12");
 
-        // new MovieResultFrame(movie);
+        InMovieDTO movie = new InMovieDTO("m_01", "듄2", 2024, genres, keywords, "미국",
+                diretors, "115", "12");
+
+        new MovieResultFrame(movie);
     }
 }
