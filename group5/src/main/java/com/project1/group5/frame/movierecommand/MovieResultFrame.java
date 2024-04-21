@@ -51,16 +51,16 @@ public class MovieResultFrame extends JFrame {
 
     /* 생성자 */
     MovieResultFrame(InMovieDTO movie) throws SQLException, ClassNotFoundException, IOException {
-        ViewService vs = new ViewService();
-        ImageService is = new ImageService();
-
-        byte[] imageBytes = is.returnImage(movie.getMovie_id());
-
-        ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-        BufferedImage bImage = ImageIO.read(bis);
-
-        poster = new ImageIcon(bImage).getImage();
-        is.con.close();
+//        ViewService vs = new ViewService();
+//        ImageService is = new ImageService();
+//
+//        byte[] imageBytes = is.returnImage(movie.getMovie_id());
+//
+//        ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+//        BufferedImage bImage = ImageIO.read(bis);
+//
+//        poster = new ImageIcon(bImage).getImage();
+//        is.con.close();
 
         // homeframe();
         Container c = getContentPane();
@@ -152,7 +152,7 @@ public class MovieResultFrame extends JFrame {
         director = new Labels(350, 160, "<html>감독 : <br>" + movie.getDirector() + "</html>", 300, 50);
         runningTime = new Labels(350, 220, "상영시간 : " + movie.getRunning_time(), 300, 20);
         genre = new Labels(350, 240, "<html>장르 : <br>" + movie.getGenre() + "</html>", 300, 60);
-        keyword = new Labels(350, 300, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 300, 60);
+        keyword = new Labels(350, 310, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 300, 80);
 
         // 패널에 모든 라벨, 버튼들 추가
         panelForGraphics.add(title);
@@ -220,10 +220,11 @@ public class MovieResultFrame extends JFrame {
         List<String> keywords = new ArrayList<String>();
         List<String> diretors = new ArrayList<String>();
         genres.add("액션");
-        keywords.add("사막");
-        keywords.add("SF");
-        keywords.add("전쟁");
-        keywords.add("혁명");
+        keywords.add("우주선");
+        keywords.add("외계인");
+        keywords.add("초능력");
+        keywords.add("로봇");
+        keywords.add("우주 전쟁");
         diretors.add("아담 윈가드");
 
         InMovieDTO movie = new InMovieDTO("m_01", "듄2", 2024, genres, keywords, "미국",
