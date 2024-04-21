@@ -11,7 +11,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieResultFrame extends JFrame {
+public class MovieResultFrame extends JFrame
     /* 여기있는 이미지를 프레임에 그려줄거임. */
     Image background = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/res2.png").getImage();// 배경이미지
     Image poster = new ImageIcon("src/main/java/com/project1/group5/frame/reccommandImages/poster.png").getImage();// 포스터
