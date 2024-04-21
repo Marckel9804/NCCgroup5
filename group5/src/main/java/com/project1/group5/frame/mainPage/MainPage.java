@@ -145,6 +145,18 @@ public class MainPage extends JFrame {
         return user_name;
     }
 
+    public void regame() {
+        MovieRecommendFrame mf = new MovieRecommendFrame(MainPage.this);
+        MainPage.this.setVisible(false);
+        mf.addWindowListener((WindowListener) new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                otherFrame = false;
+                MainPage.this.setVisible(true);
+            }
+        });
+    }
+
     public void erasePage() {
         getContentPane().removeAll();
         init();

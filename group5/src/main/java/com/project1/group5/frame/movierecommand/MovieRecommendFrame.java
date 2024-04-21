@@ -326,7 +326,7 @@ public class MovieRecommendFrame extends JFrame implements MouseListener, MouseM
             if (nthChacracter > 4) {
                 System.out.println("창 넘길거임");
                 if (!otherFrame) {
-                    MovieResultFrame mrf = new MovieResultFrame(movieResult.get(0));
+                    MovieResultFrame mrf = new MovieResultFrame(movieResult.get(0), mp);
                     MovieRecommendFrame.this.setVisible(false);
                     // otherFrame = true;
                     mrf.addWindowListener((WindowListener) new WindowAdapter() {

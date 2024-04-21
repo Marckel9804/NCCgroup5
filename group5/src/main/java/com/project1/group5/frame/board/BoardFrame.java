@@ -29,6 +29,8 @@ public class BoardFrame extends JFrame {
             "k.png", "l.png", "bb.png", "n.png", "o.png", "p.png" };
     String imgDir = "src/main/java/com/project1/group5/frame/boardImages/"; // 이미지 경로 설정
 
+    String movieName;
+
     MainPage mp;
 
     public BoardFrame(MainPage mp) {
@@ -83,6 +85,10 @@ public class BoardFrame extends JFrame {
         updateBoardTable();
     }
 
+    public void setMovieName(String mvName) {
+        movieName = mvName;
+    }
+
     public void updateImages() {
         imageLabels[currentImageIndex % 2].setIcon(new ImageIcon(new ImageIcon(imgDir + imagePaths[currentImageIndex])
                 .getImage().getScaledInstance(250, 400, Image.SCALE_SMOOTH)));
@@ -92,6 +98,7 @@ public class BoardFrame extends JFrame {
     }
 
     public void init() { //
+        movieName = "";
         tableModel = new DefaultTableModel() { // 테이블 모델 생성
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex) {
@@ -151,7 +158,7 @@ public class BoardFrame extends JFrame {
         // 버튼 모양 변경
         btnAdd.setFocusPainted(false);
         btnAdd.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // 크기
-        btnAdd.addActionListener(e -> new BoardAdd(BoardFrame.this).setVisible(true));
+        btnAdd.addActionListener(e -> new BoardAdd(BoardFrame.this, movieName).setVisible(true));
 
         JButton btnEdit = new JButton("게시글 수정");
         // 버튼 색상 및 디자인
