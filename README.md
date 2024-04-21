@@ -18,10 +18,10 @@
 
 |        | 이름 | git nickname | 역할 |
 |--------|------|-------------|------|
-| 조장   | 서창호 | Marckel9804 |  UI  |
+| 조장   | 서창호 | Marckel9804 |  DB/UI  |
 | 부조장 | 전유탁 | dbxkr       |  UI  |
 | 조원   | 홍화연 | ghkdusghd   |  DB/UI  |
-|        | 유가영 | ggggaaaayyyyoooouuunnnggg  |  DB  |
+|        | 유가영 | ggggaaaayyyyoooouuunnnggg  |  DB/UI  |
 |        | 최재원 | chjw9806    |  DB  |
 |        | 안성민 | Anseongmin5739 |  DB/UI  |
        
