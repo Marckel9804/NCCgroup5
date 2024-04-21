@@ -49,7 +49,7 @@ public class BoardEdit extends JFrame {
     }
 
     public BoardEdit(String movieName, int rating, String username, String hashText, String username1,
-            BoardFrame boardFrame, int boardID) {
+                     BoardFrame boardFrame, int boardID) {
     }
 
     public void init() {

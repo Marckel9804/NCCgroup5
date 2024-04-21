@@ -38,6 +38,20 @@
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MovieResultFrame.class.uniqueId9" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MovieResultFrame.class.uniqueId9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/movierecommand/MovieResultFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/movierecommand/MovieResultFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/InsertMovie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/InsertMovie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/question/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/db/register/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MovieResultFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/movierecommand/MovieResultFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MovieSelectFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/movierecommand/MovieRecommendFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/MyPageFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mypage/MyPageFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardAdd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardComment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/board/BoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/login/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/mainPage/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/register/RegisterFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +117,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.group5 [:MovieResultFrame.main()].executor": "Run",
