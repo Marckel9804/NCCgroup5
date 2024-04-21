@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fa143f54-5a00-4d95-8518-6c034229484d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../MovieKeyword/mk/영화정보 리스트.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/movierecommand/MovieResultFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project1/group5/frame/movierecommand/MovieResultFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +66,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.group5 [:MovieResultFrame.main()].executor": "Run",
     "git-widget-placeholder": "ch"
   }
 }]]></component>
