@@ -228,7 +228,7 @@ public class MovieResultFrame extends JFrame {
 
         InMovieDTO movie = new InMovieDTO("m_01", "듄2", 2024, genres, keywords, "미국",
                 diretors, "115", "12");
-
+        //
         new MovieResultFrame(movie);
     }
 }
