@@ -4,6 +4,7 @@ import com.project1.group5.db.question.ImageService;
 import com.project1.group5.db.question.InMovieDTO;
 import com.project1.group5.db.question.ViewService;
 import com.project1.group5.frame.board.BoardFrame;
+import com.project1.group5.frame.mainPage.MainPage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -49,18 +50,23 @@ public class MovieResultFrame extends JFrame {
 
     JLabel runningTime;
 
+    MainPage mp;
+
     /* 생성자 */
-    MovieResultFrame(InMovieDTO movie) throws SQLException, ClassNotFoundException, IOException {
-//        ViewService vs = new ViewService();
-//        ImageService is = new ImageService();
-//
-//        byte[] imageBytes = is.returnImage(movie.getMovie_id());
-//
-//        ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-//        BufferedImage bImage = ImageIO.read(bis);
-//
-//        poster = new ImageIcon(bImage).getImage();
-//        is.con.close();
+
+    MovieResultFrame(InMovieDTO movie, MainPage mp) throws SQLException, ClassNotFoundException, IOException {
+        this.mp = mp;
+        ViewService vs = new ViewService();
+        ImageService is = new ImageService();
+
+        byte[] imageBytes = is.returnImage(movie.getMovie_id());
+
+        ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+        BufferedImage bImage = ImageIO.read(bis);
+
+        poster = new ImageIcon(bImage).getImage();
+        is.con.close();
+
 
         // homeframe();
         Container c = getContentPane();
@@ -81,15 +87,30 @@ public class MovieResultFrame extends JFrame {
         toBoard.addActionListener(new ActionListener() { // 게시판 창 띄우고 result창 끄기
             @Override
             public void actionPerformed(ActionEvent e) {
-                new BoardFrame();
-                dispose();
+                BoardFrame bf = new BoardFrame(mp);
+                bf.setMovieName(movie.getTitle());
+                MovieResultFrame.this.setVisible(false);
+                bf.addWindowListener((WindowListener) new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        MovieResultFrame.this.setVisible(true);
+                        // System.out.println("창 꺼짐");
+                    }
+                });
             }
         });
         regame.addActionListener(new ActionListener() { // 게임 다시하기
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MovieRecommendFrame();
+                WindowListener[] listeners = MovieResultFrame.this.getWindowListeners();
+                for (WindowListener listener : listeners) {
+                    MovieResultFrame.this.removeWindowListener(listener);
+                }
                 dispose();
+                SwingUtilities.invokeLater(() -> {
+                    mp.regame();
+                    mp.setVisible(false);
+                });
             }
         });
 
@@ -115,13 +136,13 @@ public class MovieResultFrame extends JFrame {
 
             public void drawConver() { // 말풍선 그리기
                 if (buffg != null) {
-                    buffg.drawImage(conver, 30, -90, 780, 720, this);
+                    buffg.drawImage(conver, 30, -90, 820, 720, this);
                 }
             }
 
             public void drawOz() { // 오즈 그리기
                 if (buffg != null) {
-                    buffg.drawImage(oz, 650, 150, 450, 500, this);
+                    buffg.drawImage(oz, 670, 150, 450, 500, this);
                 }
             }
 
@@ -146,13 +167,15 @@ public class MovieResultFrame extends JFrame {
 
         // 영화 정보들 선언
 
-        title = new Labels(350, 100, "영화제목 : " + movie.getTitle(), 300, 20);
-        year = new Labels(350, 120, "영화년도 : " + movie.getRelease_year(), 300, 20);
-        country = new Labels(350, 140, "제작국가 : " + movie.getCountry(), 300, 20);
-        director = new Labels(350, 160, "<html>감독 : <br>" + movie.getDirector() + "</html>", 300, 50);
-        runningTime = new Labels(350, 220, "상영시간 : " + movie.getRunning_time(), 300, 20);
-        genre = new Labels(350, 240, "<html>장르 : <br>" + movie.getGenre() + "</html>", 300, 60);
-        keyword = new Labels(350, 310, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 300, 80);
+
+        title = new Labels(350, 100, "영화제목 : " + movie.getTitle(), 360, 20);
+        year = new Labels(350, 120, "영화년도 : " + movie.getRelease_year(), 360, 20);
+        country = new Labels(350, 140, "제작국가 : " + movie.getCountry(), 360, 20);
+        director = new Labels(350, 160, "<html>감독 : <br>" + movie.getDirector() + "</html>", 360, 50);
+        runningTime = new Labels(350, 220, "상영시간 : " + movie.getRunning_time(), 360, 20);
+        genre = new Labels(350, 240, "<html>장르 : <br>" + movie.getGenre() + "</html>", 360, 60);
+        keyword = new Labels(350, 300, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 360, 60);
+
 
         // 패널에 모든 라벨, 버튼들 추가
         panelForGraphics.add(title);
@@ -215,21 +238,22 @@ public class MovieResultFrame extends JFrame {
         }
     }
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
-        List<String> genres = new ArrayList<String>();
-        List<String> keywords = new ArrayList<String>();
-        List<String> diretors = new ArrayList<String>();
-        genres.add("액션");
-        keywords.add("우주선");
-        keywords.add("외계인");
-        keywords.add("초능력");
-        keywords.add("로봇");
-        keywords.add("우주 전쟁");
-        diretors.add("아담 윈가드");
+    // public static void main(String[] args) throws ClassNotFoundException,
+    // SQLException, IOException {
+    // List<String> genres = new ArrayList<String>();
+    // List<String> keywords = new ArrayList<String>();
+    // List<String> diretors = new ArrayList<String>();
+    // genres.add("액션");
+    // keywords.add("사막");
+    // keywords.add("SF");
+    // keywords.add("전쟁");
+    // keywords.add("혁명");
+    // diretors.add("아담 윈가드");
 
-        InMovieDTO movie = new InMovieDTO("m_01", "듄2", 2024, genres, keywords, "미국",
-                diretors, "115", "12");
-        //
-        new MovieResultFrame(movie);
-    }
+    // InMovieDTO movie = new InMovieDTO("m_01", "듄2", 2024, genres, keywords, "미국",
+    // diretors, "115", "12");
+
+    // new MovieResultFrame(movie);
+    // }
+
 }
