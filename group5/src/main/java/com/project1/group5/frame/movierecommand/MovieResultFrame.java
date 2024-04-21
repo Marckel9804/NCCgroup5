@@ -146,11 +146,11 @@ public class MovieResultFrame extends JFrame {
 
         // 영화 정보들 선언
 
-        title = new Labels(350, 100, "영화제목 : " + movie.getTitle(), 200, 20);
-        year = new Labels(350, 120, "영화년도 : " + movie.getRelease_year(), 200, 20);
-        country = new Labels(350, 140, "제작국가 : " + movie.getCountry(), 200, 20);
+        title = new Labels(350, 100, "영화제목 : " + movie.getTitle(), 300, 20);
+        year = new Labels(350, 120, "영화년도 : " + movie.getRelease_year(), 300, 20);
+        country = new Labels(350, 140, "제작국가 : " + movie.getCountry(), 300, 20);
         director = new Labels(350, 160, "<html>감독 : <br>" + movie.getDirector() + "</html>", 300, 50);
-        runningTime = new Labels(350, 220, "상영시간 : " + movie.getRunning_time(), 200, 20);
+        runningTime = new Labels(350, 220, "상영시간 : " + movie.getRunning_time(), 300, 20);
         genre = new Labels(350, 240, "<html>장르 : <br>" + movie.getGenre() + "</html>", 300, 60);
         keyword = new Labels(350, 300, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 300, 60);
 
