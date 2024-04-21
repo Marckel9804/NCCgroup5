@@ -115,7 +115,7 @@ public class MovieResultFrame extends JFrame {
 
             public void drawConver() { // 말풍선 그리기
                 if (buffg != null) {
-                    buffg.drawImage(conver, 30, -90, 700, 720, this);
+                    buffg.drawImage(conver, 30, -90, 780, 720, this);
                 }
             }
 
@@ -149,10 +149,10 @@ public class MovieResultFrame extends JFrame {
         title = new Labels(350, 100, "영화제목 : " + movie.getTitle(), 200, 20);
         year = new Labels(350, 120, "영화년도 : " + movie.getRelease_year(), 200, 20);
         country = new Labels(350, 140, "제작국가 : " + movie.getCountry(), 200, 20);
-        director = new Labels(350, 160, "감독 : " + movie.getDirector(), 200, 20);
-        runningTime = new Labels(350, 180, "상영시간 : " + movie.getRunning_time(), 200, 20);
-        genre = new Labels(350, 200, "<html>장르 : <br>" + movie.getGenre() + "</html>", 200, 60);
-        keyword = new Labels(350, 260, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 200, 60);
+        director = new Labels(350, 160, "<html>감독 : <br>" + movie.getDirector() + "</html>", 300, 50);
+        runningTime = new Labels(350, 220, "상영시간 : " + movie.getRunning_time(), 200, 20);
+        genre = new Labels(350, 240, "<html>장르 : <br>" + movie.getGenre() + "</html>", 300, 60);
+        keyword = new Labels(350, 300, "<html>키워드 : <br>" + movie.getKeyword() + "</html>", 300, 60);
 
         // 패널에 모든 라벨, 버튼들 추가
         panelForGraphics.add(title);
