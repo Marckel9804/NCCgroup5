@@ -33,8 +33,10 @@ public class BoardAdd extends JFrame {
     private static final String DB_PASSWORD = OzoDB.DB_PASSWORD;;
 
     BoardFrame board;
+    String movieName;
 
-    public BoardAdd(JFrame parentFrame) {
+    public BoardAdd(JFrame parentFrame, String mvName) {
+        movieName = mvName;
         init();
         setDisplay();
         addListeners(parentFrame);
@@ -54,7 +56,7 @@ public class BoardAdd extends JFrame {
         lblHashText = new JLabel("해시태그");
         lblUsername = new JLabel("작성자"); // 새로운 라벨 초기화
 
-        tfMovieName = new JTextField(10);
+        tfMovieName = new JTextField(movieName, 10);
         cmbRating = new JComboBox<>(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         taReview = new JTextArea(10, 10);
         tfHashText = new JTextField(10);
